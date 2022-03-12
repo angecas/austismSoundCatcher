@@ -14,6 +14,10 @@ import {
 } from "react-native-indicators";
 
 import { Modalize } from "react-native-modalize";
+import {
+  GestureHandlerRootView,
+  GestureHandlerRootHOC,
+} from "react-native-gesture-handler";
 
 import {
   StyleSheet,
@@ -45,6 +49,10 @@ export default function App() {
   function onOpen() {
     modalizeRef.current?.open();
   }
+
+  const onClose = () => {
+    modalizeRef.current?.close();
+  };
 
   const uploadAudio = async (path) => {
     const formData = new FormData();
@@ -131,6 +139,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      {/*<GestureHandlerRootView>*/}
       <View style={styles.loader}>
         {load === true ? <PacmanIndicator color="orange" /> : <></>}
       </View>
@@ -153,17 +162,17 @@ export default function App() {
         <Text style={{ color: "white" }}>Abrir Modal</Text>
       </TouchableOpacity>
 
-      <Modalize ref={modalizeRef} snapPoint={180}>
+      <Modalize ref={modalizeRef} snapPoint={180} modalHeight={200}>
         <View
           style={{
-            flex: 1,
+            flex: 2,
             height: 180,
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onClose}>
             <Text>Editar</Text>
           </TouchableOpacity>
         </View>
@@ -173,13 +182,14 @@ export default function App() {
       <Text style={{ color: "orange", fontSize: 35, marginTop: 35 }}>
         {prev.previsionLabel}
       </Text>
+      {/*</View></GestureHandlerRootView>*/}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#07121B",
     alignItems: "center",
     justifyContent: "center",
