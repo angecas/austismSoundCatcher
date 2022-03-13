@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 const PrevisionTable = ({ previsionResults }) => {
@@ -13,10 +13,31 @@ const PrevisionTable = ({ previsionResults }) => {
                 fontWeight: "bold",
                 fontSize: 13,
                 letterSpacing: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                marginLeft: 20,
               }}
             >
               First Prediction
             </Text>
+            <TouchableOpacity
+              style={{
+                justifyContent: "flex-end",
+                flexDirection: "row-reverse",
+                marginTop: 45,
+                marginLeft: 12,
+              }}
+            >
+              <Image
+                style={{
+                  width: 30,
+                  height: 25,
+                  resizeMode: "contain",
+                }}
+                source={require("./info.png")}
+              />
+            </TouchableOpacity>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.firstPrevisionLabel}</Text>
