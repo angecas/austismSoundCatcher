@@ -16,7 +16,7 @@ const PrevisionTable = ({ previsionResults }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 textAlign: "center",
-                marginLeft: 20,
+                marginLeft: 25,
               }}
             >
               First Prediction
@@ -26,7 +26,7 @@ const PrevisionTable = ({ previsionResults }) => {
                 justifyContent: "flex-end",
                 flexDirection: "row-reverse",
                 marginTop: 45,
-                marginLeft: 12,
+                marginLeft: 14,
               }}
             >
               <Image
@@ -35,7 +35,7 @@ const PrevisionTable = ({ previsionResults }) => {
                   height: 25,
                   resizeMode: "contain",
                 }}
-                source={require("./info.png")}
+                source={require("../src/icones/info.png")}
               />
             </TouchableOpacity>
           </Row>
@@ -53,10 +53,31 @@ const PrevisionTable = ({ previsionResults }) => {
                 fontWeight: "bold",
                 fontSize: 13,
                 letterSpacing: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                marginLeft: 20,
               }}
             >
               Second Prediction
             </Text>
+            <TouchableOpacity
+              style={{
+                justifyContent: "flex-end",
+                flexDirection: "row-reverse",
+                marginTop: 45,
+                marginLeft: 14,
+              }}
+            >
+              <Image
+                style={{
+                  width: 30,
+                  height: 25,
+                  resizeMode: "contain",
+                }}
+                source={require("../src/icones/info.png")}
+              />
+            </TouchableOpacity>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.secondPrevisionLabel}</Text>
@@ -72,10 +93,31 @@ const PrevisionTable = ({ previsionResults }) => {
                 fontWeight: "bold",
                 fontSize: 13,
                 letterSpacing: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                marginLeft: 20,
               }}
             >
               Third Prediction
             </Text>
+            <TouchableOpacity
+              style={{
+                justifyContent: "flex-end",
+                flexDirection: "row-reverse",
+                marginTop: 45,
+                marginLeft: 14,
+              }}
+            >
+              <Image
+                style={{
+                  width: 30,
+                  height: 25,
+                  resizeMode: "contain",
+                }}
+                source={require("../src/icones/info.png")}
+              />
+            </TouchableOpacity>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.thirdPrevisionLabel}</Text>
