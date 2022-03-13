@@ -163,7 +163,7 @@ export default function App() {
         <Text style={{ color: "white" }}>Abrir Modal</Text>
       </TouchableOpacity>
 
-      <Modalize ref={modalizeRef} snapPoint={280} modalHeight={280}>
+      <Modalize ref={modalizeRef} snapPoint={300} modalHeight={300}>
         <View
           style={{
             flex: 1,
@@ -177,18 +177,34 @@ export default function App() {
             <Text>Editar</Text>
         </TouchableOpacity>*/}
         </View>
-        <View style={{ backgroundColor: "red" }}>
+
+        <View style={{ flex: 1, flexDirection: "row-reverse" }}>
           <TouchableOpacity
             style={{
-              backgroundColor: "blue",
-              width: 80,
+              width: 120,
+              height: 30,
               justifyContent: "flex-end",
               elevation: 8,
+              backgroundColor: "#40798c",
+              borderColor: "#fcfdfb",
+              borderWidth: 2,
+              outlineColor: "#523009",
+              outlineStyle: "solid",
               borderRadius: 7,
+              margin: 5,
+              justifyContent: "center",
             }}
             onPress={onClose}
           >
-            <Text>Editar</Text>
+            <Text
+              style={{
+                alignSelf: "center",
+                fontWeight: "bold",
+                color: "white",
+              }}
+            >
+              Close
+            </Text>
           </TouchableOpacity>
         </View>
       </Modalize>
