@@ -1,6 +1,7 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
+
 import {
   BallIndicator,
   BarIndicator,
@@ -29,10 +30,13 @@ import {
 } from "react-native";
 import PrevisionTable from "./components/PrevisionTable";
 import react from "react";
+import MatrixModal from "./components/MatrixModal";
 
 const screen = Dimensions.get("screen");
 
 export default function App() {
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
   const modalizeRef = useRef(null);
   const funRef = useRef(null);
 
@@ -83,10 +87,7 @@ export default function App() {
   useEffect(() => {
     try {
       if (!stream) {
-        console.log("ENTROUUUUU");
         funRef.current = setInterval(async () => {
-          console.log("TAMBEM ENTROU");
-
           await Audio.requestPermissionsAsync();
           await Audio.setAudioModeAsync({
             allowsRecordingIOS: true,
@@ -162,23 +163,36 @@ export default function App() {
         <Text style={{ color: "white" }}>Abrir Modal</Text>
       </TouchableOpacity>
 
-      <Modalize ref={modalizeRef} snapPoint={180} modalHeight={200}>
+      <Modalize ref={modalizeRef} snapPoint={280} modalHeight={280}>
         <View
           style={{
-            flex: 2,
-            height: 180,
+            flex: 1,
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <TouchableOpacity onPress={onClose}>
+          <PrevisionTable previsionResults={prev}></PrevisionTable>
+          {/*<TouchableOpacity onPress={onClose}>
+            <Text>Editar</Text>
+        </TouchableOpacity>*/}
+        </View>
+        <View style={{ backgroundColor: "red" }}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "blue",
+              width: 80,
+              justifyContent: "flex-end",
+              elevation: 8,
+              borderRadius: 7,
+            }}
+            onPress={onClose}
+          >
             <Text>Editar</Text>
           </TouchableOpacity>
         </View>
       </Modalize>
 
-      {/*<PrevisionTable previsionResults={prev} />*/}
       <Text style={{ color: "orange", fontSize: 35, marginTop: 35 }}>
         {prev.previsionLabel}
       </Text>
@@ -189,7 +203,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     backgroundColor: "#07121B",
     alignItems: "center",
     justifyContent: "center",

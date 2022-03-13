@@ -8,7 +8,15 @@ const PrevisionTable = ({ previsionResults }) => {
       <Grid>
         <Col size={25}>
           <Row style={styles.cell}>
-            <Text>First Prediction</Text>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 13,
+                letterSpacing: 1,
+              }}
+            >
+              First Prediction
+            </Text>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.firstPrevisionLabel}</Text>
@@ -19,7 +27,15 @@ const PrevisionTable = ({ previsionResults }) => {
         </Col>
         <Col size={25}>
           <Row style={styles.cell}>
-            <Text>Second Prediction</Text>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 13,
+                letterSpacing: 1,
+              }}
+            >
+              Second Prediction
+            </Text>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.secondPrevisionLabel}</Text>
@@ -30,7 +46,15 @@ const PrevisionTable = ({ previsionResults }) => {
         </Col>
         <Col size={25}>
           <Row style={styles.cell}>
-            <Text>Third Prediction</Text>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 13,
+                letterSpacing: 1,
+              }}
+            >
+              Third Prediction
+            </Text>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.thirdPrevisionLabel}</Text>
@@ -50,7 +74,6 @@ const styles = StyleSheet.create({
     height: 250,
     padding: 5,
     paddingTop: 30,
-    backgroundColor: "red",
   },
   cell: {
     borderWidth: 1,
