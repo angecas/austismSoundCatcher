@@ -12,19 +12,51 @@ const PrevisionTable = ({ previsionResults, sample }) => {
     previsionResults.firstPrevisionLabel;
 
   const toastConfig = {
-    tomatoToast: ({ text1 }) => (
+    tomatoToast: () => (
       <View
         style={{
-          height: 60,
-          width: "100%",
-          //backgroundColor: "#F6F1D1",
-          borderRadius: 8,
-          borderWidth: 2,
-          elevation: 14,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#f1faee",
           borderColor: "#40798C",
+          elevation: 14,
+          borderWidth: 2,
+          borderRadius: 8,
         }}
       >
-        <Text> {toastText} </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image
+            style={{
+              alignSelf: "flex-start",
+              height: 25,
+              width: 25,
+              marginRight: 5,
+            }}
+            source={require("../src/icones/info.png")}
+          ></Image>
+          <Text style={{ fontWeight: "700" }}>INFO</Text>
+        </View>
+        <View
+          style={{
+            height: 60,
+            width: "100%",
+            backgroundColor: "white",
+            //borderRadius: 8,
+            borderWidth: 2,
+            elevation: 14,
+            borderColor: "#40798C",
+            alignSelf: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ margin: 12 }}> {toastText} </Text>
+        </View>
       </View>
     ),
   };
