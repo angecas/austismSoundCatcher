@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { BottomModal } from "react-native-modals";
@@ -6,13 +6,25 @@ import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
 const PrevisionTable = ({ previsionResults, sample }) => {
   let toastText =
-    "In the first prediction, the sample was was classified as " +
+    "In the first prediction the sample was cassified as " +
     previsionResults.firstPrevisionPercent +
     " " +
     previsionResults.firstPrevisionLabel;
 
+  let toastTextI =
+    "In the first prediction the sample was cassified as " +
+    previsionResults.secondPrevisionPercent +
+    " " +
+    previsionResults.secondPrevisionLabel;
+
+  let toastTextII =
+    "In the first prediction the sample was cassified as " +
+    previsionResults.thirdPrevisionPercent +
+    " " +
+    previsionResults.thirdPrevisionLabel;
+
   const toastConfig = {
-    tomatoToast: () => (
+    tomatoToast: ({ text1, props }) => (
       <View
         style={{
           justifyContent: "center",
@@ -55,7 +67,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             justifyContent: "center",
           }}
         >
-          <Text style={{ margin: 12 }}> {toastText} </Text>
+          <Text style={{ margin: 12 }}> {text1} </Text>
         </View>
       </View>
     ),
@@ -64,6 +76,24 @@ const PrevisionTable = ({ previsionResults, sample }) => {
   const showToast = () => {
     Toast.show({
       type: "tomatoToast",
+      text1: toastText,
+      text2: "This is some something 👋",
+    });
+  };
+
+  const showToastII = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastTextI,
+      text2: "This is some something 👋",
+    });
+  };
+
+  const showToastIII = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastTextII,
+      text2: "This is some something 👋",
     });
   };
 
@@ -151,6 +181,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
                 marginTop: 45,
                 marginLeft: 14,
               }}
+              onPress={showToastII}
             >
               <Image
                 style={{
@@ -191,6 +222,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
                 marginTop: 45,
                 marginLeft: 14,
               }}
+              onPress={showToastIII}
             >
               <Image
                 style={{
