@@ -2,6 +2,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import Toast from "react-native-toast-message";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
+import AnimatedProgressWheel from "react-native-progress-wheel";
+
+import Mic from "./src/icones/icon_mic2.svg";
+import Pause from "./src/icones/mono-player-stop.svg";
+import Rec from "./src/icones/mono-krec-record.svg";
 
 import {
   BallIndicator,
@@ -25,9 +31,12 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
+  SafeAreaView,
   StatusBar,
   TouchableOpacity,
   Dimensions,
+  ScrollView,
   requireNativeComponent,
 } from "react-native";
 import PrevisionTable from "./components/PrevisionTable";
@@ -161,33 +170,111 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      {/*<GestureHandlerRootView>*/}
-      <View style={styles.loader}>
-        {load === true ? <PacmanIndicator color="orange" /> : <></>}
-      </View>
-      <StatusBar barStyle="light-content" />
-
-      {stream ? (
-        <TouchableOpacity onPress={startTimer} style={styles.button}>
-          <Text style={styles.buttonText}>Start</Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          onPress={stopTimer}
-          style={[styles.button, { borderColor: "orange" }]}
+    <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
+      <ScrollView>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "#333533",
+            paddingLeft: 10,
+            paddingRight: 10,
+            //borderBottomColor: "black",
+            //borderBottonWidth: 5,
+            borderWidth: 1,
+            height: 70,
+            elevation: 30,
+            justifyContent: "center",
+          }}
         >
-          <Text style={styles.buttonText}>Stop</Text>
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 22,
+              fontWeight: "600",
+              color: "white",
+            }}
+          >
+            Sound Classification
+          </Text>
+        </View>
+        <View style={{ alignItems: "center", marginTop: 80 }}>
+          <Mic height={100} width={100} fill={"black"} />
+        </View>
+        <View style={{ alignItems: "center", marginTop: 50 }}>
+          <View style={styles.loader}>
+            {load === true ? (
+              <PacmanIndicator color="orange" />
+            ) : (
+              <Text style={{ fontSize: 40 }}>00:03</Text>
+            )}
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 30,
+          }}
+        >
+          {stream ? (
+            <TouchableOpacity style={{ margin: 10 }} onPress={startTimer}>
+              <Rec width={70} height={70} />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={{ margin: 10 }} onPress={stopTimer}>
+              <Pause width={70} height={70} />
+            </TouchableOpacity>
+          )}
+        </View>
+        <Text
+          style={{
+            marginTop: 5,
+            fontSize: 14,
+            color: "#333533",
+            textAlign: "center",
+          }}
+        >
+          Sample:
+        </Text>
+        <Text
+          style={{
+            marginTop: 5,
+            fontSize: 14,
+            color: "#333533",
+            textAlign: "center",
+          }}
+        >
+          Overall Classification:
+        </Text>
+      </ScrollView>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          backgroundColor: "#333533",
+          paddingLeft: 10,
+          paddingRight: 10,
+          //borderBottomColor: "black",
+          //borderBottonWidth: 5,
+          borderWidth: 1,
+          height: 55,
+          elevation: 30,
+          justifyContent: "center",
+        }}
+      >
+        <TouchableOpacity onPress={onOpen}>
+          <Text
+            style={{
+              color: "white",
+            }}
+          >
+            more info
+          </Text>
         </TouchableOpacity>
-      )}
-
-      <TouchableOpacity onPress={onOpen}>
-        <Text style={{ color: "white" }}>Abrir Modal</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={showToast}>
-        <Text style={{ color: "white" }}>TESTESTESTES</Text>
-      </TouchableOpacity>
+      </View>
 
       <Modalize ref={modalizeRef} snapPoint={350} modalHeight={350}>
         <View
@@ -202,9 +289,6 @@ export default function App() {
             previsionResults={prev}
             sample={sample}
           ></PrevisionTable>
-          {/*<TouchableOpacity onPress={onClose}>
-            <Text>Editar</Text>
-        </TouchableOpacity>*/}
         </View>
 
         <View style={{ flex: 1, flexDirection: "row-reverse" }}>
@@ -237,20 +321,18 @@ export default function App() {
           </TouchableOpacity>
         </View>
       </Modalize>
-
       <Text style={{ color: "orange", fontSize: 35, marginTop: 35 }}>
         {prev.previsionLabel}
       </Text>
-      {/*</View></GestureHandlerRootView>*/}
       <Toast config={toastConfig} />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#07121B",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
   },

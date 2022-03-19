@@ -55,6 +55,20 @@ export default function App() {
 
   let smp = 0;
 
+  const toastConfig = {
+    tomatoToast: () => (
+      <View style={{ height: 60, width: "100%", backgroundColor: "tomato" }}>
+        <Text> oioioioi </Text>
+      </View>
+    ),
+  };
+
+  const showToast = () => {
+    Toast.show({
+      type: "tomatoToast",
+    });
+  };
+
   function onOpen() {
     modalizeRef.current?.open();
   }
@@ -171,6 +185,10 @@ export default function App() {
         <Text style={{ color: "white" }}>Abrir Modal</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity onPress={showToast}>
+        <Text style={{ color: "white" }}>TESTESTESTES</Text>
+      </TouchableOpacity>
+
       <Modalize ref={modalizeRef} snapPoint={350} modalHeight={350}>
         <View
           style={{
@@ -224,7 +242,7 @@ export default function App() {
         {prev.previsionLabel}
       </Text>
       {/*</View></GestureHandlerRootView>*/}
-      <Toast />
+      <Toast config={toastConfig} />
     </View>
   );
 }
