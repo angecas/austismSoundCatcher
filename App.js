@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import Toast from "react-native-toast-message";
-import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
-import AnimatedProgressWheel from "react-native-progress-wheel";
+
+import CountDown from "react-native-countdown-component";
 
 import Mic from "./src/icones/icon_mic2.svg";
 import Pause from "./src/icones/mono-player-stop.svg";
@@ -50,19 +50,19 @@ export default function App() {
   const windowHeight = Dimensions.get("window").height;
   const modalizeRef = useRef(null);
   const funRef = useRef(null);
-
-  const [start, setStartToggle] = useState(true);
-
   const [recording, setRecording] = React.useState();
   const [path, setPath] = React.useState(true);
   const [prev, setPrev] = React.useState("");
   const [disable, setDisable] = React.useState(false);
   const [load, setLoad] = React.useState(false);
-  const [stop, setStop] = React.useState(false);
   const [stream, setStream] = React.useState(true);
   const [sample, setSample] = React.useState(0);
 
   let smp = 0;
+
+  const formatTime = (time) => {
+    return ("0" + time).slice(-2);
+  };
 
   const toastConfig = {
     tomatoToast: () => (
@@ -76,6 +76,20 @@ export default function App() {
     Toast.show({
       type: "tomatoToast",
     });
+  };
+
+  const timeDown = {
+    counter: () => (
+      <CountDown
+        until={5}
+        onFinish={() => alert("finished")}
+        onPress={() => alert("hello")}
+        size={20}
+        timeToShow={["M", "S"]}
+        timeLabels={{ m: null, s: null }}
+        showSeparator
+      />
+    ),
   };
 
   function onOpen() {
@@ -171,33 +185,33 @@ export default function App() {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
-      <ScrollView>
-        <View
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          backgroundColor: "#333533",
+          paddingLeft: 10,
+          paddingRight: 10,
+          //borderBottomColor: "black",
+          //borderBottonWidth: 5,
+          borderWidth: 1,
+          height: 70,
+          elevation: 30,
+          justifyContent: "center",
+        }}
+      >
+        <Text
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: "#333533",
-            paddingLeft: 10,
-            paddingRight: 10,
-            //borderBottomColor: "black",
-            //borderBottonWidth: 5,
-            borderWidth: 1,
-            height: 70,
-            elevation: 30,
-            justifyContent: "center",
+            textAlign: "center",
+            fontSize: 22,
+            fontWeight: "600",
+            color: "white",
           }}
         >
-          <Text
-            style={{
-              textAlign: "center",
-              fontSize: 22,
-              fontWeight: "600",
-              color: "white",
-            }}
-          >
-            Sound Classification
-          </Text>
-        </View>
+          Sound Classification
+        </Text>
+      </View>
+      <ScrollView>
         <View style={{ alignItems: "center", marginTop: 80 }}>
           <Mic height={100} width={100} fill={"black"} />
         </View>
@@ -208,6 +222,16 @@ export default function App() {
             ) : (
               <Text style={{ fontSize: 40 }}>00:03</Text>
             )}
+            {/*
+            <CountDown
+              until={5}
+              onFinish={() => alert("finished")}
+              onPress={() => alert("hello")}
+              size={20}
+              timeToShow={["M", "S"]}
+              timeLabels={{ m: null, s: null }}
+              showSeparator
+            />*/}
           </View>
         </View>
 
@@ -229,6 +253,20 @@ export default function App() {
             </TouchableOpacity>
           )}
         </View>
+        {sample != 0 ? (
+          <Text
+            style={{
+              marginTop: 5,
+              fontSize: 14,
+              color: "#333533",
+              textAlign: "center",
+            }}
+          >
+            Sample: {sample}
+          </Text>
+        ) : (
+          <></>
+        )}
         <Text
           style={{
             marginTop: 5,
@@ -237,17 +275,7 @@ export default function App() {
             textAlign: "center",
           }}
         >
-          Sample:
-        </Text>
-        <Text
-          style={{
-            marginTop: 5,
-            fontSize: 14,
-            color: "#333533",
-            textAlign: "center",
-          }}
-        >
-          Overall Classification:
+          Overall Classification: {prev.previsionLabel}
         </Text>
       </ScrollView>
       <View
@@ -265,18 +293,22 @@ export default function App() {
           justifyContent: "center",
         }}
       >
-        <TouchableOpacity onPress={onOpen}>
-          <Text
-            style={{
-              color: "white",
-            }}
-          >
-            more info
-          </Text>
-        </TouchableOpacity>
+        {sample != 0 ? (
+          <TouchableOpacity onPress={onOpen}>
+            <Text
+              style={{
+                color: "white",
+              }}
+            >
+              more info
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <></>
+        )}
       </View>
 
-      <Modalize ref={modalizeRef} snapPoint={350} modalHeight={350}>
+      <Modalize ref={modalizeRef} snapPoint={400} modalHeight={400}>
         <View
           style={{
             flex: 1,
@@ -321,9 +353,7 @@ export default function App() {
           </TouchableOpacity>
         </View>
       </Modalize>
-      <Text style={{ color: "orange", fontSize: 35, marginTop: 35 }}>
-        {prev.previsionLabel}
-      </Text>
+
       <Toast config={toastConfig} />
     </SafeAreaView>
   );
