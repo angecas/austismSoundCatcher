@@ -57,6 +57,8 @@ export default function App() {
   const [load, setLoad] = React.useState(false);
   const [stream, setStream] = React.useState(true);
   const [sample, setSample] = React.useState(0);
+  const [countdown, setCountdown] = react.useState(false);
+  const [mic, setMic] = react.useState(false);
 
   let smp = 0;
 
@@ -76,20 +78,6 @@ export default function App() {
     Toast.show({
       type: "tomatoToast",
     });
-  };
-
-  const timeDown = {
-    counter: () => (
-      <CountDown
-        until={5}
-        onFinish={() => alert("finished")}
-        onPress={() => alert("hello")}
-        size={20}
-        timeToShow={["M", "S"]}
-        timeLabels={{ m: null, s: null }}
-        showSeparator
-      />
-    ),
   };
 
   function onOpen() {
@@ -137,6 +125,7 @@ export default function App() {
             allowsRecordingIOS: true,
             playsInSilentModeIOS: true,
           });
+          setMic(true);
 
           const recording = new Audio.Recording();
 
@@ -144,7 +133,9 @@ export default function App() {
             Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
           );
           await recording.startAsync();
+
           setRecording(recording);
+          setCountdown(true);
           console.log("Recording started");
           setTimeout(async () => {
             console.log("entrou");
@@ -154,6 +145,7 @@ export default function App() {
             recording.stopAndUnloadAsync();
             const uri = recording.getURI();
             console.log("Recording stopped and stored at", uri);
+            setMic(false);
             setPath(uri);
             uploadAudio(uri);
 
@@ -213,25 +205,29 @@ export default function App() {
       </View>
       <ScrollView>
         <View style={{ alignItems: "center", marginTop: 80 }}>
-          <Mic height={100} width={100} fill={"black"} />
+          {mic ? (
+            <Mic height={100} width={100} fill={"red"} />
+          ) : (
+            <Mic height={100} width={100} fill={"black"} />
+          )}
         </View>
         <View style={{ alignItems: "center", marginTop: 50 }}>
           <View style={styles.loader}>
-            {load === true ? (
-              <PacmanIndicator color="orange" />
+            {load === true ? <PacmanIndicator color="orange" /> : <></>}
+            {/*{countdown ? (
+              <CountDown
+                id={String(sample)}
+                until={5}
+                onFinish={() => console.log("finish")}
+                onPress={() => console.log("pressed")}
+                size={20}
+                timeToShow={["M", "S"]}
+                timeLabels={{ m: null, s: null }}
+                showSeparator
+              />
             ) : (
-              <Text style={{ fontSize: 40 }}>00:03</Text>
-            )}
-            {/*
-            <CountDown
-              until={5}
-              onFinish={() => alert("finished")}
-              onPress={() => alert("hello")}
-              size={20}
-              timeToShow={["M", "S"]}
-              timeLabels={{ m: null, s: null }}
-              showSeparator
-            />*/}
+              <></>
+            )}*/}
           </View>
         </View>
 
@@ -267,16 +263,21 @@ export default function App() {
         ) : (
           <></>
         )}
-        <Text
-          style={{
-            marginTop: 5,
-            fontSize: 14,
-            color: "#333533",
-            textAlign: "center",
-          }}
-        >
-          Overall Classification: {prev.previsionLabel}
-        </Text>
+
+        {sample != 0 ? (
+          <Text
+            style={{
+              marginTop: 5,
+              fontSize: 14,
+              color: "#333533",
+              textAlign: "center",
+            }}
+          >
+            Overall Classification: {prev.previsionLabel}
+          </Text>
+        ) : (
+          <></>
+        )}
       </ScrollView>
       <View
         style={{
