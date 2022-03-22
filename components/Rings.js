@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -37,12 +37,13 @@ const Ring = ({ delay }) => {
   return <Animated.View style={[styles.ring, ringStyle]} />;
 };
 
-export default function AnimatedRingExample() {
+export default function Rings() {
   return (
     <View
       style={{
         flex: 1,
         alignItems: "center",
+        marginTop: 150,
         justifyContent: "center",
         flexDirection: "column",
       }}

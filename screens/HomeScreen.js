@@ -40,6 +40,7 @@ import PrevisionTable from "../components/PrevisionTable";
 import react from "react";
 import MatrixModal from "../components/MatrixModal";
 import DetailsScreen from "./DetailsScreen";
+import Rings from "../components/Rings";
 
 const screen = Dimensions.get("screen");
 
@@ -57,6 +58,7 @@ function HomeScreen({ navigation }) {
   const [sample, setSample] = React.useState(0);
   const [countdown, setCountdown] = react.useState(false);
   const [mic, setMic] = react.useState(false);
+  const [ringWaves, setRingWaves] = react.useState(false);
 
   let smp = 0;
 
@@ -156,6 +158,7 @@ function HomeScreen({ navigation }) {
   }, [stream]);
 
   const startTimer = () => {
+    setRingWaves(true);
     //setSeconds(sec);
     //setStartToggle(false);
     console.log("steam passou  a falso");
@@ -163,6 +166,7 @@ function HomeScreen({ navigation }) {
   };
 
   const stopTimer = () => {
+    setRingWaves(false);
     //setSeconds(sec);
     //setStartToggle(true);
     console.log("steam passou  a true");
@@ -172,38 +176,13 @@ function HomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          backgroundColor: "#333533",
-          paddingLeft: 10,
-          paddingRight: 10,
-          //borderBottomColor: "black",
-          //borderBottonWidth: 5,
-          borderWidth: 1,
-          height: 70,
-          elevation: 30,
-          justifyContent: "center",
-        }}
-      >
-        <Text
-          style={{
-            textAlign: "center",
-            fontSize: 22,
-            fontWeight: "600",
-            color: "white",
-          }}
-        >
-          Sound Classification
-        </Text>
-      </View>
       <ScrollView>
         <View style={{ alignItems: "center", marginTop: 80 }}>
+          {mic ? <Rings /> : <></>}
           {mic ? (
-            <Mic height={100} width={100} fill={"red"} />
+            <Mic height={50} width={50} fill={"red"} />
           ) : (
-            <Mic height={100} width={100} fill={"black"} />
+            <Mic height={50} width={50} fill={"black"} />
           )}
         </View>
         <View style={{ alignItems: "center", marginTop: 50 }}>
