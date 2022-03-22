@@ -39,13 +39,70 @@ import {
 import PrevisionTable from "../components/PrevisionTable";
 import react from "react";
 import MatrixModal from "../components/MatrixModal";
+import Animated, {
+  interpolate,
+  useSharedValue,
+  useAnimatedStyle,
+  withDelay,
+  withRepeat,
+  withTiming,
+} from "react-native-reanimated";
 
-function DetailsScreen() {
+const Ring = ({ delay }) => {
+  const ring = useSharedValue(0);
+  const ringStyle = useAnimatedStyle(() => {
+    return {
+      opacity: 0.8 - ring.value,
+      transform: [
+        {
+          scale: interpolate(ring.value, [0, 1], [0, 4]),
+        },
+      ],
+    };
+  });
+  useEffect(() => {
+    ring.value = withDelay(
+      delay,
+      withRepeat(
+        withTiming(1, {
+          duration: 4000,
+        }),
+        -1,
+        false
+      )
+    );
+  }, []);
+
+  return <Animated.View style={[styles.ring]} />;
+};
+
+const styles = StyleSheet.create({
+  ring: {
+    position: "absolute",
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderColor: "tomato",
+    borderWidth: 10,
+  },
+});
+
+const DetailsScreen = ({ delay }) => {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details Screen</Text>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Ring delay={0} />
+      <Ring delay={1000} />
+      <Ring delay={2000} />
+      <Ring delay={3000} />
     </View>
   );
-}
+};
 
 export default DetailsScreen;
