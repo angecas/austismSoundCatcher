@@ -59,9 +59,9 @@ function HomeScreen({ navigation }) {
   const [countdown, setCountdown] = react.useState(false);
   const [mic, setMic] = react.useState(false);
   const [ringWaves, setRingWaves] = react.useState(false);
-
+  const [listagem, setListagem] = React.useState([]);
   let smp = 0;
-
+  let list = [];
   const toastConfig = {
     tomatoToast: () => (
       <View style={{ height: 60, width: "100%", backgroundColor: "tomato" }}>
@@ -86,7 +86,6 @@ function HomeScreen({ navigation }) {
 
   const uploadAudio = async (path) => {
     smp += 1;
-    console.log(smp);
     const formData = new FormData();
     formData.append("file", {
       uri: path,
@@ -103,15 +102,18 @@ function HomeScreen({ navigation }) {
         body: formData,
       });
       const json = await res.json();
-      console.log(json);
       setPrev(json.label);
+
       setSample(smp);
-      console.log("PREVVVV", prev);
+      list.push(json.label);
+
+      setListagem(list);
     } catch (err) {
       alert(err, "Alert Title");
     }
     setLoad(false);
   };
+  console.log(listagem, "LISTAGEM");
 
   useEffect(() => {
     try {
@@ -329,7 +331,9 @@ function HomeScreen({ navigation }) {
       </Modalize>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("DetailsScreen");
+          navigation.navigate("DetailsScreen", {
+            previsionLabel: listagem,
+          });
         }}
       >
         <Text>MUDAR O ECRA</Text>

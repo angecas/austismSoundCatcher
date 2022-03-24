@@ -35,20 +35,6 @@ export default function App() {
     ),
   };
 
-  const showToast = () => {
-    Toast.show({
-      type: "tomatoToast",
-    });
-  };
-
-  function onOpen() {
-    modalizeRef.current?.open();
-  }
-
-  const onClose = () => {
-    modalizeRef.current?.close();
-  };
-
   return (
     <NavigationContainer>
       <Stack.Navigator>

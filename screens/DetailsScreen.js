@@ -1,40 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Audio } from "expo-av";
-import Toast from "react-native-toast-message";
+import { CommonActions } from "@react-navigation/native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
-import Mic from "../src/icones/icon_mic2.svg";
-import Pause from "../src/icones/mono-player-stop.svg";
-import Rec from "../src/icones/mono-krec-record.svg";
+const DetailsScreen = ({ navigation, route }) => {
+  const { previsionLabel } = route.params;
 
-import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator,
-} from "react-native-indicators";
+  const resetAction = CommonActions.reset({
+    index: 0,
+    routes: [{ name: "Home" }],
+  });
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  StatusBar,
-  TouchableOpacity,
-  Dimensions,
-  ScrollView,
-  requireNativeComponent,
-} from "react-native";
-
-const DetailsScreen = ({ delay }) => {
   return (
-    <View>
-      <Text>oiii</Text>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Details Screen</Text>
+      <Text>previsionLabel: {JSON.stringify(previsionLabel)}</Text>
+      <Button
+        title="Go to Details... again"
+        onPress={() =>
+          navigation.push("DetailsScreen", {
+            itemId: Math.floor(Math.random() * 100),
+          })
+        }
+      />
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.dispatch(resetAction)}
+      />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
