@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -38,7 +38,7 @@ const Ring = ({ delay }) => {
   return <Animated.View style={[styles.ring, ringStyle]} />;
 };
 
-export default function RingWaves() {
+export default function RingWaves({ iconeInfo }) {
   return (
     <View
       style={{
@@ -48,7 +48,26 @@ export default function RingWaves() {
         //flexDirection: "column",
       }}
     >
-      <Mic height={50} width={50} />
+      {iconeInfo ? (
+        <Image
+          style={{
+            width: 65,
+            height: 65,
+            resizeMode: "contain",
+          }}
+          source={require("../src/icones/voice2.png")}
+        />
+      ) : (
+        <Image
+          style={{
+            width: 65,
+            height: 65,
+            resizeMode: "contain",
+          }}
+          source={require("../src/icones/voice5.png")}
+        />
+      )}
+      {/*<Mic height={50} width={50} />*/}
       <Ring delay={0} />
       <Ring delay={1000} />
       <Ring delay={2000} />
@@ -63,7 +82,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 40,
-    borderColor: "#EEEEEE",
+    borderColor: "#09eafe",
     borderWidth: 6,
   },
 });

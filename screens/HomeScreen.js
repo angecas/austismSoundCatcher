@@ -199,10 +199,12 @@ function HomeScreen({ navigation }) {
     setStream(true);
   };
 
+  const [iconeInfo, setIconeInfo] = useState(true);
+
   return (
     <View
       style={{
-        backgroundColor: "#1A1C20",
+        backgroundColor: "white",
         flex: 1,
         //justifyContent: "flex-end",
       }}
@@ -223,23 +225,45 @@ function HomeScreen({ navigation }) {
       <View style={{ justifyContent: "flex-end", flex: 1 }}>
         <View
           style={{
-            flex: 0.4,
+            flex: 0.5,
             alignSelf: "center",
             alignContent: "center",
             justifyContent: "center",
           }}
         >
-          <RingWaves />
+          <RingWaves iconeInfo={iconeInfo} />
         </View>
         <View
           style={{
-            backgroundColor: "#F4F4F4",
-            flex: 0.6,
-            borderRadius: 10,
+            backgroundColor: "#14213d",
+            flex: 0.5,
+            //borderRadius: 50,
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
             borderWidth: 1,
             elevation: 15,
           }}
-        ></View>
+        >
+          <ActionButton buttonColor="rgba(231,76,60,1)">
+            <ActionButton.Item
+              buttonColor="rgba(231,76,60,1)"
+              title="sample info"
+              onPress={() => console.log("notes tapped!")}
+            >
+              {/*<Icon name="android-create" style={styles.actionButtonIcon} />*/}
+
+              <Text>I</Text>
+            </ActionButton.Item>
+
+            <ActionButton.Item
+              buttonColor="rgba(231,76,60,1)"
+              title="resume classification"
+              onPress={() => console.log("notes tapped!")}
+            >
+              <Text>N</Text>
+            </ActionButton.Item>
+          </ActionButton>
+        </View>
       </View>
     </View>
   );
