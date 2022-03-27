@@ -45,7 +45,6 @@ import react from "react";
 import MatrixModal from "../components/MatrixModal";
 import DetailsScreen from "./DetailsScreen";
 import Rings from "../components/Rings";
-import RingWaves from "../components/RingWaves";
 
 const screen = Dimensions.get("screen");
 
@@ -200,51 +199,218 @@ function HomeScreen({ navigation }) {
   };
 
   return (
-    <View
-      style={{
-        backgroundColor: "#1A1C20",
-        flex: 1,
-        //justifyContent: "flex-end",
-      }}
-    >
-      {/*
-      <View
-        style={{
-          //marginTop: 80,
-          alignSelf: "center",
-          alignContent: "center",
-          //alignItems: "stretch",
-          justifyContent: "center",
-        }}
-      >
-        <RingWaves />
-      </View>
-      */}
-      <View style={{ justifyContent: "flex-end", flex: 1 }}>
-        <View
-          style={{
-            flex: 0.4,
-            alignSelf: "center",
-            alignContent: "center",
-            justifyContent: "center",
-          }}
-        >
-          <RingWaves />
+    <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
+      <ScrollView>
+        <View style={{ alignItems: "center", marginTop: 80 }}>
+          {mic ? <Rings /> : <></>}
+          {mic ? (
+            <Mic height={50} width={50} fill={"red"} />
+          ) : (
+            <Mic height={50} width={50} fill={"black"} />
+          )}
+        </View>
+
+        <View style={{ alignItems: "center", marginTop: 50 }}>
+          <View style={styles.loader}>
+            {load === true ? <PacmanIndicator color="orange" /> : <></>}
+            {/*{countdown ? (
+              <CountDown
+                id={String(sample)}
+                until={5}
+                onFinish={() => console.log("finish")}
+                onPress={() => console.log("pressed")}
+                size={20}
+                timeToShow={["M", "S"]}
+                timeLabels={{ m: null, s: null }}
+                showSeparator
+              />
+            ) : (
+              <></>
+            )}*/}
+          </View>
         </View>
         <View
           style={{
-            backgroundColor: "#F4F4F4",
-            flex: 0.6,
-            borderRadius: 10,
-            borderWidth: 1,
-            elevation: 15,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: 30,
           }}
-        ></View>
-      </View>
-    </View>
+        >
+          {stream ? (
+            <TouchableOpacity style={{ margin: 10 }} onPress={startTimer}>
+              <Rec width={70} height={70} />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={{ margin: 10 }} onPress={stopTimer}>
+              <Pause width={70} height={70} />
+            </TouchableOpacity>
+          )}
+        </View>
+
+        {sample != 0 ? (
+          <Text
+            style={{
+              marginTop: 5,
+              fontSize: 14,
+              color: "#333533",
+              textAlign: "center",
+            }}
+          >
+            Sample: {sample}
+          </Text>
+        ) : (
+          <></>
+        )}
+        {sample != 0 ? (
+          <Text
+            style={{
+              marginTop: 5,
+              fontSize: 14,
+              color: "#333533",
+              textAlign: "center",
+            }}
+          >
+            Overall Classification: {prev.previsionLabel}
+          </Text>
+        ) : (
+          <></>
+        )}
+      </ScrollView>
+
+      {sample != 0 ? (
+        <TouchableOpacity onPress={onOpen}>
+          <Text
+            style={{
+              color: "white",
+            }}
+          >
+            more info
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <></>
+      )}
+      <ActionButton buttonColor="rgba(231,76,60,1)">
+        <ActionButton.Item
+          buttonColor="#9b59b6"
+          title="New Task"
+          onPress={() => console.log("notes tapped!")}
+        >
+          {/*<Icon name="android-create" style={styles.actionButtonIcon} />*/}
+
+          <Text>oi</Text>
+        </ActionButton.Item>
+
+        <ActionButton.Item
+          buttonColor="#9b59b6"
+          title="New Tasklll"
+          onPress={() => console.log("notes tapped!")}
+        >
+          <Text>olaaa</Text>
+        </ActionButton.Item>
+      </ActionButton>
+
+      {/*}
+      <FloatingMenu
+        items={items}
+        isOpen={isMenuOpen}
+        onMenuToggle={handleMenuToggle}
+        onItemPress={handleItemPress}
+      />*/}
+
+      <Modalize ref={modalizeRef} snapPoint={400} modalHeight={400}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <PrevisionTable
+            previsionResults={prev}
+            sample={sample}
+          ></PrevisionTable>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: "row-reverse" }}>
+          <TouchableOpacity
+            style={{
+              width: 120,
+              height: 30,
+              justifyContent: "flex-end",
+              elevation: 8,
+              backgroundColor: "#40798c",
+              borderColor: "#fcfdfb",
+              borderWidth: 2,
+              outlineColor: "#523009",
+              outlineStyle: "solid",
+              borderRadius: 7,
+              margin: 5,
+              justifyContent: "center",
+            }}
+            onPress={onClose}
+          >
+            <Text
+              style={{
+                alignSelf: "center",
+                fontWeight: "bold",
+                color: "white",
+              }}
+            >
+              Close
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </Modalize>
+
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("DetailsScreen", {
+            previsionLabel: listagem,
+          });
+        }}
+      >
+        <Text>MUDAR O ECRA</Text>
+      </TouchableOpacity>
+
+      <Toast config={toastConfig} />
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: "white",
+  },
+  button: {
+    borderWidth: 10,
+    borderColor: "#89aaff",
+    width: 200,
+    height: 100,
+    borderRadius: screen.width / 2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonText: {
+    fontSize: 40,
+    color: "#89aaff",
+    fontWeight: "bold",
+  },
+  loader: {
+    color: "orange",
+    flex: 0.1,
+    bottom: 30,
+  },
+});
 
 export default HomeScreen;
