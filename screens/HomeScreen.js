@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import Toast from "react-native-toast-message";
+import WavyHeader from "../components/WavyHeader";
 
 import Mic from "../src/icones/icon_mic2.svg";
 import Pause from "../src/icones/mono-player-stop.svg";
@@ -269,6 +270,18 @@ function HomeScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({});
-
+const styles = StyleSheet.create({
+  // rest of the styles
+  svgCurve: {
+    position: "absolute",
+    width: Dimensions.get("window").width,
+  },
+  headerText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    // change the color property for better output
+    color: "#fff",
+    textAlign: "center",
+  },
+});
 export default HomeScreen;

@@ -37,16 +37,34 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <StatusBar
+        translucent
+        barStyle="dark-content"
+        //  backgroundColor="rgba(0, 0, 0, 0.251)"
+        backgroundColor="white"
+      />
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Classification" }}
+          options={{
+            title: "Classification",
+            headerTitleAlign: "center",
+            headerStyle: {
+              fontWeight: "600",
+            },
+          }}
         />
         <Stack.Screen
           name="DetailsScreen"
           component={DetailsScreen}
-          options={{ title: "Statistics" }}
+          options={{
+            title: "Statistics",
+            headerTitleAlign: "center",
+            headerStyle: {
+              fontWeight: "600",
+            },
+          }}
         />
       </Stack.Navigator>
       <Toast config={toastConfig} />
