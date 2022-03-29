@@ -237,8 +237,10 @@ function HomeScreen({ navigation }) {
               onPress={() => console.log("notes tapped!")}
             >
               {/*<Icon name="android-create" style={styles.actionButtonIcon} />*/}
-
-              <Text>I</Text>
+              <Image
+                source={require("../src/pngs/lupa.png")}
+                style={{ width: 20, height: 20 }}
+              />
             </ActionButton.Item>
 
             <ActionButton.Item
@@ -246,7 +248,10 @@ function HomeScreen({ navigation }) {
               title="resume classification"
               onPress={() => console.log("notes tapped!")}
             >
-              <Text>N</Text>
+              <Image
+                source={require("../src/pngs/graph.png")}
+                style={{ width: 20, height: 20 }}
+              />
             </ActionButton.Item>
           </ActionButton>
         </View>
