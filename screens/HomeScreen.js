@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import Toast from "react-native-toast-message";
 import WavyHeader from "../components/WavyHeader";
+import AnimatedEllipsis from "react-native-animated-ellipsis";
 
 import Mic from "../src/icones/icon_mic2.svg";
 import Pause from "../src/icones/mono-player-stop.svg";
@@ -47,6 +48,7 @@ import MatrixModal from "../components/MatrixModal";
 import DetailsScreen from "./DetailsScreen";
 import Rings from "../components/Rings";
 import RingWaves from "../components/RingWaves";
+import Classifying from "../components/Classifying";
 
 const screen = Dimensions.get("screen");
 
@@ -75,24 +77,6 @@ function HomeScreen({ navigation }) {
       </View>
     ),
   };
-
-  /*
-
-  const items = [
-    { label: "Do a little dance" },
-    { label: "Make a lil love" },
-    { label: "Get down tonight" },
-  ];
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuToggle = (isMenuOpen) => {
-    setIsMenuOpen({ isMenuOpen });
-  };
-
-  const handleItemPress = (item, index) => console.log("pressed item", item);
-
-  */
 
   const showToast = () => {
     Toast.show({
@@ -234,6 +218,7 @@ function HomeScreen({ navigation }) {
         >
           <RingWaves iconeInfo={iconeInfo} />
         </View>
+        <Classifying loading={true} />
         <View
           style={{
             backgroundColor: "#14213d",
