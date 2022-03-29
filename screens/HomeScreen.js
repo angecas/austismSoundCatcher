@@ -8,6 +8,9 @@ import Mic from "../src/icones/icon_mic2.svg";
 import Pause from "../src/icones/mono-player-stop.svg";
 import Rec from "../src/icones/mono-krec-record.svg";
 
+import Record from "../src/svgs/reco.svg";
+import StopRecord from "../src/svgs/13714618201553666702.svg";
+
 //import { FloatingMenu } from "react-native-floating-action-menu";
 import ActionButton from "react-native-circular-action-menu";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -230,6 +233,10 @@ function HomeScreen({ navigation }) {
             elevation: 15,
           }}
         >
+          <Record height={70} width={70} fill={"red"} />
+
+          <StopRecord height={70} width={70} fill={"red"} />
+
           <ActionButton buttonColor="rgba(231,76,60,1)">
             <ActionButton.Item
               buttonColor="rgba(231,76,60,1)"
