@@ -92,6 +92,80 @@ function HomeScreen({ navigation }) {
 
   const [iconeInfo, setIconeInfo] = useState(true);
 
+  const uploadAudio = async (path) => {
+    smp += 1;
+    const formData = new FormData();
+    formData.append("file", {
+      uri: path,
+      name: "audio.wav",
+      type: "audio/wav",
+    });
+    try {
+      setLoad(true);
+      const res = await fetch("http://10.0.2.2:8000/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: formData,
+      });
+      const json = await res.json();
+      setPrev(json.label);
+
+      setSample(smp);
+      list.push(json.label);
+
+      setListagem(list);
+    } catch (err) {
+      alert(err, "Alert Title");
+    }
+    setLoad(false);
+  };
+
+  useEffect(() => {
+    try {
+      if (!stream) {
+        funRef.current = setInterval(async () => {
+          await Audio.requestPermissionsAsync();
+          await Audio.setAudioModeAsync({
+            allowsRecordingIOS: true,
+            playsInSilentModeIOS: true,
+          });
+          setMic(true);
+
+          const recording = new Audio.Recording();
+
+          await recording.prepareToRecordAsync(
+            Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
+          );
+          await recording.startAsync();
+
+          setRecording(recording);
+          setCountdown(true);
+          console.log("Recording started");
+          setTimeout(async () => {
+            console.log("entrou");
+            console.log(disable);
+            console.log("Stopping recording..");
+            setRecording(undefined);
+            recording.stopAndUnloadAsync();
+            const uri = recording.getURI();
+            console.log("Recording stopped and stored at", uri);
+            setMic(false);
+            setPath(uri);
+            uploadAudio(uri);
+
+            console.log("sai");
+          }, 5000);
+        }, 7000);
+      } else {
+        clearInterval(funRef.current);
+      }
+    } catch (err) {
+      alert(err, "Alert Titleeeeeeeeeeeeeeeee");
+    }
+  }, [stream]);
+
   return (
     <View
       style={{
@@ -188,12 +262,9 @@ function HomeScreen({ navigation }) {
               />
             </ActionButton.Item>
           </ActionButton>
-          <Modalize ref={modalizeRef} snapPoint={600} modalHeight={600}>
+          <Modalize ref={modalizeRef} snapPoint={400} modalHeight={400}>
             <View
               style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "center",
                 alignItems: "center",
               }}
             >
