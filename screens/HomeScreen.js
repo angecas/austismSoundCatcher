@@ -197,7 +197,7 @@ function HomeScreen({ navigation }) {
         >
           <RingWaves iconeInfo={iconeInfo} />
         </View>
-        <Classifying loading={true} />
+        {load === true ? <Classifying loading={true} /> : <></>}
         <View
           style={{
             backgroundColor: "#14213d",
@@ -210,16 +210,16 @@ function HomeScreen({ navigation }) {
             justifyContent: "space-around",
           }}
         >
-          {descriptiveText ? (
+          {sample != 0 ? (
             <View
               style={{
                 alignItems: "center",
                 height: 60,
               }}
             >
-              <Text style={{ color: "#D3D3D3" }}> Sample 1</Text>
+              <Text style={{ color: "#D3D3D3" }}> Sample {sample}</Text>
               <Text style={{ color: "#D3D3D3" }}>
-                Overall classification: negative
+                Overall classification: {prev.previsionLabel}
               </Text>
             </View>
           ) : (
