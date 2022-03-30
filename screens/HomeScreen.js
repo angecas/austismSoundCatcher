@@ -47,9 +47,6 @@ import {
 } from "react-native";
 import PrevisionTable from "../components/PrevisionTable";
 import react from "react";
-import MatrixModal from "../components/MatrixModal";
-import DetailsScreen from "./DetailsScreen";
-import Rings from "../components/Rings";
 import RingWaves from "../components/RingWaves";
 import Classifying from "../components/Classifying";
 
@@ -81,12 +78,6 @@ function HomeScreen({ navigation }) {
     ),
   };
 
-  const showToast = () => {
-    Toast.show({
-      type: "tomatoToast",
-    });
-  };
-
   function onOpen() {
     modalizeRef.current?.open();
   }
@@ -95,101 +86,9 @@ function HomeScreen({ navigation }) {
     modalizeRef.current?.close();
   };
 
-  const uploadAudio = async (path) => {
-    smp += 1;
-    const formData = new FormData();
-    formData.append("file", {
-      uri: path,
-      name: "audio.wav",
-      type: "audio/wav",
-    });
-    try {
-      setLoad(true);
-      const res = await fetch("http://10.0.2.2:8000/predict", {
-        method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: formData,
-      });
-      const json = await res.json();
-      setPrev(json.label);
-
-      setSample(smp);
-      list.push(json.label);
-
-      setListagem(list);
-    } catch (err) {
-      alert(err, "Alert Title");
-    }
-    setLoad(false);
-  };
-  console.log(listagem, "LISTAGEM");
-
-  useEffect(() => {
-    try {
-      if (!stream) {
-        funRef.current = setInterval(async () => {
-          await Audio.requestPermissionsAsync();
-          await Audio.setAudioModeAsync({
-            allowsRecordingIOS: true,
-            playsInSilentModeIOS: true,
-          });
-          setMic(true);
-
-          const recording = new Audio.Recording();
-
-          await recording.prepareToRecordAsync(
-            Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
-          );
-          await recording.startAsync();
-
-          setRecording(recording);
-          setCountdown(true);
-          console.log("Recording started");
-          setTimeout(async () => {
-            console.log("entrou");
-            console.log(disable);
-            console.log("Stopping recording..");
-            setRecording(undefined);
-            recording.stopAndUnloadAsync();
-            const uri = recording.getURI();
-            console.log("Recording stopped and stored at", uri);
-            setMic(false);
-            setPath(uri);
-            uploadAudio(uri);
-
-            console.log("sai");
-          }, 5000);
-        }, 7000);
-      } else {
-        clearInterval(funRef.current);
-      }
-    } catch (err) {
-      alert(err, "Alert Titleeeeeeeeeeeeeeeee");
-    }
-  }, [stream]);
-
   const [startBut, setStartBut] = useState(true);
 
   const [descriptiveText, setDescriptiveText] = useState(true);
-
-  const startTimer = () => {
-    setRingWaves(true);
-    //setSeconds(sec);
-    //setStartToggle(false);
-    console.log("steam passou  a falso");
-    setStream(false);
-  };
-
-  const stopTimer = () => {
-    setRingWaves(false);
-    //setSeconds(sec);
-    //setStartToggle(true);
-    console.log("steam passou  a true");
-
-    setStream(true);
-  };
 
   const [iconeInfo, setIconeInfo] = useState(true);
 
@@ -201,19 +100,6 @@ function HomeScreen({ navigation }) {
         //justifyContent: "flex-end",
       }}
     >
-      {/*
-      <View
-        style={{
-          //marginTop: 80,
-          alignSelf: "center",
-          alignContent: "center",
-          //alignItems: "stretch",
-          justifyContent: "center",
-        }}
-      >
-        <RingWaves />
-      </View>
-      */}
       <View style={{ justifyContent: "flex-end", flex: 1 }}>
         <View
           style={{
@@ -229,7 +115,7 @@ function HomeScreen({ navigation }) {
         <View
           style={{
             backgroundColor: "#14213d",
-            flex: 0.5,
+            flex: 0.7,
             //borderRadius: 50,
             borderTopLeftRadius: 40,
             borderTopRightRadius: 40,
@@ -262,7 +148,7 @@ function HomeScreen({ navigation }) {
           <View
             style={{
               alignItems: "center",
-              marginBottom: 80,
+              marginBottom: 100,
             }}
           >
             {startBut ? (
@@ -279,9 +165,8 @@ function HomeScreen({ navigation }) {
             <ActionButton.Item
               buttonColor="rgba(231,76,60,1)"
               title="sample info"
-              onPress={() => console.log("notes tapped!")}
+              onPress={onOpen}
             >
-              {/*<Icon name="android-create" style={styles.actionButtonIcon} />*/}
               <Image
                 source={require("../src/pngs/lupa.png")}
                 style={{ width: 20, height: 20 }}
@@ -291,7 +176,11 @@ function HomeScreen({ navigation }) {
             <ActionButton.Item
               buttonColor="rgba(231,76,60,1)"
               title="resume classification"
-              onPress={() => console.log("notes tapped!")}
+              onPress={() => {
+                navigation.navigate("DetailsScreen", {
+                  previsionLabel: listagem,
+                });
+              }}
             >
               <Image
                 source={require("../src/pngs/graph.png")}
@@ -299,6 +188,51 @@ function HomeScreen({ navigation }) {
               />
             </ActionButton.Item>
           </ActionButton>
+          <Modalize ref={modalizeRef} snapPoint={600} modalHeight={600}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <PrevisionTable
+                previsionResults={prev}
+                sample={sample}
+              ></PrevisionTable>
+            </View>
+
+            <View style={{ flex: 1, flexDirection: "row-reverse" }}>
+              <TouchableOpacity
+                style={{
+                  width: 120,
+                  height: 30,
+                  justifyContent: "flex-end",
+                  elevation: 8,
+                  backgroundColor: "#40798c",
+                  borderColor: "#fcfdfb",
+                  borderWidth: 2,
+                  outlineColor: "#523009",
+                  outlineStyle: "solid",
+                  borderRadius: 7,
+                  margin: 5,
+                  justifyContent: "center",
+                }}
+                onPress={onClose}
+              >
+                <Text
+                  style={{
+                    alignSelf: "center",
+                    fontWeight: "bold",
+                    color: "white",
+                  }}
+                >
+                  Close
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Modalize>
         </View>
       </View>
     </View>
