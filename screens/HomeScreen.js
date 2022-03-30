@@ -197,7 +197,15 @@ function HomeScreen({ navigation }) {
         >
           <RingWaves iconeInfo={iconeInfo} />
         </View>
-        {load === true ? <Classifying loading={true} /> : <></>}
+        {load === true ? (
+          <View style={{ height: 50 }}>
+            <Classifying loading={true} />
+          </View>
+        ) : (
+          <View style={{ height: 50 }}>
+            <></>
+          </View>
+        )}
         <View
           style={{
             backgroundColor: "#14213d",
