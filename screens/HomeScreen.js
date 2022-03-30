@@ -239,11 +239,11 @@ function HomeScreen({ navigation }) {
           >
             {stream ? (
               <TouchableOpacity onPress={startTimer}>
-                <StopRecord height={70} width={70} fill={"red"} />
+                <Record height={70} width={70} fill={"red"} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={stopTimer}>
-                <Record height={70} width={70} fill={"red"} />
+                <StopRecord height={70} width={70} fill={"red"} />
               </TouchableOpacity>
             )}
           </View>
