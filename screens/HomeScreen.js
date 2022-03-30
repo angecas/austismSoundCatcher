@@ -172,6 +172,8 @@ function HomeScreen({ navigation }) {
 
   const [startBut, setStartBut] = useState(true);
 
+  const [descriptiveText, setDescriptiveText] = useState(true);
+
   const startTimer = () => {
     setRingWaves(true);
     //setSeconds(sec);
@@ -236,9 +238,31 @@ function HomeScreen({ navigation }) {
             justifyContent: "space-around",
           }}
         >
+          {descriptiveText ? (
+            <View
+              style={{
+                alignItems: "center",
+                height: 60,
+              }}
+            >
+              <Text style={{ color: "#D3D3D3" }}> Sample 1</Text>
+              <Text style={{ color: "#D3D3D3" }}>
+                Overall classification: negative
+              </Text>
+            </View>
+          ) : (
+            <View
+              style={{
+                alignItems: "center",
+                height: 60,
+              }}
+            />
+          )}
+
           <View
             style={{
               alignItems: "center",
+              marginBottom: 80,
             }}
           >
             {startBut ? (
