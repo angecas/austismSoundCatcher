@@ -166,6 +166,18 @@ function HomeScreen({ navigation }) {
     }
   }, [stream]);
 
+  const startTimer = () => {
+    setRingWaves(true);
+    setStream(false);
+
+    console.log(stream);
+  };
+
+  const stopTimer = () => {
+    setRingWaves(false);
+    setStream(true);
+  };
+
   return (
     <View
       style={{
@@ -225,12 +237,12 @@ function HomeScreen({ navigation }) {
               marginBottom: 100,
             }}
           >
-            {startBut ? (
-              <TouchableOpacity>
+            {stream ? (
+              <TouchableOpacity onPress={startTimer}>
                 <StopRecord height={70} width={70} fill={"red"} />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity>
+              <TouchableOpacity onPress={stopTimer}>
                 <Record height={70} width={70} fill={"red"} />
               </TouchableOpacity>
             )}
