@@ -170,6 +170,8 @@ function HomeScreen({ navigation }) {
     }
   }, [stream]);
 
+  const [startBut, setStartBut] = useState(true);
+
   const startTimer = () => {
     setRingWaves(true);
     //setSeconds(sec);
@@ -231,12 +233,24 @@ function HomeScreen({ navigation }) {
             borderTopRightRadius: 40,
             borderWidth: 1,
             elevation: 15,
+            justifyContent: "space-around",
           }}
         >
-          <Record height={70} width={70} fill={"red"} />
-
-          <StopRecord height={70} width={70} fill={"red"} />
-
+          <View
+            style={{
+              alignItems: "center",
+            }}
+          >
+            {startBut ? (
+              <TouchableOpacity>
+                <StopRecord height={70} width={70} fill={"red"} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity>
+                <Record height={70} width={70} fill={"red"} />
+              </TouchableOpacity>
+            )}
+          </View>
           <ActionButton buttonColor="rgba(231,76,60,1)">
             <ActionButton.Item
               buttonColor="rgba(231,76,60,1)"
@@ -266,19 +280,4 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  // rest of the styles
-  svgCurve: {
-    position: "absolute",
-    width: Dimensions.get("window").width,
-  },
-  headerText: {
-    fontSize: 30,
-    fontWeight: "bold",
-    // change the color property for better output
-    color: "#fff",
-    textAlign: "center",
-  },
-});
 export default HomeScreen;
