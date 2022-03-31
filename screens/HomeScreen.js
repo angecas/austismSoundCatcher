@@ -68,10 +68,13 @@ function HomeScreen({ navigation }) {
   const [mic, setMic] = react.useState(false);
   const [ringWaves, setRingWaves] = react.useState(false);
   const [listagem, setListagem] = React.useState([]);
+  const [ovPerSamp, setOvPerSamp] = React.useState([]);
   const bottomSheet = useRef();
 
   let smp = 0;
   let list = [];
+
+  let teste = new Map();
   const toastConfig = {
     tomatoToast: () => (
       <View style={{ height: 60, width: "100%", backgroundColor: "tomato" }}>
@@ -105,17 +108,17 @@ function HomeScreen({ navigation }) {
       });
       const json = await res.json();
       setPrev(json.label);
-
       setSample(smp);
+      teste.set(smp, prev.previsionLabel);
       list.push(json.label);
 
+      setOvPerSamp(teste);
       setListagem(list);
     } catch (err) {
       alert(err, "Alert Title");
     }
     setLoad(false);
   };
-
   useEffect(() => {
     try {
       if (!stream) {
@@ -279,17 +282,15 @@ function HomeScreen({ navigation }) {
             </ActionButton.Item>
           </ActionButton>
           <BottomSheet hasDraggableIcon ref={bottomSheet} height={600}>
-            <View>
-              <View
-                style={{
-                  alignItems: "center",
-                }}
-              >
-                <PrevisionTable
-                  previsionResults={prev}
-                  sample={sample}
-                ></PrevisionTable>
-              </View>
+            <View
+              style={{
+                alignItems: "center",
+              }}
+            >
+              <PrevisionTable
+                previsionResults={prev}
+                sample={sample}
+              ></PrevisionTable>
             </View>
           </BottomSheet>
         </View>

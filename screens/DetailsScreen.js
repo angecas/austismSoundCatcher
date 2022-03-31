@@ -27,10 +27,28 @@ const DetailsScreen = ({ navigation, route }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ScrollView>
-        <HighestPercentage previsionLabel={previsionLabel} />
-        <LineChartPrev previsionLabel={previsionLabel} />
+        <View style={{ margin: 2, marginBottom: 10 }}>
+          <HighestPercentage previsionLabel={previsionLabel} />
+        </View>
+        <View style={{ margin: 2, marginBottom: 10 }}>
+          <LineChartPrev previsionLabel={previsionLabel} />
+        </View>
+        <View style={{ margin: 2, marginBottom: 10 }}>
+          <LabelsOcurrence previsionLabel={previsionLabel} />
+        </View>
 
-        <LabelsOcurrence previsionLabel={previsionLabel} />
+        <View style={{ margin: 2, marginTop: 40 }}>
+          <Button
+            title="New Classification"
+            onPress={() => navigation.dispatch(resetAction)}
+          />
+        </View>
+        <View style={{ margin: 2, marginTop: 20 }}>
+          <Button
+            title="Keep Classifying"
+            onPress={() => navigation.dispatch(resetAction)}
+          />
+        </View>
 
         {/*
         <Button
