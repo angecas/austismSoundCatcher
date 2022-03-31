@@ -29,9 +29,42 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const toastConfig = {
-    tomatoToast: () => (
-      <View style={{ height: 60, width: "100%", backgroundColor: "tomato" }}>
-        <Text> oioioioi </Text>
+    tomatoToast: ({ text1, props }) => (
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#f1faee",
+          borderColor: "#40798C",
+          elevation: 14,
+          borderWidth: 2,
+          borderRadius: 8,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ fontWeight: "700" }}>INFO</Text>
+        </View>
+        <View
+          style={{
+            height: 60,
+            width: "100%",
+            backgroundColor: "white",
+            //borderRadius: 8,
+            borderWidth: 2,
+            elevation: 14,
+            borderColor: "#40798C",
+            alignSelf: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ margin: 12 }}> {text1} </Text>
+        </View>
       </View>
     ),
   };

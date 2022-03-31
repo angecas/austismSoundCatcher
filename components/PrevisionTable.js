@@ -102,20 +102,22 @@ const PrevisionTable = ({ previsionResults, sample }) => {
       <View
         style={{ flexDirection: "row", marginBottom: 6, alignSelf: "center" }}
       >
-        <Text
-          style={{
-            fontWeight: "bold",
-            fontSize: 13,
-            letterSpacing: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            marginLeft: 25,
-          }}
-        >
-          Sample:
-        </Text>
-        <Text>{sample}</Text>
+        <View style={{ alignItems: "center", flexDirection: "row" }}>
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 14,
+              letterSpacing: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              marginLeft: 25,
+            }}
+          >
+            Sample:
+          </Text>
+          <Text style={{ marginLeft: 5, fontSize: 16 }}>{sample}</Text>
+        </View>
       </View>
       <Grid>
         <Col size={22}>
@@ -246,25 +248,34 @@ const PrevisionTable = ({ previsionResults, sample }) => {
         style={{
           flexDirection: "row",
           marginTop: 6,
-          alignSelf: "flex-start",
+          alignSelf: "center",
         }}
       >
-        <Text
-          style={{
-            fontWeight: "bold",
-            fontSize: 13,
-            letterSpacing: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            marginLeft: 25,
-          }}
-        >
-          Sample Overall:
-        </Text>
-        <Text>{previsionResults.previsionLabel}</Text>
+        <View style={{ alignItems: "center", flexDirection: "row" }}>
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 14,
+              letterSpacing: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              marginRight: 5,
+            }}
+          >
+            Sample Overall classification:
+          </Text>
+          <Text
+            style={{
+              marginLeft: 5,
+              fontSize: 16,
+            }}
+          >
+            {previsionResults.previsionLabel}
+          </Text>
+        </View>
       </View>
-      <Toast config={toastConfig} position="bottom" />
+      <Toast config={toastConfig} position="bottom" bottomOffset={1} />
     </View>
   );
 };

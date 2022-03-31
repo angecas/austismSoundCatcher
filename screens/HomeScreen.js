@@ -221,7 +221,7 @@ function HomeScreen({ navigation }) {
         <View
           style={{
             backgroundColor: "#14213d",
-            flex: 0.7,
+            flex: 0.5,
             //borderRadius: 50,
             borderTopLeftRadius: 40,
             borderTopRightRadius: 40,
@@ -259,11 +259,11 @@ function HomeScreen({ navigation }) {
           >
             {stream ? (
               <TouchableOpacity onPress={startTimer}>
-                <Record height={70} width={70} fill={"red"} />
+                <Record height={70} width={70} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={stopTimer}>
-                <StopRecord height={70} width={70} fill={"red"} />
+                <StopRecord height={70} width={70} />
               </TouchableOpacity>
             )}
           </View>
@@ -300,7 +300,7 @@ function HomeScreen({ navigation }) {
               />
             </ActionButton.Item>
           </ActionButton>
-          <BottomSheet hasDraggableIcon ref={bottomSheet} height={400}>
+          <BottomSheet hasDraggableIcon ref={bottomSheet} height={350}>
             <View
               style={{
                 alignItems: "center",

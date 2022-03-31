@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { BarChart, PieChart } from "react-native-gifted-charts";
+import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
 import { CommonActions } from "@react-navigation/native";
 import {
@@ -69,21 +70,6 @@ const DetailsScreen = ({ navigation, route }) => {
             onPress={() => navigation.dispatch(resetAction)}
           />
         </View>
-
-        {/*
-        <Button
-          title="Go to Details... again"
-          onPress={() =>
-            navigation.push("DetailsScreen", {
-              itemId: Math.floor(Math.random() * 100),
-            })
-          }
-        />
-        <Button
-          title="Go to Home"
-          onPress={() => navigation.dispatch(resetAction)}
-        />
-        <Button title="Go back" onPress={() => navigation.goBack()} /> */}
       </ScrollView>
     </View>
   );

@@ -2,9 +2,12 @@ import { LineChart } from "react-native-gifted-charts";
 import { View, Text } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { BarChart, PieChart } from "react-native-gifted-charts";
+import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
 const HighestPercentage = ({ previsionLabel }) => {
   let size = Object.keys(previsionLabel).length;
+  let obj = highestPercentage;
+  console.log(obj, ".....");
 
   const highestPercentage = () => {
     let unknownVal = 0;
@@ -77,21 +80,21 @@ const HighestPercentage = ({ previsionLabel }) => {
         value: unknownVal,
         label: "unknown",
         onPress: () => {
-          alert("You tapped the button!");
+          showToast();
         },
       },
       {
         value: positiveVal,
         label: "positive",
         onPress: () => {
-          alert("You tapped the button!");
+          showToastPosit();
         },
       },
       {
         value: negativeVal,
         label: "negative",
         onPress: () => {
-          alert("You tapped the button!");
+          showToastNeg();
         },
       },
     ];
@@ -99,18 +102,64 @@ const HighestPercentage = ({ previsionLabel }) => {
     return highestPercentageData;
   };
 
+  let daT = highestPercentage();
+
+  console.log(daT);
+  console.log(daT[0].value, "aquiiiii");
+
+  let toastText =
+    'The label "unknown" reached a peak of ' +
+    daT[0].value +
+    " % in the collected sound samples.";
+
+  let toastTextPos =
+    'The label "positive" reached a peak of ' +
+    daT[1].value +
+    " % in the collected sound samples.";
+
+  let toastTextNeg =
+    'The label "negative" reached a peak of ' +
+    daT[2].value +
+    " % in the collected sound samples.";
+
+  const showToast = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastText,
+      text2: "This is some something 👋",
+    });
+  };
+
+  const showToastPosit = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastTextPos,
+      text2: "This is some something 👋",
+    });
+  };
+
+  const showToastNeg = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastTextNeg,
+      text2: "This is some something 👋",
+    });
+  };
+
   return (
-    <BarChart
-      isAnimated
-      spacing={80}
-      barWidth={22}
-      noOfSections={3}
-      barBorderRadius={4}
-      frontColor="lightgray"
-      data={highestPercentage()}
-      yAxisThickness={0}
-      xAxisThickness={0}
-    />
+    <>
+      <BarChart
+        isAnimated
+        spacing={80}
+        barWidth={22}
+        noOfSections={3}
+        barBorderRadius={4}
+        frontColor="lightgray"
+        data={highestPercentage()}
+        yAxisThickness={0}
+        xAxisThickness={0}
+      />
+    </>
   );
 };
 
