@@ -12,13 +12,13 @@ const PrevisionTable = ({ previsionResults, sample }) => {
     previsionResults.firstPrevisionLabel;
 
   let toastTextI =
-    "In the first prediction the sample was cassified as " +
+    "In the second prediction the sample was cassified as " +
     previsionResults.secondPrevisionPercent +
     " " +
     previsionResults.secondPrevisionLabel;
 
   let toastTextII =
-    "In the first prediction the sample was cassified as " +
+    "In the third prediction the sample was cassified as " +
     previsionResults.thirdPrevisionPercent +
     " " +
     previsionResults.thirdPrevisionLabel;

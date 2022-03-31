@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
+import BottomSheet from "react-native-gesture-bottom-sheet";
+
 import Toast from "react-native-toast-message";
 import WavyHeader from "../components/WavyHeader";
 import AnimatedEllipsis from "react-native-animated-ellipsis";
@@ -26,8 +28,6 @@ import {
   UIActivityIndicator,
   WaveIndicator,
 } from "react-native-indicators";
-
-import { Modalize } from "react-native-modalize";
 import {
   GestureHandlerRootView,
   GestureHandlerRootHOC,
@@ -68,6 +68,8 @@ function HomeScreen({ navigation }) {
   const [mic, setMic] = react.useState(false);
   const [ringWaves, setRingWaves] = react.useState(false);
   const [listagem, setListagem] = React.useState([]);
+  const bottomSheet = useRef();
+
   let smp = 0;
   let list = [];
   const toastConfig = {
@@ -76,14 +78,6 @@ function HomeScreen({ navigation }) {
         <Text> oioioioi </Text>
       </View>
     ),
-  };
-
-  function onOpen() {
-    modalizeRef.current?.open();
-  }
-
-  const onClose = () => {
-    modalizeRef.current?.close();
   };
 
   const [startBut, setStartBut] = useState(true);
@@ -259,7 +253,9 @@ function HomeScreen({ navigation }) {
             <ActionButton.Item
               buttonColor="rgba(231,76,60,1)"
               title="sample info"
-              onPress={onOpen}
+              onPress={() => {
+                bottomSheet.current.show();
+              }}
             >
               <Image
                 source={require("../src/pngs/lupa.png")}
@@ -282,48 +278,20 @@ function HomeScreen({ navigation }) {
               />
             </ActionButton.Item>
           </ActionButton>
-          <Modalize ref={modalizeRef} snapPoint={400} modalHeight={400}>
-            <View
-              style={{
-                alignItems: "center",
-              }}
-            >
-              <PrevisionTable
-                previsionResults={prev}
-                sample={sample}
-              ></PrevisionTable>
-            </View>
-
-            <View style={{ flex: 1, flexDirection: "row-reverse" }}>
-              <TouchableOpacity
+          <BottomSheet hasDraggableIcon ref={bottomSheet} height={600}>
+            <View>
+              <View
                 style={{
-                  width: 120,
-                  height: 30,
-                  justifyContent: "flex-end",
-                  elevation: 8,
-                  backgroundColor: "#40798c",
-                  borderColor: "#fcfdfb",
-                  borderWidth: 2,
-                  outlineColor: "#523009",
-                  outlineStyle: "solid",
-                  borderRadius: 7,
-                  margin: 5,
-                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-                onPress={onClose}
               >
-                <Text
-                  style={{
-                    alignSelf: "center",
-                    fontWeight: "bold",
-                    color: "white",
-                  }}
-                >
-                  Close
-                </Text>
-              </TouchableOpacity>
+                <PrevisionTable
+                  previsionResults={prev}
+                  sample={sample}
+                ></PrevisionTable>
+              </View>
             </View>
-          </Modalize>
+          </BottomSheet>
         </View>
       </View>
     </View>

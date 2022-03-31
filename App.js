@@ -19,6 +19,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
+import Example from "./screens/TESTES";
 
 import DetailsScreen from "./screens/DetailsScreen";
 
@@ -55,6 +56,8 @@ export default function App() {
             },
           }}
         />
+        <Stack.Screen name="TESTES" component={Example} />
+
         <Stack.Screen
           name="DetailsScreen"
           component={DetailsScreen}
