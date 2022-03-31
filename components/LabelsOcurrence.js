@@ -17,15 +17,24 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       {
         value: freqArray.filter((x) => x === "unknown").length,
         label: "unknown",
+        onPress: () => {
+          alert("You tapped the button!");
+        },
       },
       {
         value: freqArray.filter((x) => x === "negative").length,
         label: "negative",
         frontColor: "#177AD5",
+        onPress: () => {
+          alert("You tapped the button!");
+        },
       },
       {
         value: freqArray.filter((x) => x === "positive").length,
         label: "positive",
+        onPress: () => {
+          alert("You tapped the button!");
+        },
       },
     ];
 

@@ -73,9 +73,27 @@ const HighestPercentage = ({ previsionLabel }) => {
     }
 
     let highestPercentageData = [
-      { value: unknownVal, label: "unknown" },
-      { value: positiveVal, label: "positive" },
-      { value: negativeVal, label: "negative" },
+      {
+        value: unknownVal,
+        label: "unknown",
+        onPress: () => {
+          alert("You tapped the button!");
+        },
+      },
+      {
+        value: positiveVal,
+        label: "positive",
+        onPress: () => {
+          alert("You tapped the button!");
+        },
+      },
+      {
+        value: negativeVal,
+        label: "negative",
+        onPress: () => {
+          alert("You tapped the button!");
+        },
+      },
     ];
 
     return highestPercentageData;
