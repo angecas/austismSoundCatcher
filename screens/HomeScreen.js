@@ -70,6 +70,7 @@ function HomeScreen({ navigation }) {
   const [listagem, setListagem] = React.useState([]);
   const [ovPerSamp, setOvPerSamp] = React.useState([]);
   const bottomSheet = useRef();
+  const [on, setOn] = React.useState(false);
 
   let smp = 0;
   let list = [];
@@ -168,11 +169,14 @@ function HomeScreen({ navigation }) {
     setStream(false);
 
     console.log(stream);
+
+    setOn(true);
   };
 
   const stopTimer = () => {
     setRingWaves(false);
     setStream(true);
+    setOn(false);
   };
 
   return (
@@ -192,7 +196,18 @@ function HomeScreen({ navigation }) {
             justifyContent: "center",
           }}
         >
-          <RingWaves iconeInfo={iconeInfo} />
+          {!on ? (
+            <Image
+              style={{
+                width: 65,
+                height: 65,
+                resizeMode: "contain",
+              }}
+              source={require("../src/icones/voice5.png")}
+            />
+          ) : (
+            <RingWaves iconeInfo={mic} />
+          )}
         </View>
         {load === true ? (
           <View style={{ height: 50 }}>

@@ -49,6 +49,21 @@ export default function RingWaves({ iconeInfo }) {
       }}
     >
       {iconeInfo ? (
+        <>
+          <Image
+            style={{
+              width: 65,
+              height: 65,
+              resizeMode: "contain",
+            }}
+            source={require("../src/icones/voice2.png")}
+          />
+          <Ring delay={0} />
+          <Ring delay={1000} />
+          <Ring delay={2000} />
+          <Ring delay={3000} />
+        </>
+      ) : (
         <Image
           style={{
             width: 65,
@@ -57,21 +72,8 @@ export default function RingWaves({ iconeInfo }) {
           }}
           source={require("../src/icones/voice2.png")}
         />
-      ) : (
-        <Image
-          style={{
-            width: 65,
-            height: 65,
-            resizeMode: "contain",
-          }}
-          source={require("../src/icones/voice5.png")}
-        />
       )}
       {/*<Mic height={50} width={50} />*/}
-      <Ring delay={0} />
-      <Ring delay={1000} />
-      <Ring delay={2000} />
-      <Ring delay={3000} />
     </View>
   );
 }
