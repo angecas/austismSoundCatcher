@@ -28,12 +28,32 @@ const DetailsScreen = ({ navigation, route }) => {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ScrollView>
         <View style={{ margin: 2, marginBottom: 10 }}>
+          <Text>
+            a percentagem mais alta detetada de cada label na amostra total
+          </Text>
+          <Text
+            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+          >
+            Highest Prevision (%) x Label
+          </Text>
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
         <View style={{ margin: 2, marginBottom: 10 }}>
+          <Text>média das percentagens de previsao de cada label</Text>
+          <Text
+            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+          >
+            Average Global Prevision (%) x Label
+          </Text>
           <LineChartPrev previsionLabel={previsionLabel} />
         </View>
         <View style={{ margin: 2, marginBottom: 10 }}>
+          <Text>Quantas vezes cada label aparece</Text>
+          <Text
+            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+          >
+            Overall Label Ocurrences x Label
+          </Text>
           <LabelsOcurrence previsionLabel={previsionLabel} />
         </View>
 
