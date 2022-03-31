@@ -272,7 +272,9 @@ function HomeScreen({ navigation }) {
               buttonColor="rgba(231,76,60,1)"
               title="sample info"
               onPress={() => {
-                bottomSheet.current.show();
+                if (sample !== 0) {
+                  bottomSheet.current.show();
+                }
               }}
             >
               <Image
@@ -285,9 +287,11 @@ function HomeScreen({ navigation }) {
               buttonColor="rgba(231,76,60,1)"
               title="resume classification"
               onPress={() => {
-                navigation.navigate("DetailsScreen", {
-                  previsionLabel: listagem,
-                });
+                if (sample !== 0) {
+                  navigation.navigate("DetailsScreen", {
+                    previsionLabel: listagem,
+                  });
+                }
               }}
             >
               <Image
@@ -296,7 +300,7 @@ function HomeScreen({ navigation }) {
               />
             </ActionButton.Item>
           </ActionButton>
-          <BottomSheet hasDraggableIcon ref={bottomSheet} height={600}>
+          <BottomSheet hasDraggableIcon ref={bottomSheet} height={400}>
             <View
               style={{
                 alignItems: "center",
