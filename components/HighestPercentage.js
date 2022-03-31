@@ -6,8 +6,6 @@ import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
 const HighestPercentage = ({ previsionLabel }) => {
   let size = Object.keys(previsionLabel).length;
-  let obj = highestPercentage;
-  console.log(obj, ".....");
 
   const highestPercentage = () => {
     let unknownVal = 0;

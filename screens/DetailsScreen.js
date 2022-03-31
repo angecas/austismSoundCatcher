@@ -28,10 +28,7 @@ const DetailsScreen = ({ navigation, route }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <ScrollView>
-        <View style={{ margin: 2, marginBottom: 10 }}>
-          <Text>
-            a percentagem mais alta detetada de cada label na amostra total
-          </Text>
+        <View style={{ margin: 2, marginTop: 14, marginBottom: 10 }}>
           <Text
             style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
           >
@@ -48,8 +45,7 @@ const DetailsScreen = ({ navigation, route }) => {
           </Text>
           <LineChartPrev previsionLabel={previsionLabel} />
         </View>
-        <View style={{ margin: 2, marginBottom: 10 }}>
-          <Text>Quantas vezes cada label aparece</Text>
+        <View style={{ margin: 2, marginBottom: 10, marginTop: 14 }}>
           <Text
             style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
           >
