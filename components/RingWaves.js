@@ -9,6 +9,7 @@ import Animated, {
   interpolate,
 } from "react-native-reanimated";
 import Mic from "../src/icones/icon_mic2.svg";
+import NewMic2 from "../src/svgs/newmic2.svg";
 
 const Ring = ({ delay }) => {
   const ring = useSharedValue(0);
@@ -50,6 +51,7 @@ export default function RingWaves({ iconeInfo }) {
     >
       {iconeInfo ? (
         <>
+          {/*
           <Image
             style={{
               width: 65,
@@ -57,21 +59,16 @@ export default function RingWaves({ iconeInfo }) {
               resizeMode: "contain",
             }}
             source={require("../src/icones/voice2.png")}
-          />
+          /> */}
+
+          <NewMic2 height={100} width={100}></NewMic2>
           <Ring delay={0} />
           <Ring delay={1000} />
           <Ring delay={2000} />
           <Ring delay={3000} />
         </>
       ) : (
-        <Image
-          style={{
-            width: 65,
-            height: 65,
-            resizeMode: "contain",
-          }}
-          source={require("../src/icones/voice2.png")}
-        />
+        <NewMic2 height={100} width={100}></NewMic2>
       )}
       {/*<Mic height={50} width={50} />*/}
     </View>

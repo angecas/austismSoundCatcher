@@ -13,6 +13,8 @@ import Rec from "../src/icones/mono-krec-record.svg";
 import Record from "../src/svgs/reco.svg";
 import StopRecord from "../src/svgs/13714618201553666702.svg";
 
+import NewMic from "../src/svgs/newmic.svg";
+
 //import { FloatingMenu } from "react-native-floating-action-menu";
 import ActionButton from "react-native-circular-action-menu";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -197,14 +199,16 @@ function HomeScreen({ navigation }) {
           }}
         >
           {!on ? (
-            <Image
+            /*<Image
               style={{
                 width: 65,
                 height: 65,
                 resizeMode: "contain",
               }}
               source={require("../src/icones/voice5.png")}
-            />
+            />*/
+
+            <NewMic height={100} width={100}></NewMic>
           ) : (
             <RingWaves iconeInfo={mic} />
           )}
@@ -220,11 +224,12 @@ function HomeScreen({ navigation }) {
         )}
         <View
           style={{
-            backgroundColor: "#14213d",
-            flex: 0.5,
+            backgroundColor: "#0e7fe5",
+            borderColor: "#0e7fe5",
+            flex: 0.6,
             //borderRadius: 50,
-            borderTopLeftRadius: 40,
-            borderTopRightRadius: 40,
+            borderTopLeftRadius: 60,
+            borderTopRightRadius: 60,
             borderWidth: 1,
             elevation: 15,
             justifyContent: "space-around",
@@ -267,9 +272,9 @@ function HomeScreen({ navigation }) {
               </TouchableOpacity>
             )}
           </View>
-          <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton buttonColor="white" btnOutRange="white">
             <ActionButton.Item
-              buttonColor="rgba(231,76,60,1)"
+              buttonColor="white"
               title="sample info"
               onPress={() => {
                 if (sample !== 0) {
@@ -284,7 +289,7 @@ function HomeScreen({ navigation }) {
             </ActionButton.Item>
 
             <ActionButton.Item
-              buttonColor="rgba(231,76,60,1)"
+              buttonColor="white"
               title="resume classification"
               onPress={() => {
                 if (sample !== 0) {
