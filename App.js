@@ -84,7 +84,9 @@ export default function App() {
           options={{
             title: "Classification",
             headerTitleAlign: "center",
-            headerStyle: {
+            headerTitleStyle: {
+              fontSize: 24,
+              fontFamily: "roboto",
               fontWeight: "600",
             },
           }}
@@ -98,7 +100,9 @@ export default function App() {
             title: "Statistics",
             headerBackVisible: false,
             headerTitleAlign: "center",
-            headerStyle: {
+            headerTitleStyle: {
+              fontSize: 24,
+              fontFamily: "roboto",
               fontWeight: "600",
             },
           }}

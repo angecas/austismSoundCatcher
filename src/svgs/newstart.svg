@@ -29,12 +29,12 @@
       >
       <stop
           id="stop2259"
-          style="stop-color:#ef2929"
+          style="stop-color:#E0E1E2"
           offset="0"
       />
       <stop
           id="stop2261"
-          style="stop-color:#cc0000"
+          style="stop-color:#cbd4d8"
           offset="1"
       />
     </linearGradient
@@ -120,9 +120,9 @@
       inkscape:zoom="1"
       borderopacity="0.11372549"
       inkscape:current-layer="layer1"
-      stroke="#ef2929"
+      stroke="#E0E1E2"
       guidetolerance="1px"
-      fill="#ef2929"
+      fill="#E0E1E2"
       inkscape:grid-points="true"
       inkscape:grid-bbox="true"
       showgrid="false"
@@ -282,7 +282,7 @@
         id="path2525"
         sodipodi:rx="14"
         sodipodi:ry="13"
-        style="stroke-linejoin:round;fill-rule:evenodd;color:#000000;stroke:#cc0000;stroke-linecap:square;stroke-width:1.0757;fill:url(#radialGradient2263)"
+        style="stroke-linejoin:round;fill-rule:evenodd;color:#000000;stroke:#cbd4d8;stroke-linecap:square;stroke-width:1.0757;fill:url(#radialGradient2263)"
         sodipodi:type="arc"
         d="m36.5 22a14 13 0 1 1 -28 0 14 13 0 1 1 28 0z"
         transform="matrix(.89486 0 0 .9657 3.8558 2.6603)"
@@ -293,7 +293,7 @@
         id="path2527"
         sodipodi:rx="14"
         sodipodi:ry="14"
-        style="stroke-linejoin:round;color:#000000;stroke:#f77d7d;stroke-linecap:square;stroke-width:1.2174;fill:none"
+        style="stroke-linejoin:round;color:#000000;stroke:#e0e1e2;stroke-linecap:square;stroke-width:1.2174;fill:#95a9ab"
         sodipodi:type="arc"
         d="m38 24a14 14 0 1 1 -28 0 14 14 0 1 1 28 0z"
         transform="matrix(.82143 0 0 .82143 4.2851 4.1915)"

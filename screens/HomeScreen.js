@@ -127,6 +127,7 @@ function HomeScreen({ navigation }) {
       if (!stream) {
         funRef.current = setInterval(async () => {
           await Audio.requestPermissionsAsync();
+
           await Audio.setAudioModeAsync({
             allowsRecordingIOS: true,
             playsInSilentModeIOS: true,
@@ -143,6 +144,7 @@ function HomeScreen({ navigation }) {
           setRecording(recording);
           setCountdown(true);
           console.log("Recording started");
+
           setTimeout(async () => {
             console.log("entrou");
             console.log(disable);
@@ -169,10 +171,9 @@ function HomeScreen({ navigation }) {
   const startTimer = () => {
     setRingWaves(true);
     setStream(false);
+    setOn(true);
 
     console.log(stream);
-
-    setOn(true);
   };
 
   const stopTimer = () => {
@@ -228,8 +229,8 @@ function HomeScreen({ navigation }) {
             borderColor: "#0e7fe5",
             flex: 0.6,
             //borderRadius: 50,
-            borderTopLeftRadius: 60,
-            borderTopRightRadius: 60,
+            borderTopLeftRadius: 80,
+            borderTopRightRadius: 80,
             borderWidth: 1,
             elevation: 15,
             justifyContent: "space-around",

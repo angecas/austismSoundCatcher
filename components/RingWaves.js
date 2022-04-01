@@ -78,9 +78,9 @@ export default function RingWaves({ iconeInfo }) {
 const styles = StyleSheet.create({
   ring: {
     position: "absolute",
-    width: 60,
-    height: 60,
-    borderRadius: 40,
+    width: 80,
+    height: 80,
+    borderRadius: 60,
     borderColor: "#09eafe",
     borderWidth: 6,
   },
