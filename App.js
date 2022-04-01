@@ -96,6 +96,7 @@ export default function App() {
           component={DetailsScreen}
           options={{
             title: "Statistics",
+            headerBackVisible: false,
             headerTitleAlign: "center",
             headerStyle: {
               fontWeight: "600",
