@@ -61,14 +61,14 @@ export default function RingWaves({ iconeInfo }) {
             source={require("../src/icones/voice2.png")}
           /> */}
 
-          <NewMic2 height={100} width={100}></NewMic2>
+          <NewMic2 height={120} width={120}></NewMic2>
           <Ring delay={0} />
           <Ring delay={1000} />
           <Ring delay={2000} />
           <Ring delay={3000} />
         </>
       ) : (
-        <NewMic2 height={100} width={100}></NewMic2>
+        <NewMic2 height={120} width={120}></NewMic2>
       )}
       {/*<Mic height={50} width={50} />*/}
     </View>

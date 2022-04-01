@@ -10,8 +10,8 @@ import Mic from "../src/icones/icon_mic2.svg";
 import Pause from "../src/icones/mono-player-stop.svg";
 import Rec from "../src/icones/mono-krec-record.svg";
 
-import Record from "../src/svgs/reco.svg";
-import StopRecord from "../src/svgs/13714618201553666702.svg";
+import Record from "../src/svgs/newstart.svg";
+import StopRecord from "../src/svgs/newpause.svg";
 
 import NewMic from "../src/svgs/newmic.svg";
 
@@ -208,7 +208,7 @@ function HomeScreen({ navigation }) {
               source={require("../src/icones/voice5.png")}
             />*/
 
-            <NewMic height={100} width={100}></NewMic>
+            <NewMic height={120} width={120}></NewMic>
           ) : (
             <RingWaves iconeInfo={mic} />
           )}
@@ -264,11 +264,11 @@ function HomeScreen({ navigation }) {
           >
             {stream ? (
               <TouchableOpacity onPress={startTimer}>
-                <Record height={70} width={70} />
+                <Record height={110} width={110} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={stopTimer}>
-                <StopRecord height={70} width={70} />
+                <StopRecord height={110} width={110} />
               </TouchableOpacity>
             )}
           </View>
