@@ -36,8 +36,7 @@ const DetailsScreen = ({ navigation, route }) => {
           </Text>
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
-        <View style={{ margin: 2, marginBottom: 10 }}>
-          <Text>média das percentagens de previsao de cada label</Text>
+        <View style={{ margin: 2, marginBottom: 10, marginTop: 14 }}>
           <Text
             style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
           >
@@ -63,7 +62,7 @@ const DetailsScreen = ({ navigation, route }) => {
         <View style={{ margin: 2, marginTop: 20 }}>
           <Button
             title="Keep Classifying"
-            onPress={() => navigation.dispatch(resetAction)}
+            onPress={() => navigation.navigate("Home")}
           />
         </View>
       </ScrollView>
