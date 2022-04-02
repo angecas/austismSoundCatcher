@@ -33,13 +33,10 @@ const DetailsScreen = ({ navigation, route }) => {
       }}
     >
       <ScrollView>
-        <View style={{ margin: 2, marginTop: 14, marginBottom: 10 }}>
-          <View
-            style={{
-              alignContent: "center",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
+        <View style={{ alignItems: "center", marginTop: 30 }}>
+          <TouchableOpacity
+            onPress={() => {
+              console.log("oii");
             }}
           >
             <Image
@@ -51,23 +48,42 @@ const DetailsScreen = ({ navigation, route }) => {
               }}
               source={require("../src/pngs/info2.png")}
             />
-            <Text
-              style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
-            >
-              Highest Prevision x Label
-            </Text>
-          </View>
-
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            alignContent: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <Text
+            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+          >
+            Highest Prevision x Label
+          </Text>
+        </View>
+        <View
+          style={{
+            alignContent: "center",
+            justifyContent: "center",
+          }}
+        >
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
-        <View style={{ margin: 2, marginBottom: 10, marginTop: 14 }}>
-          <View
-            style={{
-              alignContent: "center",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
-              marginTop: 20,
+
+        <View
+          style={{
+            alignContent: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 50,
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              console.log("oii");
             }}
           >
             <Image
@@ -79,19 +95,32 @@ const DetailsScreen = ({ navigation, route }) => {
               }}
               source={require("../src/pngs/info2.png")}
             />
-            <Text
-              style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
-            >
-              Average Global Prevision x Label
-            </Text>
-          </View>
+          </TouchableOpacity>
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 20,
+              fontWeight: "600",
+              marginTop: 5,
+            }}
+          >
+            Average Global Prevision x Label
+          </Text>
+        </View>
+        <View
+          style={{
+            alignContent: "center",
+            justifyContent: "center",
+            backgroundColor: "red",
+          }}
+        >
           <LineChartPrev previsionLabel={previsionLabel} />
         </View>
+
         <View
           style={{
             margin: 2,
             marginBottom: 10,
-            marginTop: 14,
           }}
         >
           <View
@@ -99,23 +128,37 @@ const DetailsScreen = ({ navigation, route }) => {
               alignContent: "center",
               justifyContent: "center",
               alignItems: "center",
-              flexDirection: "row",
+              marginTop: 50,
             }}
           >
-            <Image
-              style={{
-                width: 25,
-                height: 25,
-                resizeMode: "contain",
-                marginRight: 5,
+            <TouchableOpacity
+              onPress={() => {
+                console.log("oii");
               }}
-              source={require("../src/pngs/info2.png")}
-            />
+            >
+              <Image
+                style={{
+                  width: 25,
+                  height: 25,
+                  resizeMode: "contain",
+                  marginRight: 5,
+                }}
+                source={require("../src/pngs/info2.png")}
+              />
+            </TouchableOpacity>
             <Text style={{ textAlign: "center", fontSize: 20 }}>
               Overall Label Ocurrences x Label
             </Text>
           </View>
-          <LabelsOcurrence previsionLabel={previsionLabel} />
+          <View
+            style={{
+              marginBottom: 90,
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <LabelsOcurrence previsionLabel={previsionLabel} />
+          </View>
         </View>
       </ScrollView>
 
