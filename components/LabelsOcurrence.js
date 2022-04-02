@@ -18,9 +18,6 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       {
         value: freqArray.filter((x) => x === "unknown").length,
         label: "unknown",
-        onPress: () => {
-          showToast();
-        },
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "unknown").length)}
@@ -31,9 +28,6 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       {
         value: freqArray.filter((x) => x === "positive").length,
         label: "positive",
-        onPress: () => {
-          showToastNeg();
-        },
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "positive").length)}
@@ -46,9 +40,6 @@ const LabelsOcurrence = ({ previsionLabel }) => {
         value: freqArray.filter((x) => x === "negative").length,
         label: "negative",
         frontColor: "#177AD5",
-        onPress: () => {
-          showToastPosit();
-        },
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "negative").length)}

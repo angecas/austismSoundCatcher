@@ -8,6 +8,7 @@ import {
   Button,
   Dimensions,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import LineChartPrev from "../components/LineChart";
 import HighestPercentage from "../components/HighestPercentage";
@@ -116,20 +117,55 @@ const DetailsScreen = ({ navigation, route }) => {
           </View>
           <LabelsOcurrence previsionLabel={previsionLabel} />
         </View>
-
-        <View style={{ margin: 2, marginTop: 40 }}>
-          <Button
-            title="New Classification"
-            onPress={() => navigation.dispatch(resetAction)}
-          />
-        </View>
-        <View style={{ margin: 2, marginTop: 20 }}>
-          <Button
-            title="Keep Classifying"
-            onPress={() => navigation.navigate("Home")}
-          />
-        </View>
       </ScrollView>
+
+      <View
+        style={{
+          borderColor: "#e1e8ea",
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
+          borderWidth: 1,
+          width: "100%",
+          alignContent: "center",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <View style={{ margin: 5, marginTop: 10 }}>
+          <TouchableOpacity
+            onPress={() => navigation.dispatch(resetAction)}
+            style={{
+              borderRadius: 8,
+              backgroundColor: "#0e7fe5",
+              height: 35,
+              width: 300,
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>
+              New Classification
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ margin: 5 }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Home")}
+            style={{
+              borderRadius: 8,
+              backgroundColor: "#0e7fe5",
+              height: 35,
+              width: 300,
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>
+              Keep Classifying
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };

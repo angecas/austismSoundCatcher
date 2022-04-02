@@ -96,9 +96,6 @@ const LineChartPrev = ({ previsionLabel }) => {
       spacing={80}
       pressEnabled={true}
       showDataPointOnPress={true}
-      onPress={() => {
-        showToast();
-      }}
     />
   );
 };

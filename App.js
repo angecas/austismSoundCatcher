@@ -34,8 +34,8 @@ export default function App() {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f1faee",
-          borderColor: "#40798C",
+          backgroundColor: "#0e7fe5",
+          borderColor: "#0e7fe5",
           elevation: 14,
           borderWidth: 2,
           borderRadius: 8,
@@ -48,17 +48,28 @@ export default function App() {
             justifyContent: "center",
           }}
         >
-          <Text style={{ fontWeight: "700" }}>INFO</Text>
+          <Image
+            style={{
+              alignSelf: "flex-start",
+              height: 25,
+              width: 25,
+              marginRight: 5,
+            }}
+            source={require("./src/pngs/info3.png")}
+          ></Image>
+          <Text style={{ fontWeight: "700", color: "white" }}>
+            Sample Info{" "}
+          </Text>
         </View>
         <View
           style={{
-            height: 60,
+            height: 70,
             width: "100%",
             backgroundColor: "white",
-            //borderRadius: 8,
+            borderRadius: 8,
             borderWidth: 2,
             elevation: 14,
-            borderColor: "#40798C",
+            borderColor: "#0e7fe5",
             alignSelf: "center",
             justifyContent: "center",
           }}
