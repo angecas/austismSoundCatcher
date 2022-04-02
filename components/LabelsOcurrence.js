@@ -21,6 +21,26 @@ const LabelsOcurrence = ({ previsionLabel }) => {
         onPress: () => {
           showToast();
         },
+        topLabelComponent: () => (
+          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+            {String(freqArray.filter((x) => x === "unknown").length)}
+          </Text>
+        ),
+      },
+
+      {
+        value: freqArray.filter((x) => x === "positive").length,
+        label: "positive",
+        onPress: () => {
+          showToastNeg();
+        },
+        topLabelComponent: () => (
+          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+            {String(freqArray.filter((x) => x === "positive").length)}
+          </Text>
+        ),
+
+        frontColor: "#7dc4e3",
       },
       {
         value: freqArray.filter((x) => x === "negative").length,
@@ -29,13 +49,11 @@ const LabelsOcurrence = ({ previsionLabel }) => {
         onPress: () => {
           showToastPosit();
         },
-      },
-      {
-        value: freqArray.filter((x) => x === "positive").length,
-        label: "positive",
-        onPress: () => {
-          showToastNeg();
-        },
+        topLabelComponent: () => (
+          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+            {String(freqArray.filter((x) => x === "negative").length)}
+          </Text>
+        ),
       },
     ];
 
@@ -96,7 +114,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       spacing={80}
       noOfSections={3}
       barBorderRadius={4}
-      frontColor="lightgray"
+      frontColor="#0e7fe5"
       data={frequenciaLabel()}
       yAxisThickness={0}
       xAxisThickness={0}

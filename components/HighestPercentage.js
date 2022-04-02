@@ -80,6 +80,11 @@ const HighestPercentage = ({ previsionLabel }) => {
         onPress: () => {
           showToast();
         },
+        topLabelComponent: () => (
+          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+            {String(unknownVal)}
+          </Text>
+        ),
       },
       {
         value: positiveVal,
@@ -87,6 +92,12 @@ const HighestPercentage = ({ previsionLabel }) => {
         onPress: () => {
           showToastPosit();
         },
+        topLabelComponent: () => (
+          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+            {String(positiveVal)}
+          </Text>
+        ),
+        frontColor: "#7dc4e3",
       },
       {
         value: negativeVal,
@@ -94,6 +105,11 @@ const HighestPercentage = ({ previsionLabel }) => {
         onPress: () => {
           showToastNeg();
         },
+        topLabelComponent: () => (
+          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+            {String(negativeVal)}
+          </Text>
+        ),
       },
     ];
 
@@ -150,12 +166,13 @@ const HighestPercentage = ({ previsionLabel }) => {
         isAnimated
         spacing={80}
         barWidth={22}
+        yAxisLabelSuffix="%"
         noOfSections={3}
         barBorderRadius={4}
-        frontColor="lightgray"
         data={highestPercentage()}
         yAxisThickness={0}
         xAxisThickness={0}
+        frontColor="#0e7fe5"
       />
     </>
   );

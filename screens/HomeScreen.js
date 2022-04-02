@@ -288,7 +288,7 @@ function HomeScreen({ navigation }) {
           </View>
 
           {sample === 0 ? (
-            <ActionButton buttonColor="#4b5559" btnOutRange="white" />
+            <ActionButton buttonColor="#0e7fe5" />
           ) : (
             <ActionButton buttonColor="white" btnOutRange="white">
               <ActionButton.Item

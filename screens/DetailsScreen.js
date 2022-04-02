@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { BarChart, PieChart } from "react-native-gifted-charts";
-import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
-
 import { CommonActions } from "@react-navigation/native";
 import {
   StyleSheet,
@@ -26,13 +23,20 @@ const DetailsScreen = ({ navigation, route }) => {
     routes: [{ name: "Home" }],
   });
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#ffffff",
+      }}
+    >
       <ScrollView>
         <View style={{ margin: 2, marginTop: 14, marginBottom: 10 }}>
           <Text
             style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
           >
-            Highest Prevision (%) x Label
+            Highest Prevision x Label
           </Text>
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
@@ -40,14 +44,18 @@ const DetailsScreen = ({ navigation, route }) => {
           <Text
             style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
           >
-            Average Global Prevision (%) x Label
+            Average Global Prevision x Label
           </Text>
           <LineChartPrev previsionLabel={previsionLabel} />
         </View>
-        <View style={{ margin: 2, marginBottom: 10, marginTop: 14 }}>
-          <Text
-            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
-          >
+        <View
+          style={{
+            margin: 2,
+            marginBottom: 10,
+            marginTop: 14,
+          }}
+        >
+          <Text style={{ textAlign: "center", fontSize: 20 }}>
             Overall Label Ocurrences x Label
           </Text>
           <LabelsOcurrence previsionLabel={previsionLabel} />

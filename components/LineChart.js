@@ -86,6 +86,11 @@ const LineChartPrev = ({ previsionLabel }) => {
   return (
     <LineChart
       data={averagePredPercent()}
+      textColor="black"
+      dataPointsColor="#0e7fe5"
+      textFontSize={16}
+      yAxisLabelSuffix="%"
+      color="#0e7fe5"
       showTextOnPress={true}
       isAnimated={true}
       spacing={80}
