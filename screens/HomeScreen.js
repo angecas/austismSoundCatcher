@@ -321,10 +321,16 @@ function HomeScreen({ navigation }) {
             </ActionButton>
           )}
 
-          <BottomSheet hasDraggableIcon ref={bottomSheet} height={350}>
+          <BottomSheet
+            hasDraggableIcon
+            ref={bottomSheet}
+            height={350}
+            sheetBackgroundColor={"#ffffff"}
+          >
             <View
               style={{
                 alignItems: "center",
+                backgroundColor: "#ffffff",
               }}
             >
               <PrevisionTable

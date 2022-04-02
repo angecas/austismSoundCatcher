@@ -29,8 +29,8 @@ const PrevisionTable = ({ previsionResults, sample }) => {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f1faee",
-          borderColor: "#40798C",
+          backgroundColor: "#0e7fe5",
+          borderColor: "#0e7fe5",
           elevation: 14,
           borderWidth: 2,
           borderRadius: 8,
@@ -50,19 +50,21 @@ const PrevisionTable = ({ previsionResults, sample }) => {
               width: 25,
               marginRight: 5,
             }}
-            source={require("../src/icones/info.png")}
+            source={require("../src/pngs/info3.png")}
           ></Image>
-          <Text style={{ fontWeight: "700" }}>INFO</Text>
+          <Text style={{ fontWeight: "700", color: "white" }}>
+            Sample Info{" "}
+          </Text>
         </View>
         <View
           style={{
-            height: 60,
+            height: 70,
             width: "100%",
             backgroundColor: "white",
-            //borderRadius: 8,
+            borderRadius: 8,
             borderWidth: 2,
             elevation: 14,
-            borderColor: "#40798C",
+            borderColor: "#0e7fe5",
             alignSelf: "center",
             justifyContent: "center",
           }}
@@ -112,15 +114,18 @@ const PrevisionTable = ({ previsionResults, sample }) => {
               alignItems: "center",
               textAlign: "center",
               marginLeft: 25,
+              marginBottom: 10,
             }}
           >
             Sample:
           </Text>
-          <Text style={{ marginLeft: 5, fontSize: 16 }}>{sample}</Text>
+          <Text style={{ marginLeft: 5, fontSize: 16, marginBottom: 10 }}>
+            {sample}
+          </Text>
         </View>
       </View>
       <Grid>
-        <Col size={22}>
+        <Col size={20}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -146,11 +151,11 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             >
               <Image
                 style={{
-                  width: 30,
+                  width: 25,
                   height: 25,
                   resizeMode: "contain",
                 }}
-                source={require("../src/icones/info.png")}
+                source={require("../src/pngs/info2.png")}
               />
             </TouchableOpacity>
           </Row>
@@ -161,7 +166,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             <Text>{previsionResults.firstPrevisionPercent}</Text>
           </Row>
         </Col>
-        <Col size={22}>
+        <Col size={20}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -187,11 +192,11 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             >
               <Image
                 style={{
-                  width: 30,
+                  width: 25,
                   height: 25,
                   resizeMode: "contain",
                 }}
-                source={require("../src/icones/info.png")}
+                source={require("../src/pngs/info2.png")}
               />
             </TouchableOpacity>
           </Row>
@@ -202,7 +207,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             <Text>{previsionResults.secondPrevisionPercent}</Text>
           </Row>
         </Col>
-        <Col size={22}>
+        <Col size={20}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -228,11 +233,11 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             >
               <Image
                 style={{
-                  width: 30,
+                  width: 25,
                   height: 25,
                   resizeMode: "contain",
                 }}
-                source={require("../src/icones/info.png")}
+                source={require("../src/pngs/info2.png")}
               />
             </TouchableOpacity>
           </Row>
@@ -261,6 +266,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
               alignItems: "center",
               textAlign: "center",
               marginRight: 5,
+              marginTop: 10,
             }}
           >
             Sample Overall classification:
@@ -269,6 +275,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             style={{
               marginLeft: 5,
               fontSize: 16,
+              marginTop: 10,
             }}
           >
             {previsionResults.previsionLabel}
@@ -282,14 +289,14 @@ const PrevisionTable = ({ previsionResults, sample }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
-    height: 290,
+    width: 380,
+    height: 310,
     padding: 5,
     paddingTop: 30,
   },
   cell: {
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: "#cbd4d8",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
