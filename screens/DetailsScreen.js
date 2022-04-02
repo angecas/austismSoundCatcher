@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { CommonActions } from "@react-navigation/native";
 import {
-  StyleSheet,
+  Image,
   Text,
   View,
   Button,
@@ -33,19 +33,57 @@ const DetailsScreen = ({ navigation, route }) => {
     >
       <ScrollView>
         <View style={{ margin: 2, marginTop: 14, marginBottom: 10 }}>
-          <Text
-            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+          <View
+            style={{
+              alignContent: "center",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
           >
-            Highest Prevision x Label
-          </Text>
+            <Image
+              style={{
+                width: 25,
+                height: 25,
+                resizeMode: "contain",
+                marginRight: 5,
+              }}
+              source={require("../src/pngs/info2.png")}
+            />
+            <Text
+              style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+            >
+              Highest Prevision x Label
+            </Text>
+          </View>
+
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
         <View style={{ margin: 2, marginBottom: 10, marginTop: 14 }}>
-          <Text
-            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+          <View
+            style={{
+              alignContent: "center",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              marginTop: 20,
+            }}
           >
-            Average Global Prevision x Label
-          </Text>
+            <Image
+              style={{
+                width: 25,
+                height: 25,
+                resizeMode: "contain",
+                marginRight: 5,
+              }}
+              source={require("../src/pngs/info2.png")}
+            />
+            <Text
+              style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+            >
+              Average Global Prevision x Label
+            </Text>
+          </View>
           <LineChartPrev previsionLabel={previsionLabel} />
         </View>
         <View
@@ -55,9 +93,27 @@ const DetailsScreen = ({ navigation, route }) => {
             marginTop: 14,
           }}
         >
-          <Text style={{ textAlign: "center", fontSize: 20 }}>
-            Overall Label Ocurrences x Label
-          </Text>
+          <View
+            style={{
+              alignContent: "center",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Image
+              style={{
+                width: 25,
+                height: 25,
+                resizeMode: "contain",
+                marginRight: 5,
+              }}
+              source={require("../src/pngs/info2.png")}
+            />
+            <Text style={{ textAlign: "center", fontSize: 20 }}>
+              Overall Label Ocurrences x Label
+            </Text>
+          </View>
           <LabelsOcurrence previsionLabel={previsionLabel} />
         </View>
 

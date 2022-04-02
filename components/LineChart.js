@@ -13,9 +13,9 @@ const LineChartPrev = ({ previsionLabel }) => {
     let size = Object.keys(previsionLabel).length;
 
     let averagePercents = [
-      { value: unknownAcum, label: "Unknown" },
-      { value: positiveAcum, label: "Positive" },
-      { value: negativeAcum, label: "Negative" },
+      { value: unknownAcum, label: "unknown" },
+      { value: positiveAcum, label: "positive" },
+      { value: negativeAcum, label: "negative" },
     ];
 
     if (size !== 0) {
@@ -53,17 +53,17 @@ const LineChartPrev = ({ previsionLabel }) => {
       averagePercents = [
         {
           value: unknownAcum / size,
-          label: "Unknown",
+          label: "unknown",
           dataPointText: String(unknownAcum / size) + " %",
         },
         {
           value: positiveAcum / size,
-          label: "Positive",
+          label: "positive",
           dataPointText: String(positiveAcum / size) + " %",
         },
         {
           value: negativeAcum / size,
-          label: "Negative",
+          label: "negative",
           dataPointText: String(negativeAcum / size) + " %",
         },
       ];
