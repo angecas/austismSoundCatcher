@@ -78,10 +78,10 @@ export default function RingWaves({ iconeInfo }) {
 const styles = StyleSheet.create({
   ring: {
     position: "absolute",
-    width: 80,
-    height: 80,
-    borderRadius: 60,
-    borderColor: "#09eafe",
-    borderWidth: 6,
+    width: 100,
+    height: 100,
+    borderRadius: 80,
+    borderColor: "#31c9e8",
+    borderWidth: 10,
   },
 });

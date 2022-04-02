@@ -241,10 +241,23 @@ function HomeScreen({ navigation }) {
               style={{
                 alignItems: "center",
                 height: 60,
+                marginTop: 14,
               }}
             >
-              <Text style={{ color: "#D3D3D3" }}> Sample {sample}</Text>
-              <Text style={{ color: "#D3D3D3" }}>
+              <Text
+                style={{ color: "#ffffff", fontSize: 18, fontFamily: "roboto" }}
+              >
+                {" "}
+                Sample {sample}
+              </Text>
+              <Text
+                style={{
+                  color: "#ffffff",
+                  fontSize: 14,
+                  marginTop: 12,
+                  fontFamily: "roboto",
+                }}
+              >
                 Overall classification: {prev.previsionLabel}
               </Text>
             </View>
@@ -273,39 +286,41 @@ function HomeScreen({ navigation }) {
               </TouchableOpacity>
             )}
           </View>
-          <ActionButton buttonColor="white" btnOutRange="white">
-            <ActionButton.Item
-              buttonColor="white"
-              title="sample info"
-              onPress={() => {
-                if (sample !== 0) {
-                  bottomSheet.current.show();
-                }
-              }}
-            >
-              <Image
-                source={require("../src/pngs/lupa.png")}
-                style={{ width: 20, height: 20 }}
-              />
-            </ActionButton.Item>
 
-            <ActionButton.Item
-              buttonColor="white"
-              title="resume classification"
-              onPress={() => {
-                if (sample !== 0) {
+          {sample === 0 ? (
+            <ActionButton buttonColor="#4b5559" btnOutRange="white" />
+          ) : (
+            <ActionButton buttonColor="white" btnOutRange="white">
+              <ActionButton.Item
+                buttonColor="white"
+                title="sample info"
+                onPress={() => {
+                  bottomSheet.current.show();
+                }}
+              >
+                <Image
+                  source={require("../src/pngs/lupa.png")}
+                  style={{ width: 20, height: 20 }}
+                />
+              </ActionButton.Item>
+
+              <ActionButton.Item
+                buttonColor="white"
+                title="resume classification"
+                onPress={() => {
                   navigation.navigate("DetailsScreen", {
                     previsionLabel: listagem,
                   });
-                }
-              }}
-            >
-              <Image
-                source={require("../src/pngs/graph.png")}
-                style={{ width: 20, height: 20 }}
-              />
-            </ActionButton.Item>
-          </ActionButton>
+                }}
+              >
+                <Image
+                  source={require("../src/pngs/graph.png")}
+                  style={{ width: 20, height: 20 }}
+                />
+              </ActionButton.Item>
+            </ActionButton>
+          )}
+
           <BottomSheet hasDraggableIcon ref={bottomSheet} height={350}>
             <View
               style={{
