@@ -119,7 +119,7 @@ const DetailsScreen = ({ navigation, route }) => {
 
         <View
           style={{
-            marginTop: 10,
+            marginTop: 20,
           }}
         >
           <Text
