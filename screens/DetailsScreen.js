@@ -18,9 +18,12 @@ import LabelsOcurrence from "../components/LabelsOcurrence";
 const screenWidth = Dimensions.get("window").width;
 
 const DetailsScreen = ({ navigation, route }) => {
-  let toastText = "oiiiiii";
-  let toastText1 = "olaaaaaa";
-  let toastText2 = "holaaaaaaaaa";
+  let toastText =
+    "This graph describes the peak that each label reached in all collected sound samples.";
+  let toastText1 =
+    " This graph displays the average prevision percentage that each label presented in all the collected sound samples. ";
+  let toastText2 =
+    "This graph shows how many times each label had the highest prevision perncentage in all collected sound samples.";
   const showToast = () => {
     Toast.show({
       type: "tomatoToast",
@@ -59,7 +62,7 @@ const DetailsScreen = ({ navigation, route }) => {
       }}
     >
       <ScrollView>
-        <View style={{ alignItems: "center", marginTop: 30 }}>
+        <View style={{ marginTop: 30, alignItems: "center" }}>
           <TouchableOpacity onPress={showToast}>
             <Image
               style={{
@@ -95,14 +98,7 @@ const DetailsScreen = ({ navigation, route }) => {
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
 
-        <View
-          style={{
-            alignContent: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 50,
-          }}
-        >
+        <View style={{ alignItems: "center", marginTop: 30 }}>
           <TouchableOpacity onPress={showToast1}>
             <Image
               style={{
@@ -114,12 +110,18 @@ const DetailsScreen = ({ navigation, route }) => {
               source={require("../src/pngs/info2.png")}
             />
           </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            marginTop: 30,
+          }}
+        >
           <Text
             style={{
               textAlign: "center",
               fontSize: 20,
               fontWeight: "600",
-              marginTop: 5,
             }}
           >
             Average Global Prevision x Label

@@ -63,7 +63,7 @@ export default function App() {
         </View>
         <View
           style={{
-            height: 70,
+            height: 95,
             width: "100%",
             backgroundColor: "white",
             borderRadius: 8,
