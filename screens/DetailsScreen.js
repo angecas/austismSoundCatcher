@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
 import { CommonActions } from "@react-navigation/native";
 import {
@@ -17,6 +18,31 @@ import LabelsOcurrence from "../components/LabelsOcurrence";
 const screenWidth = Dimensions.get("window").width;
 
 const DetailsScreen = ({ navigation, route }) => {
+  let toastText = "oiiiiii";
+  let toastText1 = "olaaaaaa";
+  let toastText2 = "holaaaaaaaaa";
+  const showToast = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastText,
+      text2: "This is some something 👋",
+    });
+  };
+  const showToast1 = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastText1,
+      text2: "This is some something 👋",
+    });
+  };
+
+  const showToast2 = () => {
+    Toast.show({
+      type: "tomatoToast",
+      text1: toastText2,
+      text2: "This is some something 👋",
+    });
+  };
   const { previsionLabel } = route.params;
 
   const resetAction = CommonActions.reset({
@@ -34,11 +60,7 @@ const DetailsScreen = ({ navigation, route }) => {
     >
       <ScrollView>
         <View style={{ alignItems: "center", marginTop: 30 }}>
-          <TouchableOpacity
-            onPress={() => {
-              console.log("oii");
-            }}
-          >
+          <TouchableOpacity onPress={showToast}>
             <Image
               style={{
                 width: 25,
@@ -81,11 +103,7 @@ const DetailsScreen = ({ navigation, route }) => {
             marginTop: 50,
           }}
         >
-          <TouchableOpacity
-            onPress={() => {
-              console.log("oii");
-            }}
-          >
+          <TouchableOpacity onPress={showToast1}>
             <Image
               style={{
                 width: 25,
@@ -111,7 +129,6 @@ const DetailsScreen = ({ navigation, route }) => {
           style={{
             alignContent: "center",
             justifyContent: "center",
-            backgroundColor: "red",
           }}
         >
           <LineChartPrev previsionLabel={previsionLabel} />
@@ -131,11 +148,7 @@ const DetailsScreen = ({ navigation, route }) => {
               marginTop: 50,
             }}
           >
-            <TouchableOpacity
-              onPress={() => {
-                console.log("oii");
-              }}
-            >
+            <TouchableOpacity onPress={showToast2}>
               <Image
                 style={{
                   width: 25,
