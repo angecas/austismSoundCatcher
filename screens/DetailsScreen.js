@@ -84,7 +84,12 @@ const DetailsScreen = ({ navigation, route }) => {
           }}
         >
           <Text
-            style={{ textAlign: "center", fontSize: 20, fontWeight: "600" }}
+            style={{
+              textAlign: "center",
+              fontSize: 20,
+              fontWeight: "600",
+              marginTop: 10,
+            }}
           >
             Highest Prevision x Label
           </Text>
@@ -98,7 +103,7 @@ const DetailsScreen = ({ navigation, route }) => {
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
 
-        <View style={{ alignItems: "center", marginTop: 30 }}>
+        <View style={{ alignItems: "center", marginTop: 40 }}>
           <TouchableOpacity onPress={showToast1}>
             <Image
               style={{
@@ -114,7 +119,7 @@ const DetailsScreen = ({ navigation, route }) => {
 
         <View
           style={{
-            marginTop: 30,
+            marginTop: 10,
           }}
         >
           <Text
@@ -147,7 +152,7 @@ const DetailsScreen = ({ navigation, route }) => {
               alignContent: "center",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 50,
+              marginTop: 20,
             }}
           >
             <TouchableOpacity onPress={showToast2}>
@@ -161,7 +166,7 @@ const DetailsScreen = ({ navigation, route }) => {
                 source={require("../src/pngs/info2.png")}
               />
             </TouchableOpacity>
-            <Text style={{ textAlign: "center", fontSize: 20 }}>
+            <Text style={{ textAlign: "center", fontSize: 20, marginTop: 10 }}>
               Overall Label Ocurrences x Label
             </Text>
           </View>
