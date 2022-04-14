@@ -2,14 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 
-import Toast from "react-native-toast-message";
-import WavyHeader from "../components/WavyHeader";
-import AnimatedEllipsis from "react-native-animated-ellipsis";
-
-import Mic from "../src/icones/icon_mic2.svg";
-import Pause from "../src/icones/mono-player-stop.svg";
-import Rec from "../src/icones/mono-krec-record.svg";
-
 import Record from "../src/svgs/newstart.svg";
 import StopRecord from "../src/svgs/newpause.svg";
 
@@ -17,23 +9,6 @@ import NewMic from "../src/svgs/newmic.svg";
 
 //import { FloatingMenu } from "react-native-floating-action-menu";
 import ActionButton from "react-native-circular-action-menu";
-import Icon from "react-native-vector-icons/Ionicons";
-
-import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator,
-} from "react-native-indicators";
-import {
-  GestureHandlerRootView,
-  GestureHandlerRootHOC,
-} from "react-native-gesture-handler";
 
 import {
   StyleSheet,
@@ -59,6 +34,7 @@ function HomeScreen({ navigation }) {
   const windowHeight = Dimensions.get("window").height;
   const modalizeRef = useRef(null);
   const funRef = useRef(null);
+  const ref = useRef(null);
   const [recording, setRecording] = React.useState();
   const [path, setPath] = React.useState(true);
   const [prev, setPrev] = React.useState("");
@@ -85,12 +61,6 @@ function HomeScreen({ navigation }) {
       </View>
     ),
   };
-
-  const [startBut, setStartBut] = useState(true);
-
-  const [descriptiveText, setDescriptiveText] = useState(true);
-
-  const [iconeInfo, setIconeInfo] = useState(true);
 
   const uploadAudio = async (path) => {
     smp += 1;
@@ -122,51 +92,104 @@ function HomeScreen({ navigation }) {
     }
     setLoad(false);
   };
+
+  /*
   useEffect(() => {
-    try {
-      if (!stream) {
-        funRef.current = setInterval(async () => {
-          await Audio.requestPermissionsAsync();
+    if (!stream) {
+      funRef.current = setInterval(async () => {
+        await Audio.requestPermissionsAsync();
+        await Audio.setAudioModeAsync({
+          allowsRecordingIOS: true,
+          playsInSilentModeIOS: true,
+        });
+        setMic(true);
 
-          await Audio.setAudioModeAsync({
-            allowsRecordingIOS: true,
-            playsInSilentModeIOS: true,
-          });
-          setMic(true);
-
+        try {
           const recording = new Audio.Recording();
 
           await recording.prepareToRecordAsync(
             Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
           );
           await recording.startAsync();
-
-          setRecording(recording);
-          setCountdown(true);
           console.log("Recording started");
 
-          setTimeout(async () => {
-            console.log("entrou");
-            console.log(disable);
-            console.log("Stopping recording..");
-            setRecording(undefined);
-            recording.stopAndUnloadAsync();
-            const uri = recording.getURI();
-            console.log("Recording stopped and stored at", uri);
-            setMic(false);
-            setPath(uri);
-            uploadAudio(uri);
-
-            console.log("sai");
-          }, 5000);
-        }, 7000);
-      } else {
-        clearInterval(funRef.current);
-      }
-    } catch (err) {
-      alert(err, "Alert Titleeeeeeeeeeeeeeeee");
+          setRecording(
+            recording,
+            setTimeout(async () => {
+              setRecording(undefined);
+              recording.stopAndUnloadAsync();
+              const uri = recording.getURI();
+              console.log("Recording stopped and stored at", uri);
+              setMic(false);
+              setPath(uri);
+              uploadAudio(uri);
+            }, 5000)
+          );
+        } catch (err) {
+          alert(err);
+        }
+      }, 8000);
+    } else {
+      clearInterval(funRef.current);
     }
   }, [stream]);
+
+  */
+
+  useEffect(() => {
+    if (!stream) {
+      ref.current = setTimeout(repeatingFunc, 1000);
+    } else {
+      clearTimeout(ref.current);
+    }
+  }, [stream]);
+
+  // clear timeout on component dismount
+  useEffect(
+    () => () => {
+      clearTimeout(ref.current);
+    },
+    []
+  );
+
+  async function repeatingFunc() {
+    console.log("It's been 5 seconds. Execute the function again.");
+    await Audio.requestPermissionsAsync();
+    await Audio.setAudioModeAsync({
+      allowsRecordingIOS: true,
+      playsInSilentModeIOS: true,
+    });
+    setMic(true);
+
+    try {
+      const recording = new Audio.Recording();
+
+      await recording.prepareToRecordAsync(
+        Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
+      );
+      await recording.startAsync();
+      console.log("Recording started");
+
+      setRecording(
+        recording,
+        setTimeout(async () => {
+          setRecording(undefined);
+          recording.stopAndUnloadAsync();
+          const uri = recording.getURI();
+          console.log("Recording stopped and stored at", uri);
+          setMic(false);
+          setPath(uri);
+          uploadAudio(uri);
+        }, 5000)
+      );
+    } catch (err) {
+      alert(err);
+    }
+
+    ref.current = setTimeout(repeatingFunc, 6000);
+  }
+
+  //----------------------------------
 
   const startTimer = () => {
     setRingWaves(true);
