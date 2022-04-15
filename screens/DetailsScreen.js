@@ -48,6 +48,10 @@ const DetailsScreen = ({ navigation, route }) => {
   };
   const { previsionLabel } = route.params;
 
+  console.log(route.params.refreshSound);
+  console.log("-------------------------------");
+  console.log("-------------------------------");
+
   const resetAction = CommonActions.reset({
     index: 0,
     routes: [{ name: "Home" }],
@@ -196,7 +200,9 @@ const DetailsScreen = ({ navigation, route }) => {
       >
         <View style={{ margin: 5, marginTop: 10 }}>
           <TouchableOpacity
-            onPress={() => navigation.dispatch(resetAction)}
+            onPress={() => {
+              navigation.dispatch(resetAction);
+            }}
             style={{
               borderRadius: 8,
               backgroundColor: "#0e7fe5",
@@ -213,7 +219,10 @@ const DetailsScreen = ({ navigation, route }) => {
         </View>
         <View style={{ margin: 5 }}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => {
+              route.params.refreshSound;
+              navigation.navigate("Home");
+            }}
             style={{
               borderRadius: 8,
               backgroundColor: "#0e7fe5",

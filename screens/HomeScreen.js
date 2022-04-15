@@ -72,13 +72,16 @@ function HomeScreen({ navigation }) {
     });
     try {
       setLoad(true);
-      const res = await fetch("http://10.0.2.2:8000/predict", {
-        method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: formData,
-      });
+      const res = await fetch(
+        "http://mivbox.di.uminho.pt:36554/angelica/predict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: formData,
+        }
+      );
       const json = await res.json();
       setPrev(json.label);
       setSample(smp);
@@ -139,18 +142,12 @@ function HomeScreen({ navigation }) {
   useEffect(() => {
     if (!stream) {
       ref.current = setTimeout(repeatingFunc, 1000);
-    } else {
-      clearTimeout(ref.current);
     }
+
+    return () => clearTimeout(ref.current);
   }, [stream]);
 
   // clear timeout on component dismount
-  useEffect(
-    () => () => {
-      clearTimeout(ref.current);
-    },
-    []
-  );
 
   async function repeatingFunc() {
     console.log("It's been 5 seconds. Execute the function again.");
@@ -182,12 +179,19 @@ function HomeScreen({ navigation }) {
           uploadAudio(uri);
         }, 5000)
       );
+      console.log("TERMINOU DE FZER O AUDIO");
     } catch (err) {
       alert(err);
     }
 
+    console.log("VAI CORRER DE NOVO");
+
     ref.current = setTimeout(repeatingFunc, 6000);
   }
+
+  const refreshSound = () => {
+    clearTimeout(ref.current);
+  };
 
   //----------------------------------
 
@@ -333,6 +337,7 @@ function HomeScreen({ navigation }) {
                 onPress={() => {
                   navigation.navigate("DetailsScreen", {
                     previsionLabel: listagem,
+                    refreshSound: refreshSound,
                   });
                 }}
               >
