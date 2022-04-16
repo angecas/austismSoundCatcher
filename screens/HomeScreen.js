@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import BottomSheet from "react-native-gesture-bottom-sheet";
+import { CommonActions } from "@react-navigation/native";
 
 import Record from "../src/svgs/newstart.svg";
 import StopRecord from "../src/svgs/newpause.svg";
@@ -50,8 +51,15 @@ function HomeScreen({ navigation }) {
   const bottomSheet = useRef();
   const [on, setOn] = React.useState(false);
 
+  const [firstRender, setFirstRender] = React.useState(true);
+
   let smp = 0;
   let list = [];
+
+  const resetAction = CommonActions.reset({
+    index: 0,
+    routes: [{ name: "Home" }],
+  });
 
   let teste = new Map();
   const toastConfig = {
@@ -189,10 +197,6 @@ function HomeScreen({ navigation }) {
     ref.current = setTimeout(repeatingFunc, 6000);
   }
 
-  const refreshSound = () => {
-    clearTimeout(ref.current);
-  };
-
   //----------------------------------
 
   const startTimer = () => {
@@ -312,6 +316,21 @@ function HomeScreen({ navigation }) {
                 <StopRecord height={110} width={110} />
               </TouchableOpacity>
             )}
+
+            {stream === true ? (
+              <TouchableOpacity
+                style={{}}
+                onPress={() => {
+                  setFirstRender(true);
+                  console.log("hope");
+                  setStream(true, navigation.dispatch(resetAction));
+                }}
+              >
+                <Text style={{ color: "white" }}>New Classification?</Text>
+              </TouchableOpacity>
+            ) : (
+              <></>
+            )}
           </View>
 
           {sample === 0 ? (
@@ -337,7 +356,6 @@ function HomeScreen({ navigation }) {
                 onPress={() => {
                   navigation.navigate("DetailsScreen", {
                     previsionLabel: listagem,
-                    refreshSound: refreshSound,
                   });
                 }}
               >
