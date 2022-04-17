@@ -55,14 +55,22 @@ function HomeScreen({ navigation }) {
     return new Promise((resolve) => setTimeout(resolve, timeout));
   };
 
+  {
+    /*
+
   const alertToast = {
-    tomatoToast: ({ text, props }) => (
+    tomatoToast: () => (
       <View>
-        <Text>Testeee</Text>
+        <Text>
+          "Only one Recording object can be prepared at a given time."
+        </Text>
         <Text>{text}</Text>
       </View>
     ),
   };
+
+*/
+  }
 
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
@@ -397,7 +405,7 @@ function HomeScreen({ navigation }) {
           </BottomSheet>
         </View>
       </View>
-      <Toast config={alertToast} />
+      {/*<Toast config={alertToast} />*/}
     </View>
   );
 }
