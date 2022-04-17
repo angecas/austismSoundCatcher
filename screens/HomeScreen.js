@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import { CommonActions } from "@react-navigation/native";
+import Toast from "react-native-toast-message";
 
 import Record from "../src/svgs/newstart.svg";
 import StopRecord from "../src/svgs/newpause.svg";
@@ -40,11 +41,9 @@ function HomeScreen({ navigation }) {
   const [recording, setRecording] = React.useState();
   const [path, setPath] = React.useState(true);
   const [prev, setPrev] = React.useState("");
-  const [disable, setDisable] = React.useState(false);
   const [load, setLoad] = React.useState(false);
   const [stream, setStream] = React.useState(true);
   const [sample, setSample] = React.useState(0);
-  const [countdown, setCountdown] = react.useState(false);
   const [mic, setMic] = react.useState(false);
   const [ringWaves, setRingWaves] = react.useState(false);
   const [listagem, setListagem] = React.useState([]);
@@ -55,8 +54,17 @@ function HomeScreen({ navigation }) {
   const wait = (timeout) => {
     return new Promise((resolve) => setTimeout(resolve, timeout));
   };
+
+  const alertToast = {
+    tomatoToast: ({ text, props }) => (
+      <View>
+        <Text>Testeee</Text>
+        <Text>{text}</Text>
+      </View>
+    ),
+  };
+
   const onRefresh = React.useCallback(() => {
-    console.log(sample);
     setRefresh(true);
     wait(2000).then(() => {
       setRefresh(false);
@@ -73,13 +81,6 @@ function HomeScreen({ navigation }) {
   });
 
   let teste = new Map();
-  const toastConfig = {
-    tomatoToast: () => (
-      <View style={{ height: 60, width: "100%", backgroundColor: "tomato" }}>
-        <Text> oioioioi </Text>
-      </View>
-    ),
-  };
 
   const uploadAudio = async (path) => {
     smp += 1;
@@ -109,7 +110,9 @@ function HomeScreen({ navigation }) {
       setOvPerSamp(teste);
       setListagem(list);
     } catch (err) {
-      alert(err, "Alert Title");
+      //alert(err, "Alert Title");
+      console.log(err);
+      console.debug(err);
     }
     setLoad(false);
   };
@@ -171,7 +174,6 @@ function HomeScreen({ navigation }) {
   // clear timeout on component dismount
 
   async function repeatingFunc() {
-    console.log("It's been 5 seconds. Execute the function again.");
     await Audio.requestPermissionsAsync();
     await Audio.setAudioModeAsync({
       allowsRecordingIOS: true,
@@ -187,8 +189,6 @@ function HomeScreen({ navigation }) {
         Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
       );
       await recording.startAsync();
-      console.log("Recording started");
-
       setRecording(
         recording,
         setTimeout(async () => {
@@ -201,12 +201,15 @@ function HomeScreen({ navigation }) {
           uploadAudio(uri);
         }, 5000)
       );
-      console.log("TERMINOU DE FZER O AUDIO");
     } catch (err) {
-      alert(err);
+      /*
+      Toast.show({
+        type: "tomatoToast",
+        text: "This is some something 👋",
+      });*/
+      console.log(err);
+      console.debug(err);
     }
-
-    console.log("VAI CORRER DE NOVO");
 
     ref.current = setTimeout(repeatingFunc, 6000);
   }
@@ -217,8 +220,6 @@ function HomeScreen({ navigation }) {
     setRingWaves(true);
     setStream(false);
     //setOn(true);
-
-    console.log(stream);
   };
 
   const stopTimer = () => {
@@ -396,6 +397,7 @@ function HomeScreen({ navigation }) {
           </BottomSheet>
         </View>
       </View>
+      <Toast config={alertToast} />
     </View>
   );
 }
