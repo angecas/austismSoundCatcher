@@ -12,6 +12,7 @@ import NewMic from "../src/svgs/newmic.svg";
 import ActionButton from "react-native-circular-action-menu";
 
 import {
+  RefreshControl,
   StyleSheet,
   Text,
   View,
@@ -50,8 +51,18 @@ function HomeScreen({ navigation }) {
   const [ovPerSamp, setOvPerSamp] = React.useState([]);
   const bottomSheet = useRef();
   const [on, setOn] = React.useState(false);
-
-  const [firstRender, setFirstRender] = React.useState(true);
+  const [refresh, setRefresh] = React.useState(false);
+  const wait = (timeout) => {
+    return new Promise((resolve) => setTimeout(resolve, timeout));
+  };
+  const onRefresh = React.useCallback(() => {
+    console.log(sample);
+    setRefresh(true);
+    wait(2000).then(() => {
+      setRefresh(false);
+      setStream(true, navigation.dispatch(resetAction));
+    });
+  }, [refresh]);
 
   let smp = 0;
   let list = [];
@@ -95,7 +106,6 @@ function HomeScreen({ navigation }) {
       setSample(smp);
       teste.set(smp, prev.previsionLabel);
       list.push(json.label);
-
       setOvPerSamp(teste);
       setListagem(list);
     } catch (err) {
@@ -152,7 +162,10 @@ function HomeScreen({ navigation }) {
       ref.current = setTimeout(repeatingFunc, 1000);
     }
 
-    return () => clearTimeout(ref.current);
+    return () => {
+      clearTimeout(ref.current);
+      setOn(false);
+    };
   }, [stream]);
 
   // clear timeout on component dismount
@@ -167,6 +180,7 @@ function HomeScreen({ navigation }) {
     setMic(true);
 
     try {
+      setOn(true);
       const recording = new Audio.Recording();
 
       await recording.prepareToRecordAsync(
@@ -202,7 +216,7 @@ function HomeScreen({ navigation }) {
   const startTimer = () => {
     setRingWaves(true);
     setStream(false);
-    setOn(true);
+    //setOn(true);
 
     console.log(stream);
   };
@@ -210,7 +224,6 @@ function HomeScreen({ navigation }) {
   const stopTimer = () => {
     setRingWaves(false);
     setStream(true);
-    setOn(false);
   };
 
   return (
@@ -267,39 +280,50 @@ function HomeScreen({ navigation }) {
             justifyContent: "space-around",
           }}
         >
-          {sample != 0 ? (
-            <View
-              style={{
-                alignItems: "center",
-                height: 60,
-                marginTop: 14,
-              }}
-            >
-              <Text
-                style={{ color: "#ffffff", fontSize: 18, fontFamily: "roboto" }}
-              >
-                {" "}
-                Sample {sample}
-              </Text>
-              <Text
+          <ScrollView
+            style={{}}
+            refreshControl={
+              <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+            }
+          >
+            {sample != 0 ? (
+              <View
                 style={{
-                  color: "#ffffff",
-                  fontSize: 14,
-                  marginTop: 12,
-                  fontFamily: "roboto",
+                  alignItems: "center",
+                  height: 60,
+                  marginTop: 14,
                 }}
               >
-                Overall classification: {prev.previsionLabel}
-              </Text>
-            </View>
-          ) : (
-            <View
-              style={{
-                alignItems: "center",
-                height: 60,
-              }}
-            />
-          )}
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontSize: 18,
+                    fontFamily: "roboto",
+                  }}
+                >
+                  {" "}
+                  Sample {sample}
+                </Text>
+                <Text
+                  style={{
+                    color: "#ffffff",
+                    fontSize: 14,
+                    marginTop: 12,
+                    fontFamily: "roboto",
+                  }}
+                >
+                  Overall classification: {prev.previsionLabel}
+                </Text>
+              </View>
+            ) : (
+              <View
+                style={{
+                  alignItems: "center",
+                  height: 60,
+                }}
+              />
+            )}
+          </ScrollView>
 
           <View
             style={{
@@ -315,21 +339,6 @@ function HomeScreen({ navigation }) {
               <TouchableOpacity onPress={stopTimer}>
                 <StopRecord height={110} width={110} />
               </TouchableOpacity>
-            )}
-
-            {stream === true ? (
-              <TouchableOpacity
-                style={{}}
-                onPress={() => {
-                  setFirstRender(true);
-                  console.log("hope");
-                  setStream(true, navigation.dispatch(resetAction));
-                }}
-              >
-                <Text style={{ color: "white" }}>New Classification?</Text>
-              </TouchableOpacity>
-            ) : (
-              <></>
             )}
           </View>
 
