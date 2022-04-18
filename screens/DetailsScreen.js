@@ -51,13 +51,20 @@ const DetailsScreen = ({ navigation, route }) => {
     <View
       style={{
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
+        //alignItems: "center", // tirar?
+        //justifyContent: "center", // tirar?
+
         backgroundColor: "#ffffff",
       }}
     >
       <ScrollView>
-        <View style={{ marginTop: 30, alignItems: "center" }}>
+        <View
+          style={{
+            marginTop: 30,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <TouchableOpacity onPress={showToast}>
             <Image
               style={{
@@ -70,35 +77,36 @@ const DetailsScreen = ({ navigation, route }) => {
             />
           </TouchableOpacity>
         </View>
-        <View
+        <Text
           style={{
-            alignContent: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
+            textAlign: "center",
+            fontSize: 20,
+            fontWeight: "600",
+            marginTop: 10,
           }}
         >
-          <Text
-            style={{
-              textAlign: "center",
-              fontSize: 20,
-              fontWeight: "600",
-              marginTop: 10,
-            }}
-          >
-            Highest Prevision x Label
-          </Text>
-        </View>
+          Highest Prevision x Label
+        </Text>
+
         <View
           style={{
             alignContent: "center",
             justifyContent: "center",
+
+            alignItems: "center",
+            marginLeft: 90,
           }}
         >
           <HighestPercentage previsionLabel={previsionLabel} />
         </View>
 
-        <View style={{ alignItems: "center", marginTop: 40 }}>
+        <View
+          style={{
+            marginTop: 30,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <TouchableOpacity onPress={showToast1}>
             <Image
               style={{
@@ -122,6 +130,7 @@ const DetailsScreen = ({ navigation, route }) => {
               textAlign: "center",
               fontSize: 20,
               fontWeight: "600",
+              marginTop: 10,
             }}
           >
             Average Global Prevision x Label
@@ -131,6 +140,7 @@ const DetailsScreen = ({ navigation, route }) => {
           style={{
             alignContent: "center",
             justifyContent: "center",
+            marginLeft: 5,
           }}
         >
           <LineChartPrev previsionLabel={previsionLabel} />
@@ -161,15 +171,22 @@ const DetailsScreen = ({ navigation, route }) => {
                 source={require("../src/pngs/info2.png")}
               />
             </TouchableOpacity>
-            <Text style={{ textAlign: "center", fontSize: 20, marginTop: 10 }}>
-              Overall Label Ocurrences x Label
-            </Text>
           </View>
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 20,
+              fontWeight: "600",
+              marginTop: 10,
+            }}
+          >
+            Overall Label Ocurrences x Label
+          </Text>
+
           <View
             style={{
               marginBottom: 90,
-              alignContent: "center",
-              justifyContent: "center",
+              marginLeft: 5,
             }}
           >
             <LabelsOcurrence previsionLabel={previsionLabel} />
@@ -201,6 +218,7 @@ const DetailsScreen = ({ navigation, route }) => {
               width: 300,
               alignContent: "center",
               justifyContent: "center",
+              margin: 8,
             }}
           >
             <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>

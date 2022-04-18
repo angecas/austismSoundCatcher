@@ -125,7 +125,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
         </View>
       </View>
       <Grid>
-        <Col size={20}>
+        <Col size={5}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -166,7 +166,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             <Text>{previsionResults.firstPrevisionPercent}</Text>
           </Row>
         </Col>
-        <Col size={20}>
+        <Col size={5}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -207,7 +207,7 @@ const PrevisionTable = ({ previsionResults, sample }) => {
             <Text>{previsionResults.secondPrevisionPercent}</Text>
           </Row>
         </Col>
-        <Col size={20}>
+        <Col size={5}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -289,8 +289,8 @@ const PrevisionTable = ({ previsionResults, sample }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 380,
-    height: 310,
+    width: 300,
+    height: 300,
     padding: 5,
     paddingTop: 30,
   },

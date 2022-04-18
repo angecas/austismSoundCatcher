@@ -109,6 +109,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       data={frequenciaLabel()}
       yAxisThickness={0}
       xAxisThickness={0}
+      initialSpacing={10}
     />
   );
 };

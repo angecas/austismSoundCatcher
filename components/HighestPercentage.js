@@ -152,10 +152,16 @@ const HighestPercentage = ({ previsionLabel }) => {
   };
 
   return (
-    <>
+    <View
+      style={{
+        justifyContent: "center",
+        alignContent: "center",
+        alignSelf: "center",
+      }}
+    >
       <BarChart
         isAnimated
-        spacing={80}
+        spacing={75}
         barWidth={22}
         yAxisLabelSuffix="%"
         noOfSections={3}
@@ -164,8 +170,9 @@ const HighestPercentage = ({ previsionLabel }) => {
         yAxisThickness={0}
         xAxisThickness={0}
         frontColor="#0e7fe5"
+        initialSpacing={10}
       />
-    </>
+    </View>
   );
 };
 

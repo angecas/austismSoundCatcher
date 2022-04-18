@@ -29,6 +29,7 @@ import PrevisionTable from "../components/PrevisionTable";
 import react from "react";
 import RingWaves from "../components/RingWaves";
 import Classifying from "../components/Classifying";
+import { set } from "react-native-reanimated";
 
 const screen = Dimensions.get("screen");
 
@@ -100,6 +101,7 @@ function HomeScreen({ navigation }) {
     });
     try {
       setLoad(true);
+
       const res = await fetch(
         "http://mivbox.di.uminho.pt:36554/angelica/predict",
         {
@@ -110,6 +112,7 @@ function HomeScreen({ navigation }) {
           body: formData,
         }
       );
+
       const json = await res.json();
       setPrev(json.label);
       setSample(smp);
@@ -310,8 +313,7 @@ function HomeScreen({ navigation }) {
                     fontFamily: "roboto",
                   }}
                 >
-                  {" "}
-                  Sample {sample}
+                  Sample: {sample}
                 </Text>
                 <Text
                   style={{
@@ -337,12 +339,13 @@ function HomeScreen({ navigation }) {
           <View
             style={{
               alignItems: "center",
-              marginBottom: 100,
+              marginBottom: 70,
+              //marginBottom: 100,
             }}
           >
             {stream ? (
               <TouchableOpacity onPress={startTimer}>
-                <Record height={110} width={110} />
+                <Record height={100} width={100} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={stopTimer}>
