@@ -1,10 +1,13 @@
 {
   "expo": {
-    "name": "autismo",
-    "slug": "autismo",
+    "name": "soundCatcher",
+    "slug": "soundcatcher",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.angi_ie.soundcatcher"
+    }
   }
 }

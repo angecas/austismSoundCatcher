@@ -3,6 +3,7 @@ import { Audio } from "expo-av";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import { CommonActions } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
+import { useNetInfo } from "@react-native-community/netinfo";
 
 import Record from "../src/svgs/newstart.svg";
 import StopRecord from "../src/svgs/newpause.svg";
@@ -72,6 +73,18 @@ function HomeScreen({ navigation }) {
 
 */
   }
+
+  const YourComponent = () => {
+    const netInfo = useNetInfo();
+
+    return (
+      <View>
+        <Text>Type: {netInfo.type}</Text>
+        <Text>Is Connected? {JSON.stringify(netInfo.details)}</Text>
+        <Text>Is Connected? {JSON.stringify(netInfo.isConnected)}</Text>
+      </View>
+    );
+  };
 
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
@@ -279,6 +292,7 @@ function HomeScreen({ navigation }) {
             <></>
           </View>
         )}
+        <YourComponent />
         <View
           style={{
             backgroundColor: "#0e7fe5",
