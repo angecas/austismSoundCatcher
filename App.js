@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import Toast from "react-native-toast-message";
 
+import { checkConnected } from "./functions";
+
 import {
   StyleSheet,
   Text,
@@ -20,7 +22,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import Example from "./screens/TESTES";
-
+import NetInfo from "@react-native-community/netinfo";
+import { useNetInfo } from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
 
 const screen = Dimensions.get("screen");
@@ -28,6 +31,12 @@ const screen = Dimensions.get("screen");
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [connectStatus, setConnectStatus] = useState(false);
+
+  checkConnected().then((res) => {
+    setConnectStatus(res);
+  });
+
   const toastConfig = {
     tomatoToast: ({ text1, props }) => (
       <View
@@ -78,6 +87,55 @@ export default function App() {
         </View>
       </View>
     ),
+
+    internetToast: ({ text1, props }) => (
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "black",
+          borderColor: "black",
+          elevation: 14,
+          borderWidth: 2,
+          borderRadius: 8,
+          opacity: 0.8,
+        }}
+      >
+        <Image
+          style={{
+            alignSelf: "flex-start",
+            height: 25,
+            width: 25,
+            marginRight: 5,
+          }}
+          source={require("./src/pngs/warn.png")}
+        ></Image>
+        <Text
+          style={{
+            fontWeight: "700",
+            color: "white",
+            marginTop: 4,
+            marginBottom: 2,
+            marginLeft: 16,
+            marginRight: 16,
+          }}
+        >
+          No internet connection.
+        </Text>
+        <Text
+          style={{
+            fontWeight: "700",
+            color: "white",
+            marginTop: 4,
+            marginBottom: 16,
+            marginLeft: 16,
+            marginRight: 16,
+          }}
+        >
+          Please, connect to classify.
+        </Text>
+      </View>
+    ),
   };
 
   return (
@@ -88,6 +146,7 @@ export default function App() {
         //  backgroundColor="rgba(0, 0, 0, 0.251)"
         backgroundColor="white"
       />
+
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
@@ -119,6 +178,17 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
+
+      {/*
+      {connectStatus ? (
+        <View>
+          <Text>on? </Text>
+        </View>
+      ) : (
+        <View>
+          <Text>off?</Text>
+        </View>
+      )} */}
       <Toast config={toastConfig} />
     </NavigationContainer>
   );

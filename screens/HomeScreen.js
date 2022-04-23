@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Audio } from "expo-av";
 import BottomSheet from "react-native-gesture-bottom-sheet";
-import { CommonActions } from "@react-navigation/native";
+import { CommonActions, useFocusEffect } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
-import { useNetInfo } from "@react-native-community/netinfo";
+import { checkConnected } from "../functions";
 
 import Record from "../src/svgs/newstart.svg";
 import StopRecord from "../src/svgs/newpause.svg";
@@ -11,6 +11,8 @@ import StopRecord from "../src/svgs/newpause.svg";
 import NewMic from "../src/svgs/newmic.svg";
 
 //import { FloatingMenu } from "react-native-floating-action-menu";
+import NetInfo from "@react-native-community/netinfo";
+
 import ActionButton from "react-native-circular-action-menu";
 
 import {
@@ -30,7 +32,6 @@ import PrevisionTable from "../components/PrevisionTable";
 import react from "react";
 import RingWaves from "../components/RingWaves";
 import Classifying from "../components/Classifying";
-import { set } from "react-native-reanimated";
 
 const screen = Dimensions.get("screen");
 
@@ -73,18 +74,6 @@ function HomeScreen({ navigation }) {
 
 */
   }
-
-  const YourComponent = () => {
-    const netInfo = useNetInfo();
-
-    return (
-      <View>
-        <Text>Type: {netInfo.type}</Text>
-        <Text>Is Connected? {JSON.stringify(netInfo.details)}</Text>
-        <Text>Is Connected? {JSON.stringify(netInfo.isConnected)}</Text>
-      </View>
-    );
-  };
 
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
@@ -141,48 +130,11 @@ function HomeScreen({ navigation }) {
     setLoad(false);
   };
 
-  /*
-  useEffect(() => {
-    if (!stream) {
-      funRef.current = setInterval(async () => {
-        await Audio.requestPermissionsAsync();
-        await Audio.setAudioModeAsync({
-          allowsRecordingIOS: true,
-          playsInSilentModeIOS: true,
-        });
-        setMic(true);
-
-        try {
-          const recording = new Audio.Recording();
-
-          await recording.prepareToRecordAsync(
-            Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
-          );
-          await recording.startAsync();
-          console.log("Recording started");
-
-          setRecording(
-            recording,
-            setTimeout(async () => {
-              setRecording(undefined);
-              recording.stopAndUnloadAsync();
-              const uri = recording.getURI();
-              console.log("Recording stopped and stored at", uri);
-              setMic(false);
-              setPath(uri);
-              uploadAudio(uri);
-            }, 5000)
-          );
-        } catch (err) {
-          alert(err);
-        }
-      }, 8000);
-    } else {
-      clearInterval(funRef.current);
-    }
-  }, [stream]);
-
-  */
+  const showToast = () => {
+    Toast.show({
+      type: "internetToast",
+    });
+  };
 
   useEffect(() => {
     if (!stream) {
@@ -210,7 +162,7 @@ function HomeScreen({ navigation }) {
       const recording = new Audio.Recording();
 
       await recording.prepareToRecordAsync(
-        Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
+        Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALIT
       );
       await recording.startAsync();
       setRecording(
@@ -226,11 +178,6 @@ function HomeScreen({ navigation }) {
         }, 5000)
       );
     } catch (err) {
-      /*
-      Toast.show({
-        type: "tomatoToast",
-        text: "This is some something 👋",
-      });*/
       console.log(err);
       console.debug(err);
     }
@@ -240,10 +187,36 @@ function HomeScreen({ navigation }) {
 
   //----------------------------------
 
+  const [connect, setConnect] = useState(false);
+  const count = useRef(connect);
+
+  useEffect(() => {
+    checkConnected().then((res) => {
+      setConnect(res);
+      count.current = connect;
+      console.log("FIRSTCONNECT", connect);
+    });
+  });
+
+  const testar = () => {
+    if (count.current) {
+      setRingWaves(true);
+      setStream(false);
+    } else {
+      showToast();
+    }
+  };
+
   const startTimer = () => {
-    setRingWaves(true);
-    setStream(false);
-    //setOn(true);
+    checkConnected()
+      .then((res) => {
+        //setConnect(res, testar());
+        count.current = res;
+        console.log("PRESSEDCONNECT", connect);
+      })
+      .finally(() => testar());
+
+    // testar();
   };
 
   const stopTimer = () => {
@@ -292,7 +265,7 @@ function HomeScreen({ navigation }) {
             <></>
           </View>
         )}
-        <YourComponent />
+
         <View
           style={{
             backgroundColor: "#0e7fe5",
@@ -422,7 +395,17 @@ function HomeScreen({ navigation }) {
           </BottomSheet>
         </View>
       </View>
-      {/*<Toast config={alertToast} />*/}
+
+      {/*
+      {connect ? (
+        <View>
+          <Text>on? </Text>
+        </View>
+      ) : (
+        <View>
+          <Text>off?</Text>
+        </View>
+      )} */}
     </View>
   );
 }
