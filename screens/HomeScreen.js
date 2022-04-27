@@ -126,6 +126,7 @@ function HomeScreen({ navigation }) {
       //alert(err, "Alert Title");
       console.log(err);
       console.debug(err);
+      showToast();
     }
     setLoad(false);
   };
@@ -189,7 +190,7 @@ function HomeScreen({ navigation }) {
 
   const [connect, setConnect] = useState(false);
   const count = useRef(connect);
-
+  /*
   useEffect(() => {
     checkConnected().then((res) => {
       setConnect(res);
@@ -198,10 +199,13 @@ function HomeScreen({ navigation }) {
     });
   });
 
-  const testar = () => {
+  */
+
+  const startRec = () => {
     if (count.current) {
       setRingWaves(true);
       setStream(false);
+      console.log(stream);
     } else {
       showToast();
     }
@@ -210,18 +214,16 @@ function HomeScreen({ navigation }) {
   const startTimer = () => {
     checkConnected()
       .then((res) => {
-        //setConnect(res, testar());
         count.current = res;
         console.log("PRESSEDCONNECT", connect);
       })
-      .finally(() => testar());
-
-    // testar();
+      .finally(() => startRec());
   };
 
   const stopTimer = () => {
     setRingWaves(false);
     setStream(true);
+    console.log(stream);
   };
 
   return (

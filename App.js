@@ -93,6 +93,55 @@ export default function App() {
         style={{
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor: "#0e7fe5",
+          borderColor: "#0e7fe5",
+          elevation: 14,
+          borderWidth: 2,
+          borderRadius: 8,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image
+            style={{
+              alignSelf: "flex-start",
+              height: 25,
+              width: 25,
+              marginRight: 5,
+            }}
+            source={require("./src/pngs/warning.png")}
+          ></Image>
+          <Text style={{ fontWeight: "700", color: "white" }}>Warning</Text>
+        </View>
+        <View
+          style={{
+            height: 95,
+            width: "100%",
+            backgroundColor: "white",
+            borderRadius: 8,
+            borderWidth: 2,
+            elevation: 14,
+            borderColor: "#0e7fe5",
+            alignSelf: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ margin: 12 }}>
+            Verify your internet connection to proceed with the classification.
+          </Text>
+        </View>
+      </View>
+
+      /*
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
           backgroundColor: "black",
           borderColor: "black",
           elevation: 14,
@@ -134,7 +183,7 @@ export default function App() {
         >
           Please, connect to classify.
         </Text>
-      </View>
+      </View>*/
     ),
   };
 
