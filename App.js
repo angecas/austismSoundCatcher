@@ -1,12 +1,12 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef } from "react";
-import { Audio } from "expo-av";
 import Toast from "react-native-toast-message";
 
 import { checkConnected } from "./functions";
 
 import {
   StyleSheet,
+  AppState,
   Text,
   View,
   Image,
@@ -23,7 +23,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import Example from "./screens/TESTES";
 import NetInfo from "@react-native-community/netinfo";
-import { useNetInfo } from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
 
 const screen = Dimensions.get("screen");
@@ -32,10 +31,35 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [connectStatus, setConnectStatus] = useState(false);
+  //const appState = useRef(AppState.currentState);
+  //const [appStateVisible, setAppStateVisible] = useState(appState.current);
 
   checkConnected().then((res) => {
     setConnectStatus(res);
   });
+
+  /*
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === "active"
+      ) {
+        console.log("App has come to the foreground!");
+      }
+
+      appState.current = nextAppState;
+      setAppStateVisible(appState.current);
+      console.log("AppState", appState.current);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  */
 
   const toastConfig = {
     tomatoToast: ({ text1, props }) => (
@@ -114,7 +138,7 @@ export default function App() {
               width: 25,
               marginRight: 5,
             }}
-            source={require("./src/pngs/warning.png")}
+            source={require("./src/pngs/withoutwifi.png")}
           ></Image>
           <Text style={{ fontWeight: "700", color: "white" }}>Warning</Text>
         </View>
@@ -227,6 +251,7 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
+      {/*<Text>Current state is: {appStateVisible}</Text>*/}
 
       {/*
       {connectStatus ? (

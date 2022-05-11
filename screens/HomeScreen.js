@@ -139,9 +139,8 @@ function HomeScreen({ navigation }) {
 
   useEffect(() => {
     if (!stream) {
-      ref.current = setTimeout(repeatingFunc, 1000);
+      ref.current = setTimeout(repeatingFunc, 0);
     }
-
     return () => {
       clearTimeout(ref.current);
       setOn(false);
@@ -157,13 +156,11 @@ function HomeScreen({ navigation }) {
       playsInSilentModeIOS: true,
     });
     setMic(true);
-
     try {
       setOn(true);
       const recording = new Audio.Recording();
-
       await recording.prepareToRecordAsync(
-        Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALIT
+        Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
       );
       await recording.startAsync();
       setRecording(
@@ -182,7 +179,6 @@ function HomeScreen({ navigation }) {
       console.log(err);
       console.debug(err);
     }
-
     ref.current = setTimeout(repeatingFunc, 6000);
   }
 
