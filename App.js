@@ -1,6 +1,9 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef } from "react";
 import Toast from "react-native-toast-message";
+import { Button } from "react-native";
+import Modal from "react-native-modal";
+import Menu from "./components/Menu";
 
 import { checkConnected } from "./functions";
 
@@ -26,40 +29,23 @@ import NetInfo from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
 
 const screen = Dimensions.get("screen");
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [connectStatus, setConnectStatus] = useState(false);
-  //const appState = useRef(AppState.currentState);
-  //const [appStateVisible, setAppStateVisible] = useState(appState.current);
+  const [menuState, setMenuState] = useState(false);
 
   checkConnected().then((res) => {
     setConnectStatus(res);
   });
 
-  /*
-
-  useEffect(() => {
-    const subscription = AppState.addEventListener("change", (nextAppState) => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === "active"
-      ) {
-        console.log("App has come to the foreground!");
-      }
-
-      appState.current = nextAppState;
-      setAppStateVisible(appState.current);
-      console.log("AppState", appState.current);
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
-  */
+  const ToggleMenu = () => {
+    setMenuState(!menuState);
+    console.log(menuState);
+  };
 
   const toastConfig = {
     tomatoToast: ({ text1, props }) => (
@@ -160,65 +146,12 @@ export default function App() {
           </Text>
         </View>
       </View>
-
-      /*
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "black",
-          borderColor: "black",
-          elevation: 14,
-          borderWidth: 2,
-          borderRadius: 8,
-          opacity: 0.8,
-        }}
-      >
-        <Image
-          style={{
-            alignSelf: "flex-start",
-            height: 25,
-            width: 25,
-            marginRight: 5,
-          }}
-          source={require("./src/pngs/warn.png")}
-        ></Image>
-        <Text
-          style={{
-            fontWeight: "700",
-            color: "white",
-            marginTop: 4,
-            marginBottom: 2,
-            marginLeft: 16,
-            marginRight: 16,
-          }}
-        >
-          No internet connection.
-        </Text>
-        <Text
-          style={{
-            fontWeight: "700",
-            color: "white",
-            marginTop: 4,
-            marginBottom: 16,
-            marginLeft: 16,
-            marginRight: 16,
-          }}
-        >
-          Please, connect to classify.
-        </Text>
-      </View>*/
     ),
   };
 
   return (
     <NavigationContainer>
-      <StatusBar
-        translucent
-        barStyle="dark-content"
-        //  backgroundColor="rgba(0, 0, 0, 0.251)"
-        backgroundColor="white"
-      />
+      <StatusBar translucent barStyle="dark-content" backgroundColor="white" />
 
       <Stack.Navigator>
         <Stack.Screen
@@ -232,6 +165,15 @@ export default function App() {
               fontFamily: "roboto",
               fontWeight: "600",
             },
+
+            headerLeft: () => (
+              <TouchableOpacity onPress={ToggleMenu}>
+                <Image
+                  source={require("./src/pngs/menu.png")}
+                  style={{ width: 25, height: 25, margin: 5 }}
+                />
+              </TouchableOpacity>
+            ),
           }}
         />
         <Stack.Screen name="TESTES" component={Example} />
@@ -251,18 +193,8 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
-      {/*<Text>Current state is: {appStateVisible}</Text>*/}
+      <Menu isVisible={menuState} toggle={ToggleMenu} screenName="TESTES" />
 
-      {/*
-      {connectStatus ? (
-        <View>
-          <Text>on? </Text>
-        </View>
-      ) : (
-        <View>
-          <Text>off?</Text>
-        </View>
-      )} */}
       <Toast config={toastConfig} />
     </NavigationContainer>
   );

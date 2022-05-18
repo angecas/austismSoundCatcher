@@ -18,6 +18,7 @@ import ActionButton from "react-native-circular-action-menu";
 import {
   RefreshControl,
   StyleSheet,
+  Modal,
   Text,
   View,
   Image,
@@ -393,17 +394,6 @@ function HomeScreen({ navigation }) {
           </BottomSheet>
         </View>
       </View>
-
-      {/*
-      {connect ? (
-        <View>
-          <Text>on? </Text>
-        </View>
-      ) : (
-        <View>
-          <Text>off?</Text>
-        </View>
-      )} */}
     </View>
   );
 }

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 
-const Example = ({ navigation }) => {
+const Example = () => {
   // Needed in order to use .show()
   const bottomSheet = useRef();
 
