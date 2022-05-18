@@ -25,6 +25,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import Example from "./screens/TESTES";
+import Help from "./screens/Help";
+
 import NetInfo from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
 
@@ -177,6 +179,14 @@ export default function App() {
           }}
         />
         <Stack.Screen name="TESTES" component={Example} />
+        <Stack.Screen
+          name="Help"
+          component={Help}
+          options={{
+            title: "Help",
+            headerTitleAlign: "center",
+          }}
+        />
 
         <Stack.Screen
           name="DetailsScreen"
@@ -193,7 +203,7 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
-      <Menu isVisible={menuState} toggle={ToggleMenu} screenName="TESTES" />
+      <Menu isVisible={menuState} toggle={ToggleMenu} screenName="Help" />
 
       <Toast config={toastConfig} />
     </NavigationContainer>
