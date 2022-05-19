@@ -30,7 +30,7 @@ const Menu = ({ isVisible, toggle, screenName }) => {
       animationIn="slideInLeft"
       animationOut="slideOutRight"
       animationInTiming={500}
-      animationOutTiming={750}
+      animationOutTiming={550}
       isVisible={isVisible}
       useNativeDriver={true}
       onBackButtonPress={toggle}

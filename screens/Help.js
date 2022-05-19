@@ -9,6 +9,7 @@ import StopRecord from "../src/svgs/newpause.svg";
 import ActionButton from "react-native-circular-action-menu";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import Balloon from "react-native-balloon";
+import Toast from "react-native-toast-message";
 
 import {
   SafeAreaView,
@@ -23,53 +24,6 @@ import {
   View,
 } from "react-native";
 
-const ModalPop = ({ visible }) => {
-  const [showModal, setShowModal] = useState(true);
-  return (
-    <Modal transparent visible={showModal}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "rgba(0,0,0,0.5)",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View
-          style={{
-            width: "80%",
-            backgroundColor: "white",
-            paddingHorizontal: 20,
-            paddingVertical: 50,
-            borderRadius: 50,
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ textAlign: "justify" }}>
-            In this screen, a tour across the functionalities of this classifier
-            is made.
-          </Text>
-          <TouchableOpacity onPress={() => setShowModal(false)}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: 30,
-              }}
-            >
-              <Image
-                source={require("../src/pngs/ok.png")}
-                style={{ width: 30, height: 30, margin: 5 }}
-              />
-              <Text>Ok</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </Modal>
-  );
-};
-
 const Help = () => {
   // Needed in order to use .show()
   const bottomSheet = useRef();
@@ -83,20 +37,101 @@ const Help = () => {
   const [fastRef, setFastRef] = React.useState(false);
   const [rec, setRec] = React.useState(true);
   const [stop, setStop] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [actionBut, setActionBut] = useState(false);
+
+  const [purpl, setPurpl] = useState(true);
+  const [blu, setBlue] = useState(false);
+  const [gre, setGre] = useState(false);
+  const [rede, setRe] = useState(false);
+  const [yell, setYell] = useState(false);
+
+  const showToast = () => {
+    Toast.show({
+      type: "helpPath",
+    });
+  };
+
+  const ModalPop = () => {
+    return (
+      <Modal transparent visible={showModal}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: "80%",
+              backgroundColor: "white",
+              paddingHorizontal: 20,
+              paddingVertical: 50,
+              borderRadius: 50,
+              alignItems: "center",
+            }}
+          >
+            <ScrollView>
+              <View style={{ flexDirection: "row" }}>
+                <Image
+                  source={require("../src/pngs/lupa.png")}
+                  style={{ width: 20, height: 20, marginRight: 10 }}
+                />
+
+                <Text style={{ textAlign: "justify" }}>
+                  In this screen, a tour across the functionalities of this
+                  classifier is made.
+                </Text>
+              </View>
+
+              <View style={{ height: 20 }} />
+
+              <View style={{ flexDirection: "row" }}>
+                <Image
+                  source={require("../src/pngs/graph.png")}
+                  style={{ width: 20, height: 20, marginRight: 10 }}
+                />
+
+                <Text style={{ textAlign: "justify" }}>
+                  In this screen, a tour across the functionalities of this
+                  classifier is made. In this screen, a tour across the
+                </Text>
+              </View>
+            </ScrollView>
+
+            <TouchableOpacity onPress={() => setShowModal(false)}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginTop: 30,
+                  borderTopColor: "black",
+                  borderTopWidth: 1,
+                }}
+              >
+                <Image
+                  source={require("../src/pngs/ok.png")}
+                  style={{ width: 30, height: 30, margin: 5 }}
+                />
+                <Text>Ok</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    );
+  };
 
   useEffect(() => {
-    {
-      /*}
     setTimeout(() => {
-      setRec(true);
-    }, 0);
+      showToast();
+    }, 1500);
     if (stop) {
       console.log("parar");
     }
-
-*/
-    }
-  });
+  }, []);
 
   const startTimer = () => {
     console.log("startTimer pressed");
@@ -104,6 +139,10 @@ const Help = () => {
 
   const onRefresh = () => {
     console.log("fast refresh");
+
+    setGre(false);
+
+    setRe(true);
   };
 
   return (
@@ -111,9 +150,9 @@ const Help = () => {
       style={{
         backgroundColor: "white",
         flex: 1,
-        //justifyContent: "flex-end",
       }}
     >
+      <ModalPop></ModalPop>
       <View style={{ justifyContent: "flex-end", flex: 1 }}>
         <View
           style={{
@@ -123,46 +162,72 @@ const Help = () => {
             justifyContent: "center",
           }}
         >
-          {!on ? (
-            /*<Image
-              style={{
-                width: 65,
-                height: 65,
-                resizeMode: "contain",
-              }}
-              source={require("../src/icones/voice5.png")}
-            />*/
-
-            <NewMic height={120} width={120}></NewMic>
+          <NewMic height={120} width={120} />
+          {yell ? (
+            <View style={{ height: 90, width: 100, backgroundColor: "yellow" }}>
+              <Balloon
+                borderColor="#2E86C1"
+                backgroundColor="yellow"
+                borderWidth={2}
+                width={100}
+                height={90}
+                borderRadius={20}
+                triangleSize={10}
+                triangleDirection="top"
+                triangleOffset="45%"
+                onPress={() => console.log("press")}
+              >
+                <Text>Microphone starts capturing sound.</Text>
+              </Balloon>
+            </View>
           ) : (
-            <RingWaves iconeInfo={mic} />
+            <View style={{ height: 90, width: 100 }} />
           )}
         </View>
-        {load === true ? (
-          <View style={{ height: 50 }}>
-            <Classifying loading={true} />
-          </View>
-        ) : (
-          <View style={{ height: 50 }}>
-            <></>
-          </View>
-        )}
+
+        {/* 
+
         {fastRef ? (
-          <Balloon
-            borderColor="#2E86C1"
-            backgroundColor="#D6EAF8"
-            borderWidth={2}
-            borderRadius={20}
-            triangleSize={15}
-            triangleOffset="45%"
-            onPress={() => console.log("press")}
-          >
-            <Text>
-              Drag the edge of the blue view down and refresh your screen.
-            </Text>
-          </Balloon>
+          <View style={{ backgroundColor: "red", height: 100 }}>
+            <Balloon
+              borderColor="#2E86C1"
+              backgroundColor="#D6EAF8"
+              borderWidth={2}
+              borderRadius={20}
+              triangleSize={15}
+              triangleOffset="45%"
+              onPress={() => console.log("press")}
+            >
+              <Text>
+                Drag the edge of the blue view down and refresh your screen.
+              </Text>
+            </Balloon>
+          </View>
         ) : (
-          <></>
+          <View style={{ backgroundColor: "red", height: 100 }} />
+        )}
+
+         */}
+
+        {gre ? (
+          <View style={{ height: 40, width: 300, marginBottom: 20 }}>
+            <Balloon
+              borderColor="#2E86C1"
+              backgroundColor="grey"
+              borderWidth={2}
+              width={300}
+              height={40}
+              borderRadius={20}
+              triangleSize={10}
+              triangleDirection="bottom"
+              triangleOffset="45%"
+              onPress={() => console.log("press")}
+            >
+              <Text>Drag the blue edge down to do a fast refresh.</Text>
+            </Balloon>
+          </View>
+        ) : (
+          <View style={{ height: 40, width: 300, marginBottom: 20 }} />
         )}
 
         <View
@@ -229,19 +294,7 @@ const Help = () => {
               //marginBottom: 100,
             }}
           >
-            {stop ? (
-              <Balloon
-                borderColor="#2E86C1"
-                backgroundColor="#D6EAF8"
-                borderWidth={2}
-                borderRadius={20}
-                triangleSize={15}
-                triangleOffset="45%"
-              >
-                <Text>To stop the capture, press this button.</Text>
-              </Balloon>
-            ) : null}
-
+            {/*
             {rec ? (
               <Balloon
                 borderColor="#2E86C1"
@@ -256,81 +309,188 @@ const Help = () => {
                   classification.
                 </Text>
               </Balloon>
-            ) : null}
-
-            {stream ? (
-              <TouchableOpacity
-                onPress={() => {
-                  setRec(false);
-                  setStop(true);
-                  setStream(!stream);
-                }}
-              >
-                <Record height={100} width={100} />
-              </TouchableOpacity>
             ) : (
-              <TouchableOpacity
-                onPress={() => {
-                  //setStream(!stream);
-                  setStop(false);
-                  setFastRef(true);
-
-                  //setRec(true);
-                }}
-              >
-                <StopRecord height={110} width={110} />
-              </TouchableOpacity>
+              <View style={{}} />
             )}
+
+            */}
+
+            {/*
+            {stop ? (
+              <Balloon
+                borderColor="#2E86C1"
+                backgroundColor="#D6EAF8"
+                borderWidth={2}
+                borderRadius={20}
+                triangleSize={15}
+                triangleOffset="45%"
+              >
+                <Text>Press this button to stop.</Text>
+              </Balloon>
+            ) : (
+              <View style={{}} />
+            )}
+
+            */}
+
+            <View style={{ flexDirection: "row" }}>
+              <View style={{ flexDirection: "column" }}>
+                {purpl ? (
+                  <View
+                    style={{
+                      height: 90,
+                      width: 90,
+                    }}
+                  >
+                    <Balloon
+                      borderColor="#2E86C1"
+                      backgroundColor="purple"
+                      borderWidth={2}
+                      width={70}
+                      height={80}
+                      borderRadius={20}
+                      triangleSize={10}
+                      triangleDirection="right"
+                      triangleOffset="45%"
+                      onPress={() => console.log("press")}
+                    >
+                      <Text>Press to start.</Text>
+                    </Balloon>
+                  </View>
+                ) : (
+                  <View style={{ height: 90, width: 90 }} />
+                )}
+
+                {rede ? (
+                  <View
+                    style={{
+                      height: 90,
+                      width: 90,
+                    }}
+                  >
+                    <Balloon
+                      borderColor="#2E86C1"
+                      backgroundColor="red"
+                      borderWidth={2}
+                      width={70}
+                      height={70}
+                      borderRadius={20}
+                      triangleSize={10}
+                      triangleDirection="right"
+                      triangleOffset="50%"
+                      onPress={() => console.log("press")}
+                    >
+                      <Text>Details menus </Text>
+                    </Balloon>
+                  </View>
+                ) : (
+                  <View style={{ height: 90, width: 90 }} />
+                )}
+              </View>
+
+              <View style={{ width: 50 }}>
+                {stream ? (
+                  <TouchableOpacity
+                    style={{ alignSelf: "center" }}
+                    onPress={() => {
+                      setPurpl(false);
+                      setStream(false);
+                      setYell(true);
+                      setBlue(true);
+                    }}
+                  >
+                    <Record height={100} width={100} />
+                  </TouchableOpacity>
+                ) : (
+                  <TouchableOpacity
+                    style={{ alignSelf: "center" }}
+                    onPress={() => {
+                      //setStream(!stream);
+                      setGre(true);
+                      setBlue(false);
+                      setYell(false);
+                      setStream(false);
+
+                      //setRec(true);
+                    }}
+                  >
+                    <StopRecord height={100} width={100} />
+                  </TouchableOpacity>
+                )}
+                <View
+                  style={{
+                    justifyContent: "flex-end",
+                    backgroundColor: "orange",
+                    marginLeft: 230,
+                  }}
+                >
+                  <View style={{ height: 100 }} />
+                </View>
+                <ActionButton
+                  buttonColor="white"
+                  btnOutRange="white"
+                  onPress={() => {
+                    setRe(false);
+                    setShowModal(true);
+                  }}
+                >
+                  <ActionButton.Item
+                    buttonColor="white"
+                    title="sample info"
+                    onPress={() => {
+                      setShowModal(true);
+                      console.log("lupa do actionButt");
+                    }}
+                  >
+                    <Image
+                      source={require("../src/pngs/lupa.png")}
+                      style={{ width: 20, height: 20 }}
+                    />
+                  </ActionButton.Item>
+
+                  <ActionButton.Item
+                    buttonColor="white"
+                    title="resume classification"
+                    onPress={() => {
+                      console.log("grafico do actionButt");
+                    }}
+                  >
+                    <Image
+                      source={require("../src/pngs/graph.png")}
+                      style={{ width: 20, height: 20 }}
+                    />
+                  </ActionButton.Item>
+                </ActionButton>
+                <View
+                  style={{
+                    backgroundColor: "red",
+                    justifyContent: "flex-end",
+                  }}
+                ></View>
+              </View>
+
+              {blu ? (
+                <View style={{ height: 90, width: 90 }}>
+                  <Balloon
+                    borderColor="#2E86C1"
+                    backgroundColor="blue"
+                    borderWidth={2}
+                    width={70}
+                    height={80}
+                    borderRadius={20}
+                    triangleSize={10}
+                    triangleDirection="left"
+                    triangleOffset="25%"
+                    onPress={() => console.log("press")}
+                  >
+                    <Text>Press to STOP.</Text>
+                  </Balloon>
+                </View>
+              ) : (
+                <View style={{ height: 90, width: 90 }} />
+              )}
+            </View>
           </View>
-
-          <View
-            style={{
-              alignSelf: "flex-end",
-              marginBottom: 15,
-            }}
-          >
-            <Balloon
-              borderColor="#2E86C1"
-              backgroundColor="#D6EAF8"
-              borderWidth={2}
-              width={60}
-              borderRadius={20}
-              triangleSize={10}
-              triangleDirection="left"
-              triangleOffset="45%"
-              onPress={() => console.log("press")}
-            >
-              <Text>merda</Text>
-            </Balloon>
-          </View>
-
-          <ActionButton buttonColor="white" btnOutRange="white">
-            <ActionButton.Item
-              buttonColor="white"
-              title="sample info"
-              onPress={() => {
-                console.log("lupa do actionButt");
-              }}
-            >
-              <Image
-                source={require("../src/pngs/lupa.png")}
-                style={{ width: 20, height: 20 }}
-              />
-            </ActionButton.Item>
-
-            <ActionButton.Item
-              buttonColor="white"
-              title="resume classification"
-              onPress={() => {
-                console.log("grafico do actionButt");
-              }}
-            >
-              <Image
-                source={require("../src/pngs/graph.png")}
-                style={{ width: 20, height: 20 }}
-              />
-            </ActionButton.Item>
-          </ActionButton>
 
           <BottomSheet
             hasDraggableIcon
