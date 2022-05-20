@@ -13,6 +13,7 @@ import Toast from "react-native-toast-message";
 
 import {
   SafeAreaView,
+  Dimensions,
   RefreshControl,
   Button,
   TouchableOpacity,
@@ -24,8 +25,10 @@ import {
   View,
 } from "react-native";
 
-const Help = () => {
+const Help = ({ navigation, route }) => {
   // Needed in order to use .show()
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
   const bottomSheet = useRef();
   const [on, setOn] = React.useState(false);
   const [sample, setSample] = React.useState(0);
@@ -64,69 +67,147 @@ const Help = () => {
           <View
             style={{
               width: "80%",
+              borderWidth: 1,
+              borderColor: "#0e7fe5",
               backgroundColor: "white",
-              paddingHorizontal: 20,
-              paddingVertical: 50,
+              paddingHorizontal: 18,
+              paddingVertical: 18,
               borderRadius: 50,
               alignItems: "center",
+              height: windowHeight / 2,
             }}
           >
-            <ScrollView>
-              <View style={{ flexDirection: "row" }}>
+            <Text style={{ fontSize: 18, fontWeight: "700", color: "#0e7fe5" }}>
+              Instructions
+            </Text>
+            <ScrollView
+              style={{
+                width: "100%",
+              }}
+            >
+              <View style={{ flexDirection: "row", marginTop: 10 }}>
                 <Image
                   source={require("../src/pngs/lupa.png")}
                   style={{ width: 20, height: 20, marginRight: 10 }}
                 />
 
+                <Text style={{ textAlign: "justify", fontStyle: "italic" }}>
+                  Sample Inspector
+                </Text>
+              </View>
+              <View>
                 <Text style={{ textAlign: "justify" }}>
-                  In this screen, a tour across the functionalities of this
-                  classifier is made.
+                  This tool allows to inspect each sample information regarding
+                  its classification while receiving it.
                 </Text>
               </View>
 
-              <View style={{ height: 20 }} />
-
-              <View style={{ flexDirection: "row" }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 10,
+                  //justifyContent: "center",
+                }}
+              >
                 <Image
                   source={require("../src/pngs/graph.png")}
                   style={{ width: 20, height: 20, marginRight: 10 }}
                 />
-
+                <Text style={{ fontStyle: "italic" }}>Statistics screen</Text>
+              </View>
+              <View>
                 <Text style={{ textAlign: "justify" }}>
-                  In this screen, a tour across the functionalities of this
-                  classifier is made. In this screen, a tour across the
+                  This tool directs to another screen where statistic
+                  information about all the collected samples is presented.
                 </Text>
               </View>
-            </ScrollView>
 
-            <TouchableOpacity
-              onPress={() => {
-                setPurpl(true);
-                setBlue(false);
-                setGre(false);
-                setRe(false);
-                setYell(false);
-                setAct(false);
-
-                setShowModal(false);
-              }}
-            >
-              <View
+              <Text
                 style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginTop: 30,
-                  borderTopColor: "black",
-                  borderTopWidth: 1,
+                  textAlign: "justify",
+                  textAlign: "center",
+                  fontWeight: "700",
+                  marginTop: 10,
                 }}
               >
+                Note:
+              </Text>
+              <View style={{ flexDirection: "row" }}>
                 <Image
-                  source={require("../src/pngs/ok.png")}
-                  style={{ width: 30, height: 30, margin: 5 }}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    resizeMode: "contain",
+                  }}
+                  source={require("../src/pngs/info2.png")}
                 />
-                <Text>Ok</Text>
+                <View
+                  style={{
+                    backgroundColor: "#f2f4f7",
+                    width: "90%",
+                  }}
+                >
+                  <Text style={{ textAlign: "justify" }}>
+                    This icone exists in both of referred tools and gives
+                    information regarding the results interpretation.
+                  </Text>
+                </View>
               </View>
-            </TouchableOpacity>
+            </ScrollView>
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity
+                onPress={() => {
+                  setPurpl(true);
+                  setBlue(false);
+                  setGre(!false);
+                  setRe(false);
+                  setYell(false);
+                  setAct(false);
+
+                  setShowModal(false);
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderTopColor: "black",
+                  }}
+                >
+                  <Image
+                    source={require("../src/pngs/again.png")}
+                    style={{ width: 30, height: 30, margin: 5 }}
+                  />
+                  <Text>Again</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  //setPurpl(true);
+                  //setBlue(false);
+                  //setGre(false);
+                  //setRe(false);
+                  //setYell(false);
+                  //setAct(false);
+                  //setShowModal(false);
+                  navigation.navigate("Home");
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderTopColor: "black",
+                  }}
+                >
+                  <Image
+                    source={require("../src/pngs/finished.png")}
+                    style={{ width: 30, height: 30, margin: 5 }}
+                  />
+                  <Text>Done</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -148,15 +229,11 @@ const Help = () => {
 
   const onRefresh = () => {
     console.log("fast refresh");
-
     setPurpl(false);
     setBlue(false);
     setYell(false);
-
     setShowModal(false);
-
     setGre(false);
-
     setRe(true);
     setAct(true);
   };
@@ -180,11 +257,11 @@ const Help = () => {
         >
           <NewMic height={120} width={120} />
           {yell ? (
-            <View style={{ height: 90, width: 100, backgroundColor: "yellow" }}>
+            <View style={{ height: 90, width: 100 }}>
               <Balloon
-                borderColor="#2E86C1"
-                backgroundColor="yellow"
-                borderWidth={2}
+                borderColor="#0e7fe5"
+                backgroundColor="white"
+                borderWidth={3}
                 width={100}
                 height={90}
                 borderRadius={20}
@@ -193,7 +270,9 @@ const Help = () => {
                 triangleOffset="45%"
                 onPress={() => console.log("press")}
               >
-                <Text>Microphone starts capturing sound.</Text>
+                <Text style={{ textAlign: "center" }}>
+                  Microphone starts capturing sound.
+                </Text>
               </Balloon>
             </View>
           ) : (
@@ -228,9 +307,9 @@ const Help = () => {
         {gre ? (
           <View style={{ height: 40, width: 300, marginBottom: 20 }}>
             <Balloon
-              borderColor="#2E86C1"
-              backgroundColor="grey"
-              borderWidth={2}
+              borderColor="#0e7fe5"
+              backgroundColor="white"
+              borderWidth={3}
               width={300}
               height={40}
               borderRadius={20}
@@ -239,7 +318,9 @@ const Help = () => {
               triangleOffset="45%"
               onPress={() => console.log("press")}
             >
-              <Text>Drag the blue edge down to do a fast refresh.</Text>
+              <Text style={{ textAlign: "center" }}>
+                Drag the blue edge down to refresh.
+              </Text>
             </Balloon>
           </View>
         ) : (
@@ -359,18 +440,20 @@ const Help = () => {
                     }}
                   >
                     <Balloon
-                      borderColor="#2E86C1"
-                      backgroundColor="purple"
+                      borderColor="#0e7fe5"
+                      backgroundColor="white"
                       borderWidth={2}
                       width={70}
-                      height={80}
+                      height={60}
                       borderRadius={20}
                       triangleSize={10}
                       triangleDirection="right"
                       triangleOffset="45%"
                       onPress={() => console.log("press")}
                     >
-                      <Text>Press to start.</Text>
+                      <Text style={{ textAlign: "justify" }}>
+                        Press to start.
+                      </Text>
                     </Balloon>
                   </View>
                 ) : (
@@ -385,18 +468,20 @@ const Help = () => {
                     }}
                   >
                     <Balloon
-                      borderColor="#2E86C1"
-                      backgroundColor="red"
+                      borderColor="#0e7fe5"
+                      backgroundColor="white"
                       borderWidth={2}
                       width={70}
-                      height={70}
+                      height={60}
                       borderRadius={20}
                       triangleSize={10}
                       triangleDirection="right"
                       triangleOffset="50%"
                       onPress={() => console.log("press")}
                     >
-                      <Text>Details menus </Text>
+                      <Text style={{ textAlign: "justify" }}>
+                        Details menus{" "}
+                      </Text>
                     </Balloon>
                   </View>
                 ) : (
@@ -410,10 +495,11 @@ const Help = () => {
                     style={{ alignSelf: "center" }}
                     onPress={() => {
                       setPurpl(false);
-                      setStream(false);
+                      setStream(!stream);
                       setYell(true);
                       setBlue(true);
                       setShowModal(false);
+                      setGre(!gre);
                     }}
                   >
                     <Record height={100} width={100} />
@@ -426,11 +512,11 @@ const Help = () => {
 
                       setShowModal(false);
 
-                      setPurpl(false);
-                      setGre(true);
+                      setPurpl(true);
+                      setGre(!gre);
                       setBlue(false);
                       setYell(false);
-                      setStream(false);
+                      setStream(!stream);
                       setRe(false);
 
                       //setRec(true);
@@ -452,6 +538,7 @@ const Help = () => {
                   buttonColor="white"
                   btnOutRange="white"
                   onPress={() => {
+                    setShowModal(true);
                     if (act) {
                       setRe(false);
                       setShowModal(true);
@@ -494,6 +581,7 @@ const Help = () => {
                   style={{
                     backgroundColor: "red",
                     justifyContent: "flex-end",
+                    elevation: 90,
                   }}
                 ></View>
               </View>
@@ -501,8 +589,8 @@ const Help = () => {
               {blu ? (
                 <View style={{ height: 90, width: 90 }}>
                   <Balloon
-                    borderColor="#2E86C1"
-                    backgroundColor="blue"
+                    borderColor="#0e7fe5"
+                    backgroundColor="white"
                     borderWidth={2}
                     width={70}
                     height={80}
@@ -512,7 +600,7 @@ const Help = () => {
                     triangleOffset="25%"
                     onPress={() => console.log("press")}
                   >
-                    <Text>Press to STOP.</Text>
+                    <Text style={{ textAlign: "justify" }}>Press to STOP.</Text>
                   </Balloon>
                 </View>
               ) : (

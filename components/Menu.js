@@ -39,18 +39,23 @@ const Menu = ({ isVisible, toggle, screenName }) => {
       <View
         style={{
           backgroundColor: "white",
-          height: windowHeight / 2.3,
-          width: windowWidth / 1.5,
+          paddingHorizontal: 18,
+          paddingVertical: 18,
+          //height: windowHeight / 2.7,
+          //width: windowWidth / 1.5,
           borderRadius: 40,
           elevation: 80,
+          borderColor: "#0e7fe5",
+          borderWidth: 1,
+          justifyContent: "center",
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            margin: 5,
-            justifyContent: "space-evenly",
             alignItems: "center",
+            borderBottomColor: "#0e7fe5",
+            borderBottomWidth: 2,
           }}
         >
           <Text
@@ -58,6 +63,8 @@ const Menu = ({ isVisible, toggle, screenName }) => {
               fontSize: 22,
               fontWeight: "700",
               marginLeft: windowWidth / 5,
+              color: "#0e7fe5",
+              marginRight: 30,
             }}
           >
             Menu
@@ -71,99 +78,137 @@ const Menu = ({ isVisible, toggle, screenName }) => {
             <Image
               source={require("../src/pngs/closex.png")}
               style={{
-                width: 30,
-                height: 30,
-                margin: 15,
+                width: 35,
+                height: 35,
               }}
             />
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            margin: 20,
-            elevation: 100,
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(screenName);
+            toggle();
           }}
         >
           <View
             style={{
               alignContent: "center",
               alignItems: "center",
-              borderBottomColor: "#0E7FE5",
-              borderBottomWidth: 1,
               marginTop: 5,
               marginBottom: 5,
+              flexDirection: "row",
+              backgroundColor: "#0E7FE5",
+              borderRadius: 20,
             }}
           >
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate(screenName);
-                toggle();
-                console.log("help");
+            <Image
+              style={{
+                height: 20,
+                width: 20,
+                marginRight: 5,
+                marginLeft: 5,
               }}
-              style={{ flexDirection: "row" }}
-            >
-              <Image
-                style={{
-                  height: 25,
-                  width: 25,
-                  marginRight: 10,
-                }}
-                source={require("../src/pngs/help.png")}
-              ></Image>
-              <Text style={{ fontSize: 18, marginLeft: 10 }}>Help</Text>
-            </TouchableOpacity>
+              source={require("../src/pngs/help.png")}
+            ></Image>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
+              Help
+            </Text>
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log("traduzir!!!!");
+          }}
+        >
           <View
             style={{
               alignContent: "center",
               alignItems: "center",
-              borderBottomColor: "#0E7FE5",
-              borderBottomWidth: 1,
               marginTop: 5,
               marginBottom: 5,
+              flexDirection: "row",
+              backgroundColor: "#0E7FE5",
+              borderRadius: 20,
             }}
           >
-            <TouchableOpacity
-              onPress={() => console.log("help")}
-              style={{ flexDirection: "row" }}
-            >
-              <Image
-                style={{
-                  height: 25,
-                  width: 25,
-                  marginRight: 10,
-                }}
-                source={require("../src/pngs/help.png")}
-              ></Image>
-              <Text style={{ fontSize: 18, marginLeft: 10 }}>Help</Text>
-            </TouchableOpacity>
+            <Image
+              style={{
+                height: 20,
+                width: 20,
+                marginRight: 5,
+                marginLeft: 5,
+              }}
+              source={require("../src/pngs/eng.png")}
+            ></Image>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
+              PT
+            </Text>
           </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log("do dispositivo!!!!");
+          }}
+        >
           <View
             style={{
               alignContent: "center",
               alignItems: "center",
-              borderBottomColor: "#0E7FE5",
-              borderBottomWidth: 1,
               marginTop: 5,
               marginBottom: 5,
+              flexDirection: "row",
+              backgroundColor: "#0E7FE5",
+              borderRadius: 20,
             }}
           >
-            <TouchableOpacity
-              onPress={() => console.log("help")}
-              style={{ flexDirection: "row" }}
-            >
-              <Image
-                style={{
-                  height: 25,
-                  width: 25,
-                  marginRight: 10,
-                }}
-                source={require("../src/pngs/help.png")}
-              ></Image>
-              <Text style={{ fontSize: 18, marginLeft: 10 }}>Help</Text>
-            </TouchableOpacity>
+            <Image
+              style={{
+                height: 20,
+                width: 20,
+                marginRight: 5,
+                marginLeft: 5,
+              }}
+              source={require("../src/pngs/fromdevice.png")}
+            ></Image>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
+              From device
+            </Text>
           </View>
-        </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            console.log("historicooo");
+          }}
+        >
+          <View
+            style={{
+              alignContent: "center",
+              alignItems: "center",
+              marginTop: 5,
+              marginBottom: 5,
+              flexDirection: "row",
+              backgroundColor: "#0E7FE5",
+              borderRadius: 20,
+            }}
+          >
+            <Image
+              style={{
+                height: 20,
+                width: 20,
+                marginRight: 5,
+                marginLeft: 5,
+              }}
+              source={require("../src/pngs/hist.png")}
+            ></Image>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
+              From device
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </Modal>
   );
