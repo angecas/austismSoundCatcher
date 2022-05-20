@@ -34,17 +34,15 @@ const Help = () => {
   const [refresh, setRefresh] = React.useState(false);
   const [prev, setPrev] = React.useState("");
 
-  const [fastRef, setFastRef] = React.useState(false);
-  const [rec, setRec] = React.useState(true);
   const [stop, setStop] = React.useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [actionBut, setActionBut] = useState(false);
 
   const [purpl, setPurpl] = useState(true);
   const [blu, setBlue] = useState(false);
   const [gre, setGre] = useState(false);
   const [rede, setRe] = useState(false);
   const [yell, setYell] = useState(false);
+  const [act, setAct] = useState(false);
 
   const showToast = () => {
     Toast.show({
@@ -101,7 +99,18 @@ const Help = () => {
               </View>
             </ScrollView>
 
-            <TouchableOpacity onPress={() => setShowModal(false)}>
+            <TouchableOpacity
+              onPress={() => {
+                setPurpl(true);
+                setBlue(false);
+                setGre(false);
+                setRe(false);
+                setYell(false);
+                setAct(false);
+
+                setShowModal(false);
+              }}
+            >
               <View
                 style={{
                   flexDirection: "row",
@@ -140,9 +149,16 @@ const Help = () => {
   const onRefresh = () => {
     console.log("fast refresh");
 
+    setPurpl(false);
+    setBlue(false);
+    setYell(false);
+
+    setShowModal(false);
+
     setGre(false);
 
     setRe(true);
+    setAct(true);
   };
 
   return (
@@ -397,6 +413,7 @@ const Help = () => {
                       setStream(false);
                       setYell(true);
                       setBlue(true);
+                      setShowModal(false);
                     }}
                   >
                     <Record height={100} width={100} />
@@ -406,10 +423,15 @@ const Help = () => {
                     style={{ alignSelf: "center" }}
                     onPress={() => {
                       //setStream(!stream);
+
+                      setShowModal(false);
+
+                      setPurpl(false);
                       setGre(true);
                       setBlue(false);
                       setYell(false);
                       setStream(false);
+                      setRe(false);
 
                       //setRec(true);
                     }}
@@ -430,8 +452,15 @@ const Help = () => {
                   buttonColor="white"
                   btnOutRange="white"
                   onPress={() => {
-                    setRe(false);
-                    setShowModal(true);
+                    if (act) {
+                      setRe(false);
+                      setShowModal(true);
+
+                      setPurpl(false);
+                      setBlue(false);
+                      setGre(false);
+                      setYell(false);
+                    }
                   }}
                 >
                   <ActionButton.Item
