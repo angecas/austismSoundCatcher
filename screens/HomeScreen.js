@@ -10,8 +10,7 @@ import StopRecord from "../src/svgs/newpause.svg";
 
 import NewMic from "../src/svgs/newmic.svg";
 
-//import { FloatingMenu } from "react-native-floating-action-menu";
-import NetInfo from "@react-native-community/netinfo";
+import * as DocumentPicker from "expo-document-picker";
 
 import ActionButton from "react-native-circular-action-menu";
 
@@ -58,23 +57,6 @@ function HomeScreen({ navigation }) {
   const wait = (timeout) => {
     return new Promise((resolve) => setTimeout(resolve, timeout));
   };
-
-  {
-    /*
-
-  const alertToast = {
-    tomatoToast: () => (
-      <View>
-        <Text>
-          "Only one Recording object can be prepared at a given time."
-        </Text>
-        <Text>{text}</Text>
-      </View>
-    ),
-  };
-
-*/
-  }
 
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
@@ -198,23 +180,21 @@ function HomeScreen({ navigation }) {
 
   */
 
-  const startRec = () => {
-    if (count.current) {
-      setRingWaves(true);
-      setStream(false);
-      console.log(stream);
-    } else {
-      showToast();
-    }
-  };
-
   const startTimer = () => {
     checkConnected()
       .then((res) => {
         count.current = res;
         console.log("PRESSEDCONNECT", connect);
       })
-      .finally(() => startRec());
+      .finally(() => {
+        if (count.current) {
+          setRingWaves(true);
+          setStream(false);
+          console.log(stream);
+        } else {
+          showToast();
+        }
+      });
   };
 
   const stopTimer = () => {

@@ -29,6 +29,7 @@ import Help from "./screens/Help";
 
 import NetInfo from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
+import FromDevice from "./screens/FromDevice";
 
 const screen = Dimensions.get("screen");
 const windowHeight = Dimensions.get("window").height;
@@ -235,6 +236,15 @@ export default function App() {
           component={Help}
           options={{
             title: "Help",
+            headerTitleAlign: "center",
+          }}
+        />
+
+        <Stack.Screen
+          name="FromDevice"
+          component={FromDevice}
+          options={{
+            title: "From Device",
             headerTitleAlign: "center",
           }}
         />

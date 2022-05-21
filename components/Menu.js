@@ -149,8 +149,10 @@ const Menu = ({ isVisible, toggle, screenName }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
+          onPress={async () => {
             console.log("do dispositivo!!!!");
+            navigation.navigate("FromDevice");
+            toggle();
           }}
         >
           <View
@@ -205,7 +207,7 @@ const Menu = ({ isVisible, toggle, screenName }) => {
               source={require("../src/pngs/hist.png")}
             ></Image>
             <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-              From device
+              Historic
             </Text>
           </View>
         </TouchableOpacity>

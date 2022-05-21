@@ -217,7 +217,7 @@ const Help = ({ navigation, route }) => {
   useEffect(() => {
     setTimeout(() => {
       showToast();
-    }, 1500);
+    }, 0);
     if (stop) {
       console.log("parar");
     }
@@ -500,6 +500,7 @@ const Help = ({ navigation, route }) => {
                       setBlue(true);
                       setShowModal(false);
                       setGre(!gre);
+                      setRe(true);
                     }}
                   >
                     <Record height={100} width={100} />
