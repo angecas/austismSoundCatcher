@@ -369,6 +369,7 @@ function HomeScreen({ navigation }) {
               <PrevisionTable
                 previsionResults={prev}
                 sample={sample}
+                showSample={true}
               ></PrevisionTable>
             </View>
           </BottomSheet>

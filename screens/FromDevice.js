@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import MusicIn from "../src/svgs/music.svg";
 import MusicOut from "../src/svgs/musicout.svg";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import BottomSheet from "react-native-gesture-bottom-sheet";
+import PrevisionTable from "../components/PrevisionTable";
 
 import Classifying from "../components/Classifying";
-
-import FRTable from "../components/FRtable";
 
 import {
   View,
@@ -27,6 +27,7 @@ const FromDevice = ({ navigation }) => {
   const [load, setLoad] = useState(false);
   const [prev, setPrev] = useState("");
   const [fileName, setFileName] = useState("");
+  const bottomSheet = useRef();
 
   const uploadAudio = async (path) => {
     const formData = new FormData();
@@ -71,188 +72,225 @@ const FromDevice = ({ navigation }) => {
         //justifyContent: "flex-end",
       }}
     >
-      <View style={{ justifyContent: "flex-end", flex: 1 }}>
-        <View
-          style={{
-            flex: 0.5,
-            alignSelf: "center",
-            alignContent: "center",
-            justifyContent: "center",
-          }}
-        >
-          <View
-            style={{
-              alignItems: "center",
-            }}
-          >
-            {pathFile != "" ? (
-              <MusicIn width={120} height={120} />
-            ) : (
-              <MusicOut width={120} height={120} />
-            )}
-
-            <View style={{ flexDirection: "row", marginTop: 25 }}>
-              <TouchableOpacity
-                style={{ marginRight: 15 }}
-                onPress={async () => {
-                  let result = await DocumentPicker.getDocumentAsync({});
-                  console.log("TYPE, ", result.type);
-                  if (result.type === "success") {
-                    setPathFile(result.uri);
-                    setFileName(result.name);
-                  }
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    backgroundColor: "#0e7fe5",
-                    borderRadius: 40,
-                    width: "100%",
-                    alignItems: "center",
-                  }}
-                >
-                  <Image
-                    source={require("../src/pngs/show.png")}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      marginRight: 10,
-                      marginLeft: 10,
-                      marginBottom: 10,
-                      marginTop: 10,
-                    }}
-                  />
-
-                  <View
-                    style={{
-                      marginLeft: 10,
-                      marginRight: 15,
-                      marginBottom: 10,
-                      marginTop: 10,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        color: "white",
-                        fontSize: 18,
-                      }}
-                    >
-                      search
-                    </Text>
-
-                    {fileName != "" ? (
-                      <Text
-                        style={{
-                          color: "white",
-                          fontSize: 7,
-                        }}
-                      >
-                        {fileName}
-                      </Text>
-                    ) : null}
-                  </View>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                disabled={pathFile === ""}
-                style={{ marginLeft: 15 }}
-                onPress={async () => {
-                  console.log("classificar", pathFile);
-                  await uploadAudio(pathFile);
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-
-                    backgroundColor: pathFile != "" ? "#0e7fe5" : "#b5d6f7",
-                    borderRadius: 40,
-                    width: "100%",
-                    alignItems: "center",
-                  }}
-                >
-                  <Image
-                    source={require("../src/pngs/class.png")}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      marginRight: 10,
-                      marginLeft: 10,
-                      marginBottom: 10,
-                      marginTop: 10,
-                    }}
-                  />
-
-                  <Text
-                    style={{
-                      color: "white",
-                      fontSize: 18,
-                      marginLeft: 10,
-                      marginRight: 15,
-                      marginBottom: 10,
-                      marginTop: 10,
-                    }}
-                  >
-                    Classify
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-        {load === true ? (
-          <View style={{ height: 50 }}>
-            <Classifying loading={true} />
-          </View>
+      <View
+        style={{
+          flex: 1,
+          alignSelf: "center",
+          alignContent: "center",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        {pathFile != "" ? (
+          <MusicIn width={120} height={120} />
         ) : (
-          <View style={{ height: 50 }}>
-            <></>
-          </View>
+          <MusicOut width={120} height={120} />
         )}
 
         <View
           style={{
-            backgroundColor: "#0e7fe5",
-            borderColor: "#0e7fe5",
-            flex: 0.6,
-            //borderRadius: 50,
-            borderTopLeftRadius: 80,
-            borderTopRightRadius: 80,
-            borderWidth: 1,
-            elevation: 15,
-            justifyContent: "space-around",
+            flexDirection: "row",
+            marginTop: 25,
           }}
         >
-          {prev != "" ? (
+          <TouchableOpacity
+            style={{ marginRight: 15 }}
+            onPress={async () => {
+              let result = await DocumentPicker.getDocumentAsync({});
+              console.log("TYPE, ", result.type);
+              if (result.type === "success") {
+                setPathFile(result.uri);
+                setFileName(result.name);
+              }
+            }}
+          >
             <View
               style={{
+                flexDirection: "row",
+                backgroundColor: "#0e7fe5",
+                borderRadius: 40,
+                width: "100%",
                 alignItems: "center",
-                height: 60,
-                marginTop: 14,
               }}
             >
-              <Text
+              <Image
+                source={require("../src/pngs/show.png")}
                 style={{
-                  color: "#ffffff",
-                  fontSize: 18,
-                  fontFamily: "roboto",
+                  width: 40,
+                  height: 40,
+                  marginRight: 10,
+                  marginLeft: 10,
+                  marginBottom: 10,
+                  marginTop: 10,
+                }}
+              />
+
+              <View
+                style={{
+                  marginLeft: 10,
+                  marginRight: 15,
+                  marginBottom: 10,
+                  marginTop: 10,
                 }}
               >
-                Overall Classification: {prev["label"]["firstPrevisionLabel"]}
-              </Text>
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 18,
+                  }}
+                >
+                  search
+                </Text>
+
+                {fileName != "" ? (
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 8,
+                    }}
+                  >
+                    {fileName}
+                  </Text>
+                ) : null}
+              </View>
             </View>
-          ) : (
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            disabled={pathFile === ""}
+            style={{ marginLeft: 15 }}
+            onPress={async () => {
+              console.log("classificar", pathFile);
+              await uploadAudio(pathFile);
+            }}
+          >
             <View
               style={{
+                flexDirection: "row",
+
+                backgroundColor: pathFile != "" ? "#0e7fe5" : "#b5d6f7",
+                borderRadius: 40,
+                width: "100%",
                 alignItems: "center",
-                height: 60,
               }}
-            />
-          )}
-          <FRTable />
+            >
+              <Image
+                source={require("../src/pngs/class.png")}
+                style={{
+                  width: 40,
+                  height: 40,
+                  marginRight: 10,
+                  marginLeft: 10,
+                  marginBottom: 10,
+                  marginTop: 10,
+                }}
+              />
+
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 18,
+                  marginLeft: 10,
+                  marginRight: 15,
+                  marginBottom: 10,
+                  marginTop: 10,
+                }}
+              >
+                Classify
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
+      </View>
+      {load === true ? (
+        <View style={{ height: 50 }}>
+          <Classifying loading={true} />
+        </View>
+      ) : (
+        <View style={{ height: 50 }}>
+          <></>
+        </View>
+      )}
+
+      <View
+        style={{
+          backgroundColor: "#0e7fe5",
+          borderColor: "#0e7fe5",
+          flex: 0.3,
+          //borderRadius: 50,
+          borderTopLeftRadius: 80,
+          borderTopRightRadius: 80,
+          borderWidth: 1,
+          elevation: 15,
+          justifyContent: "space-around",
+        }}
+      >
+        {prev != "" ? (
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "space-around",
+              alignContent: "center",
+              height: 30,
+            }}
+          >
+            <Text
+              style={{
+                color: "#ffffff",
+                fontSize: 18,
+                fontFamily: "roboto",
+              }}
+            >
+              Overall Classification: {prev["label"]["firstPrevisionLabel"]}
+            </Text>
+          </View>
+        ) : (
+          <View style={{ backgroundColor: "red" }} />
+        )}
+
+        <TouchableOpacity
+          disabled={prev === ""}
+          onPress={() => {
+            bottomSheet.current.show();
+          }}
+        >
+          <View
+            style={{
+              borderRadius: 100,
+              backgroundColor: prev === "" ? "#b5d6f7" : "white",
+              width: 45,
+              height: 45,
+              justifyContent: "center",
+              alignItems: "center",
+              alignSelf: "center",
+            }}
+          >
+            <Image
+              source={require("../src/pngs/lupa.png")}
+              style={{ width: 25, height: 25 }}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <BottomSheet
+          hasDraggableIcon
+          ref={bottomSheet}
+          height={350}
+          sheetBackgroundColor={"#ffffff"}
+        >
+          <View
+            style={{
+              alignItems: "center",
+              backgroundColor: "#ffffff",
+            }}
+          >
+            <PrevisionTable
+              previsionResults={prev.label}
+              showSample={false}
+              sample={1}
+            ></PrevisionTable>
+          </View>
+        </BottomSheet>
       </View>
     </View>
   );

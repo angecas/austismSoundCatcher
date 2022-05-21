@@ -4,7 +4,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import { BottomModal } from "react-native-modals";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 
-const PrevisionTable = ({ previsionResults, sample }) => {
+const PrevisionTable = ({ previsionResults, sample, showSample }) => {
   let toastText =
     "In the first prediction the sample was cassified as " +
     previsionResults.firstPrevisionPercent +
@@ -104,25 +104,27 @@ const PrevisionTable = ({ previsionResults, sample }) => {
       <View
         style={{ flexDirection: "row", marginBottom: 6, alignSelf: "center" }}
       >
-        <View style={{ alignItems: "center", flexDirection: "row" }}>
-          <Text
-            style={{
-              fontWeight: "bold",
-              fontSize: 14,
-              letterSpacing: 1,
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-              marginLeft: 25,
-              marginBottom: 10,
-            }}
-          >
-            Sample:
-          </Text>
-          <Text style={{ marginLeft: 5, fontSize: 16, marginBottom: 10 }}>
-            {sample}
-          </Text>
-        </View>
+        {showSample ? (
+          <View style={{ alignItems: "center", flexDirection: "row" }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 14,
+                letterSpacing: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                marginLeft: 25,
+                marginBottom: 10,
+              }}
+            >
+              Sample:
+            </Text>
+            <Text style={{ marginLeft: 5, fontSize: 16, marginBottom: 10 }}>
+              {sample}
+            </Text>
+          </View>
+        ) : null}
       </View>
       <Grid>
         <Col size={5}>
