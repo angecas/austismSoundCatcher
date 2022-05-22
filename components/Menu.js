@@ -86,8 +86,8 @@ const Menu = ({ isVisible, toggle, screenName }) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate(screenName);
+          onPress={async () => {
+            navigation.navigate("FromDevice");
             toggle();
           }}
         >
@@ -109,10 +109,10 @@ const Menu = ({ isVisible, toggle, screenName }) => {
                 marginRight: 5,
                 marginLeft: 5,
               }}
-              source={require("../src/pngs/help.png")}
+              source={require("../src/pngs/fromdevice.png")}
             ></Image>
             <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-              Help
+              From device
             </Text>
           </View>
         </TouchableOpacity>
@@ -149,9 +149,8 @@ const Menu = ({ isVisible, toggle, screenName }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={async () => {
-            console.log("do dispositivo!!!!");
-            navigation.navigate("FromDevice");
+          onPress={() => {
+            navigation.navigate(screenName);
             toggle();
           }}
         >
@@ -173,13 +172,15 @@ const Menu = ({ isVisible, toggle, screenName }) => {
                 marginRight: 5,
                 marginLeft: 5,
               }}
-              source={require("../src/pngs/fromdevice.png")}
+              source={require("../src/pngs/help.png")}
             ></Image>
             <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-              From device
+              Help
             </Text>
           </View>
         </TouchableOpacity>
+
+        {/*
 
         <TouchableOpacity
           onPress={() => {
@@ -211,6 +212,7 @@ const Menu = ({ isVisible, toggle, screenName }) => {
             </Text>
           </View>
         </TouchableOpacity>
+            */}
       </View>
     </Modal>
   );

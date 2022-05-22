@@ -39,6 +39,7 @@ const Help = ({ navigation, route }) => {
 
   const [stop, setStop] = React.useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [MenuPop, setMenuPop] = useState(false);
 
   const [purpl, setPurpl] = useState(true);
   const [blu, setBlue] = useState(false);
@@ -78,7 +79,7 @@ const Help = ({ navigation, route }) => {
             }}
           >
             <Text style={{ fontSize: 18, fontWeight: "700", color: "#0e7fe5" }}>
-              Instructions
+              Tool Instructions
             </Text>
             <ScrollView
               style={{
@@ -214,6 +215,244 @@ const Help = ({ navigation, route }) => {
     );
   };
 
+  const MenuModal = () => {
+    return (
+      <Modal transparent visible={MenuPop}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              width: "80%",
+              borderWidth: 1,
+              borderColor: "#0e7fe5",
+              backgroundColor: "white",
+              paddingHorizontal: 18,
+              paddingVertical: 18,
+              borderRadius: 50,
+              alignItems: "center",
+              height: windowHeight / 2,
+            }}
+          >
+            <Text style={{ fontSize: 18, fontWeight: "700", color: "#0e7fe5" }}>
+              Menu Instructions
+            </Text>
+            <ScrollView
+              style={{
+                width: "100%",
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 10,
+                  //justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <View
+                  style={{
+                    alignContent: "center",
+                    alignItems: "center",
+                    marginTop: 5,
+                    marginBottom: 5,
+                    flexDirection: "row",
+                    backgroundColor: "#0E7FE5",
+                    borderRadius: 20,
+                  }}
+                >
+                  <Image
+                    style={{
+                      height: 20,
+                      width: 20,
+                      marginRight: 5,
+                      marginLeft: 5,
+                    }}
+                    source={require("../src/pngs/fromdevice.png")}
+                  />
+                </View>
+
+                <Text
+                  style={{ fontStyle: "italic", marginRight: 5, marginLeft: 5 }}
+                >
+                  From device
+                </Text>
+              </View>
+              <View>
+                <Text style={{ textAlign: "justify" }}>
+                  Pressing this button, redirects to a Sound Classifier of your
+                  local audio files.
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  alignContent: "center",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: 5,
+                  marginBottom: 5,
+                  flexDirection: "row",
+                }}
+              >
+                <View style={{ backgroundColor: "#0E7FE5", borderRadius: 20 }}>
+                  <Image
+                    style={{
+                      height: 20,
+                      width: 20,
+                      marginRight: 5,
+                      marginLeft: 5,
+                    }}
+                    source={require("../src/pngs/show.png")}
+                  />
+                </View>
+                <Text> {" >>> "} </Text>
+                <View style={{ backgroundColor: "#0E7FE5", borderRadius: 20 }}>
+                  <Image
+                    style={{
+                      height: 20,
+                      width: 20,
+                      marginRight: 5,
+                      marginLeft: 5,
+                    }}
+                    source={require("../src/pngs/class.png")}
+                  />
+                </View>
+                <Text> {" >>> "} </Text>
+                <Image
+                  style={{
+                    height: 20,
+                    width: 20,
+                    marginRight: 5,
+                    marginLeft: 5,
+                  }}
+                  source={require("../src/pngs/lupa.png")}
+                />
+              </View>
+
+              <View
+                style={{
+                  width: "90%",
+                }}
+              >
+                <Text style={{ textAlign: "justify" }}>
+                  To classify sounds from the device, , first press to browse
+                  and select an audio file, then press to classify, and,
+                  finally, to see the details of the classification, press the
+                  magnifying glass.
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 10,
+                  //justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <View
+                  style={{
+                    alignContent: "center",
+                    alignItems: "center",
+                    marginTop: 5,
+                    marginBottom: 5,
+                    flexDirection: "row",
+                    backgroundColor: "#0E7FE5",
+                    borderRadius: 20,
+                  }}
+                >
+                  <Image
+                    style={{
+                      height: 20,
+                      width: 20,
+                      marginRight: 5,
+                      marginLeft: 5,
+                    }}
+                    source={require("../src/pngs/eng.png")}
+                  />
+                </View>
+
+                <Text
+                  style={{ fontStyle: "italic", marginRight: 5, marginLeft: 5 }}
+                >
+                  PT/ENG
+                </Text>
+              </View>
+              <View
+                style={{
+                  width: "90%",
+                }}
+              >
+                <Text style={{ textAlign: "justify" }}>
+                  Change app language.
+                </Text>
+              </View>
+            </ScrollView>
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity
+                onPress={() => {
+                  setPurpl(true);
+                  setBlue(false);
+                  setGre(!false);
+                  setRe(false);
+                  setYell(false);
+                  setAct(false);
+
+                  setMenuPop(false);
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderTopColor: "black",
+                  }}
+                >
+                  <Image
+                    source={require("../src/pngs/again.png")}
+                    style={{ width: 30, height: 30, margin: 5 }}
+                  />
+                  <Text>Again</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  //setPurpl(true);
+                  //setBlue(false);
+                  //setGre(false);
+                  //setRe(false);
+                  //setYell(false);
+                  //setAct(false);
+                  //setShowModal(false);
+                  navigation.navigate("Home");
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderTopColor: "black",
+                  }}
+                >
+                  <Image
+                    source={require("../src/pngs/finished.png")}
+                    style={{ width: 30, height: 30, margin: 5 }}
+                  />
+                  <Text>Done</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    );
+  };
+
   useEffect(() => {
     setTimeout(() => {
       showToast();
@@ -245,11 +484,74 @@ const Help = ({ navigation, route }) => {
         flex: 1,
       }}
     >
-      <ModalPop></ModalPop>
+      <MenuModal />
+      <View
+        style={{
+          width: "100%",
+          justifyContent: "center",
+
+          height: 40,
+          borderBottomWidth: 1,
+          borderBottomColor: "#efefef",
+          flexDirection: "row",
+          justifyContent: "flex-start",
+        }}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            setMenuPop(true);
+          }}
+        >
+          <Image
+            source={require("../src/pngs/menu.png")}
+            style={{
+              width: 25,
+              height: 25,
+              margin: 5,
+            }}
+          />
+        </TouchableOpacity>
+        <Text
+          style={{
+            //esta view a 80 pode dar problemas
+            textAlign: "center",
+            fontWeight: "600",
+            fontSize: 20,
+            alignSelf: "center",
+            flex: 1,
+          }}
+        >
+          Classification
+        </Text>
+      </View>
+      <ModalPop />
+
+      {true ? (
+        <View style={{ height: 70, width: 80 }}>
+          <Balloon
+            borderColor="#0e7fe5"
+            backgroundColor="white"
+            borderWidth={3}
+            width={80}
+            height={70}
+            borderRadius={20}
+            triangleSize={10}
+            triangleDirection="top"
+            triangleOffset="45%"
+            onPress={() => console.log("press")}
+          >
+            <Text style={{ textAlign: "center" }}>Options Menu</Text>
+          </Balloon>
+        </View>
+      ) : (
+        <View
+          style={{ backgroundColor: "green", width: 80, height: 70 }}
+        ></View>
+      )}
       <View style={{ justifyContent: "flex-end", flex: 1 }}>
         <View
           style={{
-            flex: 0.5,
+            flex: 0.4,
             alignSelf: "center",
             alignContent: "center",
             justifyContent: "center",
