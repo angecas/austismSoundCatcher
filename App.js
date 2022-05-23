@@ -61,7 +61,7 @@ export default function App() {
   };
 
   const toastConfig = {
-    tomatoToast: ({ text1, props }) => (
+    graphToast: ({ text1 }) => (
       <View
         style={{
           justifyContent: "center",
@@ -90,7 +90,7 @@ export default function App() {
             source={require("./src/pngs/info3.png")}
           ></Image>
           <Text style={{ fontWeight: "700", color: "white" }}>
-            Sample Info{" "}
+            {t("SampleInfo")}{" "}
           </Text>
         </View>
         <View
@@ -106,7 +106,7 @@ export default function App() {
             justifyContent: "center",
           }}
         >
-          <Text style={{ margin: 12 }}> {text1} </Text>
+          <Text style={{ margin: 12, textAlign: "justify" }}> {text1} </Text>
         </View>
       </View>
     ),
@@ -138,7 +138,9 @@ export default function App() {
             }}
             source={require("./src/pngs/info3.png")}
           ></Image>
-          <Text style={{ fontWeight: "700", color: "white" }}>Explanation</Text>
+          <Text style={{ fontWeight: "700", color: "white" }}>
+            {t("Explanation")}
+          </Text>
         </View>
         <View
           style={{
@@ -153,16 +155,15 @@ export default function App() {
             justifyContent: "center",
           }}
         >
-          <Text style={{ margin: 12 }}>
+          <Text style={{ margin: 12, textAlign: "justify" }}>
             {" "}
-            In this screen you will make a tour across the different
-            functionalities available in this classifier.{" "}
+            {t("ExplanationText")}{" "}
           </Text>
         </View>
       </View>
     ),
 
-    internetToast: ({ text1, props }) => (
+    internetToast: () => (
       <View
         style={{
           justifyContent: "center",
@@ -190,7 +191,9 @@ export default function App() {
             }}
             source={require("./src/pngs/withoutwifi.png")}
           ></Image>
-          <Text style={{ fontWeight: "700", color: "white" }}>Warning</Text>
+          <Text style={{ fontWeight: "700", color: "white" }}>
+            {t("Warning")}
+          </Text>
         </View>
         <View
           style={{
@@ -205,9 +208,7 @@ export default function App() {
             justifyContent: "center",
           }}
         >
-          <Text style={{ margin: 12 }}>
-            Verify your internet connection to proceed with the classification.
-          </Text>
+          <Text style={{ margin: 12 }}>{t("verifyInternetConnection")}</Text>
         </View>
       </View>
     ),
@@ -282,18 +283,6 @@ export default function App() {
       />
 
       <Toast config={toastConfig} />
-      <TouchableOpacity
-        onPress={() => {
-          if (i18n.language === "en") {
-            i18n.changeLanguage("pt");
-          } else {
-            i18n.changeLanguage("en");
-          }
-        }}
-      >
-        <Text>mudar a lingua</Text>
-      </TouchableOpacity>
-      <Text>{t("WelcomeText")}</Text>
     </NavigationContainer>
   );
 }

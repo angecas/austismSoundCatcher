@@ -24,6 +24,7 @@ import {
   Modal,
   View,
 } from "react-native";
+import { t } from "i18next";
 
 const Help = ({ navigation, route }) => {
   // Needed in order to use .show()
@@ -79,7 +80,7 @@ const Help = ({ navigation, route }) => {
             }}
           >
             <Text style={{ fontSize: 18, fontWeight: "700", color: "#0e7fe5" }}>
-              Tool Instructions
+              {t("ToolInstructions")}
             </Text>
             <ScrollView
               style={{
@@ -93,13 +94,12 @@ const Help = ({ navigation, route }) => {
                 />
 
                 <Text style={{ textAlign: "justify", fontStyle: "italic" }}>
-                  Sample Inspector
+                  {t("SampleInspector")}
                 </Text>
               </View>
               <View>
                 <Text style={{ textAlign: "justify" }}>
-                  This tool allows to inspect each sample information regarding
-                  its classification while receiving it.
+                  {t("SampleInspectorDetail")}
                 </Text>
               </View>
 
@@ -114,12 +114,13 @@ const Help = ({ navigation, route }) => {
                   source={require("../src/pngs/graph.png")}
                   style={{ width: 20, height: 20, marginRight: 10 }}
                 />
-                <Text style={{ fontStyle: "italic" }}>Statistics screen</Text>
+                <Text style={{ fontStyle: "italic" }}>
+                  {t("StatisticsScreen")}
+                </Text>
               </View>
               <View>
                 <Text style={{ textAlign: "justify" }}>
-                  This tool directs to another screen where statistic
-                  information about all the collected samples is presented.
+                  {t("StatisticsScreenDetail")}
                 </Text>
               </View>
 
@@ -131,7 +132,7 @@ const Help = ({ navigation, route }) => {
                   marginTop: 10,
                 }}
               >
-                Note:
+                {t("Note")}
               </Text>
               <View style={{ flexDirection: "row" }}>
                 <Image
@@ -149,8 +150,7 @@ const Help = ({ navigation, route }) => {
                   }}
                 >
                   <Text style={{ textAlign: "justify" }}>
-                    This icone exists in both of referred tools and gives
-                    information regarding the results interpretation.
+                    {t("NoteDetail")}
                   </Text>
                 </View>
               </View>
@@ -179,7 +179,7 @@ const Help = ({ navigation, route }) => {
                     source={require("../src/pngs/again.png")}
                     style={{ width: 30, height: 30, margin: 5 }}
                   />
-                  <Text>Stay</Text>
+                  <Text>{t("stay")}</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity
@@ -205,7 +205,7 @@ const Help = ({ navigation, route }) => {
                     source={require("../src/pngs/finished.png")}
                     style={{ width: 30, height: 30, margin: 5 }}
                   />
-                  <Text>Done</Text>
+                  <Text>{t("Understood")}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -240,7 +240,7 @@ const Help = ({ navigation, route }) => {
             }}
           >
             <Text style={{ fontSize: 18, fontWeight: "700", color: "#0e7fe5" }}>
-              Menu Instructions
+              {t("MenuInstructions")}
             </Text>
             <ScrollView
               style={{
@@ -280,13 +280,12 @@ const Help = ({ navigation, route }) => {
                 <Text
                   style={{ fontStyle: "italic", marginRight: 5, marginLeft: 5 }}
                 >
-                  From device
+                  {t("FromDevice")}
                 </Text>
               </View>
               <View>
                 <Text style={{ textAlign: "justify" }}>
-                  Pressing this button, redirects to a Sound Classifier of your
-                  local audio files.
+                  {t("MenuDeviceExp")}
                 </Text>
               </View>
 
@@ -341,10 +340,7 @@ const Help = ({ navigation, route }) => {
                 }}
               >
                 <Text style={{ textAlign: "justify" }}>
-                  To classify sounds from the device, , first press to browse
-                  and select an audio file, then press to classify, and,
-                  finally, to see the details of the classification, press the
-                  magnifying glass.
+                  {t("InDeviceFlux")}
                 </Text>
               </View>
               <View
@@ -388,9 +384,7 @@ const Help = ({ navigation, route }) => {
                   width: "90%",
                 }}
               >
-                <Text style={{ textAlign: "justify" }}>
-                  Change app language.
-                </Text>
+                <Text style={{ textAlign: "justify" }}>{t("appLanguage")}</Text>
               </View>
             </ScrollView>
             <View style={{ flexDirection: "row" }}>
@@ -417,7 +411,7 @@ const Help = ({ navigation, route }) => {
                     source={require("../src/pngs/again.png")}
                     style={{ width: 30, height: 30, margin: 5 }}
                   />
-                  <Text>Stay</Text>
+                  <Text>{t("stay")}</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity
@@ -443,7 +437,7 @@ const Help = ({ navigation, route }) => {
                     source={require("../src/pngs/finished.png")}
                     style={{ width: 30, height: 30, margin: 5 }}
                   />
-                  <Text>Done</Text>
+                  <Text>{t("Understood")}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -521,7 +515,7 @@ const Help = ({ navigation, route }) => {
             flex: 1,
           }}
         >
-          Classification
+          {t("Classification")}
         </Text>
       </View>
       <ModalPop />
@@ -540,7 +534,7 @@ const Help = ({ navigation, route }) => {
             triangleOffset="45%"
             onPress={() => console.log("press")}
           >
-            <Text style={{ textAlign: "center" }}>Options Menu</Text>
+            <Text style={{ textAlign: "center" }}>{t("OptionsMenu")}</Text>
           </Balloon>
         </View>
       ) : (
@@ -574,9 +568,7 @@ const Help = ({ navigation, route }) => {
                 triangleOffset="45%"
                 onPress={() => console.log("press")}
               >
-                <Text style={{ textAlign: "center" }}>
-                  Microphone starts capturing sound.
-                </Text>
+                <Text style={{ textAlign: "center" }}>{t("MicBalloon")}</Text>
               </Balloon>
             </View>
           ) : (
@@ -622,9 +614,7 @@ const Help = ({ navigation, route }) => {
               triangleOffset="45%"
               onPress={() => console.log("press")}
             >
-              <Text style={{ textAlign: "center" }}>
-                Drag the blue edge down to refresh.
-              </Text>
+              <Text style={{ textAlign: "center" }}>{t("DragBalloon")}</Text>
             </Balloon>
           </View>
         ) : (
@@ -748,7 +738,7 @@ const Help = ({ navigation, route }) => {
                       backgroundColor="white"
                       borderWidth={2}
                       width={70}
-                      height={60}
+                      height={70}
                       borderRadius={20}
                       triangleSize={10}
                       triangleDirection="right"
@@ -756,7 +746,7 @@ const Help = ({ navigation, route }) => {
                       onPress={() => console.log("press")}
                     >
                       <Text style={{ textAlign: "justify" }}>
-                        Press to start.
+                        {t("StartBallon")}
                       </Text>
                     </Balloon>
                   </View>
@@ -775,16 +765,16 @@ const Help = ({ navigation, route }) => {
                       borderColor="#0e7fe5"
                       backgroundColor="white"
                       borderWidth={2}
-                      width={70}
-                      height={60}
+                      width={75}
+                      height={80}
                       borderRadius={20}
                       triangleSize={10}
                       triangleDirection="right"
                       triangleOffset="50%"
                       onPress={() => console.log("press")}
                     >
-                      <Text style={{ textAlign: "justify" }}>
-                        Details menus{" "}
+                      <Text style={{ textAlign: "center" }}>
+                        {t("DetailsMenu")}{" "}
                       </Text>
                     </Balloon>
                   </View>
@@ -897,7 +887,7 @@ const Help = ({ navigation, route }) => {
                     borderColor="#0e7fe5"
                     backgroundColor="white"
                     borderWidth={2}
-                    width={70}
+                    width={90}
                     height={80}
                     borderRadius={20}
                     triangleSize={10}
@@ -905,7 +895,9 @@ const Help = ({ navigation, route }) => {
                     triangleOffset="25%"
                     onPress={() => console.log("press")}
                   >
-                    <Text style={{ textAlign: "justify" }}>Press to STOP.</Text>
+                    <Text style={{ textAlign: "justify" }}>
+                      {t("StopBaloon")}
+                    </Text>
                   </Balloon>
                 </View>
               ) : (

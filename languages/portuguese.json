@@ -16,7 +16,62 @@
         "HighestPrevisionXLabel": "Maior Previsão x Rótulo",
         "AverageGlobalPrevisionXLabel": "Previsão Global Média x Rótulo",
         "OverallLabelOcurrencesXLabel": " Rótulos de Classificação Geral x Rótulo",
-        "KeepClassifying": "Continuar Classificação"
+        "KeepClassifying": "Continuar Classificação",
+        "graphToast": "Este gráfico descreve o pico que cada rótulo atingiu em todas as amostras de som recolhidas.",
+        "graphToast2": "Este gráfico mostra a percentagem média de previsão que cada etiqueta apresentou em todas as amostras de som recolhidas.",
+        "graphToast3": "Este gráfico mostra a quantidade de vezes que cada etiqueta teve a percentagem de previsão mais alta de todas as amostras recolhidas.",
+        "SampleInfo": " Informação da Amostra",
+        "firstPrediction": "Na primeira previsão a amostra foi classificada em ",
+        "secondPrediction": "Na segunda previsão a amostra foi classificada em ",
+        "thirdPrediction": "Na terceira previsão a amostra foi classificada em ",
+        "verifyInternetConnection": "Verifica a tua conexão à internet para proceder com a classificação",
+        "Warning": "Atenção",
+        "Explanation":"Explicação",
+        "OptionsMenu": "Menu de Opções ",
+        "MicBalloon": "O microfone começa a capturar som.",
+        "DragBalloon": "Arrasta a ponta azul para fazer refresh",
+        "StopBaloon": "Pressiona para parar.",
+        "StartBallon": "Pressiona para parar.",
+        "DetailsMenu": "Menu de detalhes",
+        "MenuInstructions": "Intruções do Menu",
+        "MenuDeviceExp": "Pressionar este botão redireciona para um classificador de áudios locais.",
+        "InDeviceFlux": "Para classificar sons do dispositivo, primeiro selecionar um ficheiro, depois pressionar em classificar, e, finalmente, para ver os detalhes da classificação, pressionar a lupa.",
+        "appLanguage": "Mudar o edioma da app (português ou inglês).",
+        "stay": "Ficar",
+        "Understood": "Entendí",
+        "ToolInstructions": "Instruções da ferramenta",
+        "SampleInspector": "Inspetor de Amostras",
+        "SampleInspectorDetail": "Esta ferramenta permite inspecionar informação de cada amostra relativa à sua classificação enquanto a recebe.",
+        "StatisticsScreen": "Ecrã de Estatísticas",
+        "StatisticsScreenDetail": "Esta ferramenta redireciona a um ecrã de estatísticas onde informação sobre todas as amostras recolhidas é apresentada.",
+        "Note": "Nota",
+        "NoteDetail": "Este ícone existe em ambas ferramentas e dá informação relativamente à interpretação dos resultados.",
+        "ExplanationText": "Neste ecrã é efetuada uma apresentação das diferentes funcionalidades existentes nete classificador."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 

@@ -20,32 +20,26 @@ const screenWidth = Dimensions.get("window").width;
 const DetailsScreen = ({ navigation, route }) => {
   const { t, i18n } = useTranslation();
 
-  let toastText =
-    "This graph describes the peak that each label reached in all collected sound samples.";
-  let toastText1 =
-    " This graph displays the average prevision percentage that each label presented in all the collected sound samples. ";
-  let toastText2 =
-    "This graph shows how many times each label had the highest prevision perncentage in all collected sound samples.";
+  let toastText = t("graphToast");
+  let toastText1 = t("graphToast2");
+  let toastText2 = t("graphToast3");
   const showToast = () => {
     Toast.show({
-      type: "tomatoToast",
+      type: "graphToast",
       text1: toastText,
-      text2: "This is some something 👋",
     });
   };
   const showToast1 = () => {
     Toast.show({
-      type: "tomatoToast",
+      type: "graphToast",
       text1: toastText1,
-      text2: "This is some something 👋",
     });
   };
 
   const showToast2 = () => {
     Toast.show({
-      type: "tomatoToast",
+      type: "graphToast",
       text1: toastText2,
-      text2: "This is some something 👋",
     });
   };
   const { previsionLabel } = route.params;

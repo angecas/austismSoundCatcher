@@ -9,25 +9,25 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
   const { t, i18n } = useTranslation();
 
   let toastText =
-    "In the first prediction the sample was cassified as " +
+    t("firstPrediction") +
     previsionResults.firstPrevisionPercent +
     " " +
     previsionResults.firstPrevisionLabel;
 
   let toastTextI =
-    "In the second prediction the sample was cassified as " +
+    t("secondPrediction") +
     previsionResults.secondPrevisionPercent +
     " " +
     previsionResults.secondPrevisionLabel;
 
   let toastTextII =
-    "In the third prediction the sample was cassified as " +
+    t("thirdPrediction") +
     previsionResults.thirdPrevisionPercent +
     " " +
     previsionResults.thirdPrevisionLabel;
 
   const toastConfig = {
-    tomatoToast: ({ text1, props }) => (
+    tomatoToast: ({ text1 }) => (
       <View
         style={{
           justifyContent: "center",
@@ -56,7 +56,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             source={require("../src/pngs/info3.png")}
           ></Image>
           <Text style={{ fontWeight: "700", color: "white" }}>
-            Sample Info{" "}
+            {t("SampleInfo")}{" "}
           </Text>
         </View>
         <View
@@ -72,7 +72,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             justifyContent: "center",
           }}
         >
-          <Text style={{ margin: 12 }}> {text1} </Text>
+          <Text style={{ margin: 12, textAlign: "justify" }}> {text1} </Text>
         </View>
       </View>
     ),
