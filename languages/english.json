@@ -50,7 +50,9 @@
         "negative": "negative",
         "FirstPrediction":"First Prediction",
         "SecondPrediction": "Second Prediction",
-        "ThirdPrediction": "Third Prediction"
+        "ThirdPrediction": "Third Prediction",
+        "somethingwentwrong": "Something went wrong."
+
 
         
     }

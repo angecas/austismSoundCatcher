@@ -114,14 +114,57 @@ function HomeScreen({ navigation }) {
       //alert(err, "Alert Title");
       console.log(err);
       console.debug(err);
-      showToast();
+      //showToast();
+
+      checkConnected()
+        .then((res) => {
+          count.current = res;
+        })
+        .finally(() => {
+          if (count.current) {
+            showToast2();
+            console.log(count.current, "CURRENT");
+          } else {
+            showToast();
+            console.log(count.current, "CURRENT");
+          }
+        });
     }
     setLoad(false);
   };
 
+  //net
+
+  /*
+
+  const startTimer = () => {
+    checkConnected()
+      .then((res) => {
+        count.current = res;
+        console.log("PRESSEDCONNECT", connect);
+      })
+      .finally(() => {
+        if (count.current) {
+          setRingWaves(true);
+          setStream(false);
+          console.log(stream);
+        } else {
+          showToast();
+        }
+      });
+  };
+
+  */
+
   const showToast = () => {
     Toast.show({
       type: "internetToast",
+    });
+  };
+
+  const showToast2 = () => {
+    Toast.show({
+      type: "somethingwrong",
     });
   };
 
@@ -167,7 +210,7 @@ function HomeScreen({ navigation }) {
       console.log(err);
       console.debug(err);
     }
-    ref.current = setTimeout(repeatingFunc, 6000);
+    ref.current = setTimeout(repeatingFunc, 5500);
   }
 
   //----------------------------------
@@ -186,6 +229,13 @@ function HomeScreen({ navigation }) {
   */
 
   const startTimer = () => {
+    setRingWaves(true);
+    setStream(false);
+  };
+
+  /*
+
+  const startTimer = () => {
     checkConnected()
       .then((res) => {
         count.current = res;
@@ -201,6 +251,8 @@ function HomeScreen({ navigation }) {
         }
       });
   };
+
+  */
 
   const stopTimer = () => {
     setRingWaves(false);
