@@ -179,7 +179,7 @@ const Help = ({ navigation, route }) => {
                     source={require("../src/pngs/again.png")}
                     style={{ width: 30, height: 30, margin: 5 }}
                   />
-                  <Text>Again</Text>
+                  <Text>Stay</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity
@@ -417,7 +417,7 @@ const Help = ({ navigation, route }) => {
                     source={require("../src/pngs/again.png")}
                     style={{ width: 30, height: 30, margin: 5 }}
                   />
-                  <Text>Again</Text>
+                  <Text>Stay</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity
@@ -548,6 +548,7 @@ const Help = ({ navigation, route }) => {
           style={{ backgroundColor: "green", width: 80, height: 70 }}
         ></View>
       )}
+
       <View style={{ justifyContent: "flex-end", flex: 1 }}>
         <View
           style={{
@@ -558,6 +559,7 @@ const Help = ({ navigation, route }) => {
           }}
         >
           <NewMic height={120} width={120} />
+
           {yell ? (
             <View style={{ height: 90, width: 100 }}>
               <Balloon
