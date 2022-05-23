@@ -30,6 +30,7 @@ import Help from "./screens/Help";
 import NetInfo from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
 import FromDevice from "./screens/FromDevice";
+import { useTranslation } from "react-i18next";
 
 const screen = Dimensions.get("screen");
 const windowHeight = Dimensions.get("window").height;
@@ -38,6 +39,7 @@ const windowWidth = Dimensions.get("window").width;
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const { t, i18n } = useTranslation();
   const [connectStatus, setConnectStatus] = useState(false);
   const [menuState, setMenuState] = useState(false);
 
@@ -48,6 +50,14 @@ export default function App() {
   const ToggleMenu = () => {
     setMenuState(!menuState);
     console.log(menuState);
+  };
+
+  const changeLanguage = () => {
+    if (i18n.language === "en") {
+      i18n.changeLanguage("pt");
+    } else {
+      i18n.changeLanguage("en");
+    }
   };
 
   const toastConfig = {
@@ -264,9 +274,26 @@ export default function App() {
           }}
         />
       </Stack.Navigator>
-      <Menu isVisible={menuState} toggle={ToggleMenu} screenName="Help" />
+      <Menu
+        changeLanguage={changeLanguage}
+        isVisible={menuState}
+        toggle={ToggleMenu}
+        screenName="Help"
+      />
 
       <Toast config={toastConfig} />
+      <TouchableOpacity
+        onPress={() => {
+          if (i18n.language === "en") {
+            i18n.changeLanguage("pt");
+          } else {
+            i18n.changeLanguage("en");
+          }
+        }}
+      >
+        <Text>mudar a lingua</Text>
+      </TouchableOpacity>
+      <Text>{t("WelcomeText")}</Text>
     </NavigationContainer>
   );
 }

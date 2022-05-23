@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { View, TouchableOpacity, Text, Image, Dimensions } from "react-native";
 import Modal from "react-native-modal";
 import { useNavigation, NavigationContainer } from "@react-navigation/native";
+import { useTranslation } from "react-i18next";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
-const Menu = ({ isVisible, toggle, screenName }) => {
+const Menu = ({ isVisible, toggle, screenName, changeLanguage }) => {
+  const { t, i18n } = useTranslation();
+
   const navigation = useNavigation();
 
   const [menuState, setMenuState] = useState(false);
@@ -117,11 +120,7 @@ const Menu = ({ isVisible, toggle, screenName }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            console.log("traduzir!!!!");
-          }}
-        >
+        <TouchableOpacity onPress={changeLanguage}>
           <View
             style={{
               alignContent: "center",
@@ -142,9 +141,15 @@ const Menu = ({ isVisible, toggle, screenName }) => {
               }}
               source={require("../src/pngs/eng.png")}
             ></Image>
-            <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-              PT
-            </Text>
+            {i18n.language === "en" ? (
+              <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
+                PT
+              </Text>
+            ) : (
+              <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
+                ENG
+              </Text>
+            )}
           </View>
         </TouchableOpacity>
 
