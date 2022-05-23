@@ -1,25 +1,12 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef } from "react";
 import Toast from "react-native-toast-message";
-import { Button } from "react-native";
-import Modal from "react-native-modal";
+
 import Menu from "./components/Menu";
 
 import { checkConnected } from "./functions";
 
-import {
-  StyleSheet,
-  AppState,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  StatusBar,
-  TouchableOpacity,
-  Dimensions,
-  ScrollView,
-  requireNativeComponent,
-} from "react-native";
+import { Text, View, Image, StatusBar, TouchableOpacity } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -27,14 +14,9 @@ import HomeScreen from "./screens/HomeScreen";
 import Example from "./screens/TESTES";
 import Help from "./screens/Help";
 
-import NetInfo from "@react-native-community/netinfo";
 import DetailsScreen from "./screens/DetailsScreen";
 import FromDevice from "./screens/FromDevice";
 import { useTranslation } from "react-i18next";
-
-const screen = Dimensions.get("screen");
-const windowHeight = Dimensions.get("window").height;
-const windowWidth = Dimensions.get("window").width;
 
 const Stack = createNativeStackNavigator();
 
@@ -89,8 +71,10 @@ export default function App() {
             }}
             source={require("./src/pngs/info3.png")}
           ></Image>
-          <Text style={{ fontWeight: "700", color: "white" }}>
-            {t("SampleInfo")}{" "}
+          <Text
+            style={{ fontWeight: "700", color: "white", textAlign: "justify" }}
+          >
+            {t("SampleInfo")}
           </Text>
         </View>
         <View
@@ -138,7 +122,9 @@ export default function App() {
             }}
             source={require("./src/pngs/info3.png")}
           ></Image>
-          <Text style={{ fontWeight: "700", color: "white" }}>
+          <Text
+            style={{ fontWeight: "700", color: "white", textAlign: "justify" }}
+          >
             {t("Explanation")}
           </Text>
         </View>
@@ -156,8 +142,7 @@ export default function App() {
           }}
         >
           <Text style={{ margin: 12, textAlign: "justify" }}>
-            {" "}
-            {t("ExplanationText")}{" "}
+            {t("ExplanationText")}
           </Text>
         </View>
       </View>

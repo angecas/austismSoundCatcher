@@ -1,7 +1,6 @@
 import { LineChart } from "react-native-gifted-charts";
-import { View, Text } from "react-native";
-import React, { useState, useEffect, useRef } from "react";
-import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import React from "react";
+import Toast from "react-native-toast-message";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 

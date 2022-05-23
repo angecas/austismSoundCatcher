@@ -1,8 +1,6 @@
-import { LineChart } from "react-native-gifted-charts";
 import { View, Text } from "react-native";
-import React, { useState, useEffect, useRef } from "react";
-import { BarChart, PieChart } from "react-native-gifted-charts";
-import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import React from "react";
+import { BarChart } from "react-native-gifted-charts";
 import { useTranslation } from "react-i18next";
 
 const HighestPercentage = ({ previsionLabel }) => {
@@ -93,7 +91,6 @@ const HighestPercentage = ({ previsionLabel }) => {
             {String(positiveVal)}
           </Text>
         ),
-        frontColor: "#7dc4e3",
       },
       {
         value: negativeVal,
@@ -107,50 +104,6 @@ const HighestPercentage = ({ previsionLabel }) => {
     ];
 
     return highestPercentageData;
-  };
-
-  let daT = highestPercentage();
-
-  console.log(daT);
-  console.log(daT[0].value, "aquiiiii");
-
-  let toastText =
-    'The label "unknown" reached a peak of ' +
-    daT[0].value +
-    " % in the collected sound samples.";
-
-  let toastTextPos =
-    'The label "positive" reached a peak of ' +
-    daT[1].value +
-    " % in the collected sound samples.";
-
-  let toastTextNeg =
-    'The label "negative" reached a peak of ' +
-    daT[2].value +
-    " % in the collected sound samples.";
-
-  const showToast = () => {
-    Toast.show({
-      type: "tomatoToast",
-      text1: toastText,
-      text2: "This is some something 👋",
-    });
-  };
-
-  const showToastPosit = () => {
-    Toast.show({
-      type: "tomatoToast",
-      text1: toastTextPos,
-      text2: "This is some something 👋",
-    });
-  };
-
-  const showToastNeg = () => {
-    Toast.show({
-      type: "tomatoToast",
-      text1: toastTextNeg,
-      text2: "This is some something 👋",
-    });
   };
 
   return (

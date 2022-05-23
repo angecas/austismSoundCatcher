@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import MusicIn from "../src/svgs/music.svg";
 import MusicOut from "../src/svgs/musicout.svg";
-import { Col, Row, Grid } from "react-native-easy-grid";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import PrevisionTable from "../components/PrevisionTable";
 import { useTranslation } from "react-i18next";

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import React from "react";
+import Toast from "react-native-toast-message";
 import { useTranslation } from "react-i18next";
 
 import {

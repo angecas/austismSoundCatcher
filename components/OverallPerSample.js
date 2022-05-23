@@ -1,6 +1,5 @@
 import { LineChart } from "react-native-gifted-charts";
-import { View, Text } from "react-native";
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 const OverallPerSample = ({ overallPerSamp }) => {
