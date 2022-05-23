@@ -222,7 +222,7 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{
-            title: "Classification",
+            title: t("Classification"),
             headerTitleAlign: "center",
             headerTitleStyle: {
               fontSize: 24,
@@ -245,7 +245,7 @@ export default function App() {
           name="Help"
           component={Help}
           options={{
-            title: "Help",
+            title: t("Help"),
             headerTitleAlign: "center",
           }}
         />
@@ -254,7 +254,7 @@ export default function App() {
           name="FromDevice"
           component={FromDevice}
           options={{
-            title: "From Device",
+            title: t("FromDevice"),
             headerTitleAlign: "center",
           }}
         />
@@ -263,7 +263,7 @@ export default function App() {
           name="DetailsScreen"
           component={DetailsScreen}
           options={{
-            title: "Statistics",
+            title: t("Statistics"),
             headerBackVisible: false,
             headerTitleAlign: "center",
             headerTitleStyle: {

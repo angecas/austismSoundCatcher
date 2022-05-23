@@ -115,7 +115,7 @@ const Menu = ({ isVisible, toggle, screenName, changeLanguage }) => {
               source={require("../src/pngs/fromdevice.png")}
             ></Image>
             <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-              From device
+              {t("FromDevice")}
             </Text>
           </View>
         </TouchableOpacity>
@@ -180,7 +180,7 @@ const Menu = ({ isVisible, toggle, screenName, changeLanguage }) => {
               source={require("../src/pngs/help.png")}
             ></Image>
             <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-              Help
+              {t("Help")}
             </Text>
           </View>
         </TouchableOpacity>

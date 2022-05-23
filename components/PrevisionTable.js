@@ -3,8 +3,11 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { BottomModal } from "react-native-modals";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import { useTranslation } from "react-i18next";
 
 const PrevisionTable = ({ previsionResults, sample, showSample }) => {
+  const { t, i18n } = useTranslation();
+
   let toastText =
     "In the first prediction the sample was cassified as " +
     previsionResults.firstPrevisionPercent +
@@ -118,7 +121,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
                 marginBottom: 10,
               }}
             >
-              Sample:
+              {t("Sample")}:
             </Text>
             <Text style={{ marginLeft: 5, fontSize: 16, marginBottom: 10 }}>
               {sample}
@@ -271,7 +274,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
               marginTop: 10,
             }}
           >
-            Sample Overall classification:
+            {t("SampleOverallClass")}
           </Text>
           <Text
             style={{

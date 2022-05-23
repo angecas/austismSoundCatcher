@@ -3,7 +3,21 @@
 
     
     "translation":{
-        "WelcomeText":"Estas a traduzir ahahahah..."
+        "WelcomeText":"Estas a traduzir ahahahah...",
+        "Classification":"Classificação",
+        "Help": "Ajuda",
+        "FromDevice": "Do Dispositivo",
+        "search":"procurar",
+        "Classify": "Classificar",
+        "OverallClassification": "Classificação geral",
+        "Sample": "Amostra",
+        "SampleOverallClass": " Classificação Geral da Amostra",
+        "Statistics": "Estatísticas",
+        "HighestPrevisionXLabel": "Maior Previsão x Rótulo",
+        "AverageGlobalPrevisionXLabel": "Previsão Global Média x Rótulo",
+        "OverallLabelOcurrencesXLabel": " Rótulos de Classificação Geral x Rótulo",
+        "KeepClassifying": "Continuar Classificação"
+
     }
 
 }

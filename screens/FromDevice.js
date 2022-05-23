@@ -4,6 +4,7 @@ import MusicOut from "../src/svgs/musicout.svg";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import PrevisionTable from "../components/PrevisionTable";
+import { useTranslation } from "react-i18next";
 
 import Classifying from "../components/Classifying";
 
@@ -23,6 +24,8 @@ const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
 const FromDevice = ({ navigation }) => {
+  const { t, i18n } = useTranslation();
+
   const [pathFile, setPathFile] = useState("");
   const [load, setLoad] = useState(false);
   const [prev, setPrev] = useState("");
@@ -139,7 +142,7 @@ const FromDevice = ({ navigation }) => {
                     fontSize: 18,
                   }}
                 >
-                  search
+                  {t("search")}
                 </Text>
 
                 {fileName != "" ? (
@@ -196,7 +199,7 @@ const FromDevice = ({ navigation }) => {
                   marginTop: 10,
                 }}
               >
-                Classify
+                {t("Classify")}
               </Text>
             </View>
           </TouchableOpacity>
@@ -241,7 +244,8 @@ const FromDevice = ({ navigation }) => {
                 fontFamily: "roboto",
               }}
             >
-              Overall Classification: {prev["label"]["firstPrevisionLabel"]}
+              {t("OverallClassification")} :{" "}
+              {prev["label"]["firstPrevisionLabel"]}
             </Text>
           </View>
         ) : (

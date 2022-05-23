@@ -1,6 +1,20 @@
 {
 
     "translation":{
-        "WelcomeText":"Estas a traduzir..."
+        "WelcomeText":"Estas a traduzir...",
+        "Classification":"Classification",
+        "Help": "Help",
+        "FromDevice": "From Device",
+        "search": "search",
+        "Classify": "Classify",
+        "OverallClassification": " Overall Classification",
+        "Sample": "Sample",
+        "SampleOverallClass": " Sample Overall Classification",
+        "Statistics": "Statistics",
+        "HighestPrevisionXLabel": "Highest Prevision x Label",
+        "AverageGlobalPrevisionXLabel": "Average Global Prevision x Label",
+        "OverallLabelOcurrencesXLabel": "General Classification Labels x Label",
+        "KeepClassifying": "Keep Classifying"
+        
     }
 }

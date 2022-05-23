@@ -4,6 +4,7 @@ import BottomSheet from "react-native-gesture-bottom-sheet";
 import { CommonActions, useFocusEffect } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
 import { checkConnected } from "../functions";
+import { useTranslation } from "react-i18next";
 
 import Record from "../src/svgs/newstart.svg";
 import StopRecord from "../src/svgs/newpause.svg";
@@ -32,10 +33,13 @@ import PrevisionTable from "../components/PrevisionTable";
 import react from "react";
 import RingWaves from "../components/RingWaves";
 import Classifying from "../components/Classifying";
+import { t } from "i18next";
 
 const screen = Dimensions.get("screen");
 
 function HomeScreen({ navigation }) {
+  const { t, i18n } = useTranslation();
+
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
   const modalizeRef = useRef(null);
@@ -279,7 +283,7 @@ function HomeScreen({ navigation }) {
                     fontFamily: "roboto",
                   }}
                 >
-                  Sample: {sample}
+                  {t("Sample")}: {sample}
                 </Text>
                 <Text
                   style={{
@@ -289,7 +293,7 @@ function HomeScreen({ navigation }) {
                     fontFamily: "roboto",
                   }}
                 >
-                  Overall classification: {prev.previsionLabel}
+                  {t("OverallClassification")}: {prev.previsionLabel}
                 </Text>
               </View>
             ) : (

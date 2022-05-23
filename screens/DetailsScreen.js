@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import { useTranslation } from "react-i18next";
 
 import {
   Image,
@@ -17,6 +18,8 @@ import LabelsOcurrence from "../components/LabelsOcurrence";
 const screenWidth = Dimensions.get("window").width;
 
 const DetailsScreen = ({ navigation, route }) => {
+  const { t, i18n } = useTranslation();
+
   let toastText =
     "This graph describes the peak that each label reached in all collected sound samples.";
   let toastText1 =
@@ -85,7 +88,7 @@ const DetailsScreen = ({ navigation, route }) => {
             marginTop: 10,
           }}
         >
-          Highest Prevision x Label
+          {t("HighestPrevisionXLabel")}
         </Text>
 
         <View
@@ -133,7 +136,7 @@ const DetailsScreen = ({ navigation, route }) => {
               marginTop: 10,
             }}
           >
-            Average Global Prevision x Label
+            {t("AverageGlobalPrevisionXLabel")}
           </Text>
         </View>
         <View
@@ -180,7 +183,7 @@ const DetailsScreen = ({ navigation, route }) => {
               marginTop: 10,
             }}
           >
-            Overall Label Ocurrences x Label
+            {t("OverallLabelOcurrencesXLabel")}
           </Text>
 
           <View
@@ -222,7 +225,7 @@ const DetailsScreen = ({ navigation, route }) => {
             }}
           >
             <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>
-              Keep Classifying
+              {t("KeepClassifying")}
             </Text>
           </TouchableOpacity>
         </View>
