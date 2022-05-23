@@ -44,7 +44,14 @@
         "StatisticsScreenDetail": "This tool directs to another screen where statistic information about all the collected samples is presented.",
         "Note": "Note",
         "NoteDetail": "This icone exists in both of referred tools and gives information regarding the results interpretation.",
-        "ExplanationText": "In this screen you will make a tour across the different functionalities available in this classifier"
+        "ExplanationText": "In this screen you will make a tour across the different functionalities available in this classifier",
+        "unknown":"unknown",
+        "positive": "positive",
+        "negative": "negative",
+        "FirstPrediction":"First Prediction",
+        "SecondPrediction": "Second Prediction",
+        "ThirdPrediction": "Third Prediction"
+
         
     }
 }

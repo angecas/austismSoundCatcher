@@ -46,7 +46,19 @@
         "StatisticsScreenDetail": "Esta ferramenta redireciona a um ecrã de estatísticas onde informação sobre todas as amostras recolhidas é apresentada.",
         "Note": "Nota",
         "NoteDetail": "Este ícone existe em ambas ferramentas e dá informação relativamente à interpretação dos resultados.",
-        "ExplanationText": "Neste ecrã é efetuada uma apresentação das diferentes funcionalidades existentes nete classificador."
+        "ExplanationText": "Neste ecrã é efetuada uma apresentação das diferentes funcionalidades existentes nete classificador.",
+        "unknown":"desconhecido",
+        "positive": "positivo",
+        "negative": "negativo",
+        "FirstPrediction":"Primeira Previsão",
+        "SecondPrediction": "Segunda Previsão",
+        "ThirdPrediction": "Terceira Previsão"
+
+
+
+
+
+
 
 
 

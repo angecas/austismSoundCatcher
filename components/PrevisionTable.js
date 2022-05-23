@@ -143,7 +143,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
                 marginLeft: 25,
               }}
             >
-              First Prediction
+              {t("FirstPrediction")}
             </Text>
             <TouchableOpacity
               style={{
@@ -184,7 +184,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
                 marginLeft: 20,
               }}
             >
-              Second Prediction
+              {t("SecondPrediction")}
             </Text>
             <TouchableOpacity
               style={{
@@ -225,7 +225,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
                 marginLeft: 20,
               }}
             >
-              Third Prediction
+              {t("ThirdPrediction")}
             </Text>
             <TouchableOpacity
               style={{
