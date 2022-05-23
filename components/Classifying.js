@@ -1,4 +1,3 @@
-import AnimatedEllipsis from "react-native-animated-ellipsis";
 import { useTranslation } from "react-i18next";
 
 import { Text, View } from "react-native";

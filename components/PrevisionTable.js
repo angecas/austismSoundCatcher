@@ -165,10 +165,10 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             </TouchableOpacity>
           </Row>
           <Row style={styles.cell}>
-            <Text>{previsionResults.firstPrevisionLabel}</Text>
+            <Text>{t(previsionResults.firstPrevisionLabel)}</Text>
           </Row>
           <Row style={styles.cell}>
-            <Text>{previsionResults.firstPrevisionPercent}</Text>
+            <Text>{t(previsionResults.firstPrevisionPercent)}</Text>
           </Row>
         </Col>
         <Col size={5}>
@@ -206,7 +206,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             </TouchableOpacity>
           </Row>
           <Row style={styles.cell}>
-            <Text>{previsionResults.secondPrevisionLabel}</Text>
+            <Text>{t(previsionResults.secondPrevisionLabel)}</Text>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.secondPrevisionPercent}</Text>
@@ -283,7 +283,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
               marginTop: 10,
             }}
           >
-            {previsionResults.previsionLabel}
+            {t(previsionResults.previsionLabel)}
           </Text>
         </View>
       </View>

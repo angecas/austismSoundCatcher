@@ -3,9 +3,11 @@ import { View, Text } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { BarChart, PieChart } from "react-native-gifted-charts";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import { useTranslation } from "react-i18next";
 
 const LabelsOcurrence = ({ previsionLabel }) => {
   let size = Object.keys(previsionLabel).length;
+  const { t, i18n } = useTranslation();
 
   const frequenciaLabel = () => {
     let freqArray = [];
@@ -17,7 +19,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
     let barData = [
       {
         value: freqArray.filter((x) => x === "unknown").length,
-        label: "unknown",
+        label: t("unknown"),
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "unknown").length)}
@@ -27,7 +29,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
 
       {
         value: freqArray.filter((x) => x === "positive").length,
-        label: "positive",
+        label: t("positive"),
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "positive").length)}
@@ -38,7 +40,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       },
       {
         value: freqArray.filter((x) => x === "negative").length,
-        label: "negative",
+        label: t("negative"),
         frontColor: "#177AD5",
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>

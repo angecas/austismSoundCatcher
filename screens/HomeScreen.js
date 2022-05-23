@@ -61,6 +61,7 @@ function HomeScreen({ navigation }) {
   const wait = (timeout) => {
     return new Promise((resolve) => setTimeout(resolve, timeout));
   };
+  const [overallCalss, setOverallClass] = react.useState("");
 
   const onRefresh = React.useCallback(() => {
     setRefresh(true);
@@ -293,7 +294,7 @@ function HomeScreen({ navigation }) {
                     fontFamily: "roboto",
                   }}
                 >
-                  {t("OverallClassification")}: {prev.previsionLabel}
+                  {t("OverallClassification")}: {t(prev.previsionLabel)}
                 </Text>
               </View>
             ) : (

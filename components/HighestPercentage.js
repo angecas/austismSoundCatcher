@@ -3,9 +3,11 @@ import { View, Text } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { BarChart, PieChart } from "react-native-gifted-charts";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import { useTranslation } from "react-i18next";
 
 const HighestPercentage = ({ previsionLabel }) => {
   let size = Object.keys(previsionLabel).length;
+  const { t, i18n } = useTranslation();
 
   const highestPercentage = () => {
     let unknownVal = 0;
@@ -76,7 +78,7 @@ const HighestPercentage = ({ previsionLabel }) => {
     let highestPercentageData = [
       {
         value: unknownVal,
-        label: "unknown",
+        label: t("unknown"),
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(unknownVal)}
@@ -85,7 +87,7 @@ const HighestPercentage = ({ previsionLabel }) => {
       },
       {
         value: positiveVal,
-        label: "positive",
+        label: t("positive"),
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(positiveVal)}
@@ -95,7 +97,7 @@ const HighestPercentage = ({ previsionLabel }) => {
       },
       {
         value: negativeVal,
-        label: "negative",
+        label: t("negative"),
         topLabelComponent: () => (
           <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
             {String(negativeVal)}

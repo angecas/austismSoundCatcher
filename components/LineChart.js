@@ -2,8 +2,12 @@ import { LineChart } from "react-native-gifted-charts";
 import { View, Text } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const LineChartPrev = ({ previsionLabel }) => {
+  const { t, i18n } = useTranslation();
+
   let size = Object.keys(previsionLabel).length;
 
   const averagePredPercent = () => {
@@ -53,17 +57,17 @@ const LineChartPrev = ({ previsionLabel }) => {
       averagePercents = [
         {
           value: unknownAcum / size,
-          label: "unknown",
+          label: t("unknown"),
           dataPointText: String(unknownAcum / size) + " %",
         },
         {
           value: positiveAcum / size,
-          label: "positive",
+          label: t("positive"),
           dataPointText: String(positiveAcum / size) + " %",
         },
         {
           value: negativeAcum / size,
-          label: "negative",
+          label: t("negative"),
           dataPointText: String(negativeAcum / size) + " %",
         },
       ];
