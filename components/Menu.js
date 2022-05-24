@@ -120,7 +120,12 @@ const Menu = ({ isVisible, toggle, screenName, changeLanguage }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={changeLanguage}>
+        <TouchableOpacity
+          onPress={() => {
+            changeLanguage();
+            toggle();
+          }}
+        >
           <View
             style={{
               alignContent: "center",
