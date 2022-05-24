@@ -12,19 +12,19 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
     t("firstPrediction") +
     previsionResults.firstPrevisionPercent +
     " " +
-    previsionResults.firstPrevisionLabel;
+    t(previsionResults.firstPrevisionLabel);
 
   let toastTextI =
     t("secondPrediction") +
     previsionResults.secondPrevisionPercent +
     " " +
-    previsionResults.secondPrevisionLabel;
+    t(previsionResults.secondPrevisionLabel);
 
   let toastTextII =
     t("thirdPrediction") +
     previsionResults.thirdPrevisionPercent +
     " " +
-    previsionResults.thirdPrevisionLabel;
+    t(previsionResults.thirdPrevisionLabel);
 
   const toastConfig = {
     tomatoToast: ({ text1 }) => (
@@ -55,7 +55,9 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             }}
             source={require("../src/pngs/info3.png")}
           ></Image>
-          <Text style={{ fontWeight: "700", color: "white" }}>
+          <Text
+            style={{ fontWeight: "700", color: "white", textAlign: "center" }}
+          >
             {t("SampleInfo")}{" "}
           </Text>
         </View>
@@ -82,7 +84,6 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
     Toast.show({
       type: "tomatoToast",
       text1: toastText,
-      text2: "This is some something 👋",
     });
   };
 
@@ -90,7 +91,6 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
     Toast.show({
       type: "tomatoToast",
       text1: toastTextI,
-      text2: "This is some something 👋",
     });
   };
 
@@ -98,7 +98,6 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
     Toast.show({
       type: "tomatoToast",
       text1: toastTextII,
-      text2: "This is some something 👋",
     });
   };
 
@@ -247,7 +246,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             </TouchableOpacity>
           </Row>
           <Row style={styles.cell}>
-            <Text>{previsionResults.thirdPrevisionLabel}</Text>
+            <Text>{t(previsionResults.thirdPrevisionLabel)}</Text>
           </Row>
           <Row style={styles.cell}>
             <Text>{previsionResults.thirdPrevisionPercent}</Text>

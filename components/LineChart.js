@@ -3,6 +3,9 @@ import React from "react";
 import Toast from "react-native-toast-message";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import { BarChart, PieChart } from "react-native-gifted-charts";
+import { Text } from "react-native";
+import { View } from "react-native-web";
 
 const LineChartPrev = ({ previsionLabel }) => {
   const { t, i18n } = useTranslation();
@@ -57,17 +60,32 @@ const LineChartPrev = ({ previsionLabel }) => {
         {
           value: unknownAcum / size,
           label: t("unknown"),
-          dataPointText: String(unknownAcum / size) + " %",
+          topLabelComponent: () => (
+            <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
+              {String(unknownAcum / size)} {"%"}
+            </Text>
+          ),
+          //dataPointText: String(unknownAcum / size) + " %",
         },
         {
           value: positiveAcum / size,
           label: t("positive"),
-          dataPointText: String(positiveAcum / size) + " %",
+          topLabelComponent: () => (
+            <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
+              {String(positiveAcum / size)} {"%"}
+            </Text>
+          ),
+          //dataPointText: String(positiveAcum / size) + " %",
         },
         {
           value: negativeAcum / size,
           label: t("negative"),
-          dataPointText: String(negativeAcum / size) + " %",
+          topLabelComponent: () => (
+            <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
+              {String(negativeAcum / size)} {"%"}
+            </Text>
+          ),
+          //dataPointText: String(negativeAcum / size) + " %",
         },
       ];
     }
@@ -75,30 +93,36 @@ const LineChartPrev = ({ previsionLabel }) => {
     return averagePercents;
   };
 
-  let toastText =
-    " This graph displays the average prevision percentage in every sample for each lable ";
-
-  const showToast = () => {
-    Toast.show({
-      type: "tomatoToast",
-      text1: toastText,
-      text2: "This is some something 👋",
-    });
-  };
+  /*
+  <LineChart
+  data={averagePredPercent()}
+  textColor="black"
+  dataPointsColor="#0e7fe5"
+  textFontSize={16}
+  yAxisLabelSuffix="%"
+  color="#0e7fe5"
+  showTextOnPress={true}
+  isAnimated={true}
+  spacing={80}
+  pressEnabled={true}
+  showDataPointOnPress={true}
+/>
+*/
 
   return (
-    <LineChart
-      data={averagePredPercent()}
-      textColor="black"
-      dataPointsColor="#0e7fe5"
-      textFontSize={16}
+    <BarChart
+      isAnimated
+      spacing={75}
+      barWidth={22}
       yAxisLabelSuffix="%"
-      color="#0e7fe5"
-      showTextOnPress={true}
-      isAnimated={true}
-      spacing={80}
-      pressEnabled={true}
-      showDataPointOnPress={true}
+      noOfSections={3}
+      barBorderRadius={4}
+      data={averagePredPercent()}
+      yAxisThickness={0}
+      xAxisThickness={0}
+      frontColor="#0e7fe5"
+      initialSpacing={10}
+      disablePress={true}
     />
   );
 };

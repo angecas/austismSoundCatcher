@@ -210,7 +210,7 @@ function HomeScreen({ navigation }) {
       console.log(err);
       console.debug(err);
     }
-    ref.current = setTimeout(repeatingFunc, 5500);
+    ref.current = setTimeout(repeatingFunc, 6000);
   }
 
   //----------------------------------
@@ -380,22 +380,22 @@ function HomeScreen({ navigation }) {
           {sample === 0 ? (
             <ActionButton buttonColor="#0e7fe5" />
           ) : (
-            <ActionButton buttonColor="#cbd4d9" btnOutRange="#cbd4d9">
+            <ActionButton buttonColor="#95a9aa" btnOutRange="#95a9aa">
               <ActionButton.Item
-                buttonColor="#cbd4d9"
+                buttonColor="#b8c6c7"
                 title="sample info"
                 onPress={() => {
                   bottomSheet.current.show();
                 }}
               >
                 <Image
-                  source={require("../src/pngs/lupa.png")}
+                  source={require("../src/pngs/lup.png")}
                   style={{ width: 20, height: 20 }}
                 />
               </ActionButton.Item>
 
               <ActionButton.Item
-                buttonColor="#cbd4d9"
+                buttonColor="#b8c6c7"
                 title="resume classification"
                 onPress={() => {
                   navigation.navigate("DetailsScreen", {
@@ -404,7 +404,7 @@ function HomeScreen({ navigation }) {
                 }}
               >
                 <Image
-                  source={require("../src/pngs/graph.png")}
+                  source={require("../src/pngs/graf.png")}
                   style={{ width: 20, height: 20 }}
                 />
               </ActionButton.Item>

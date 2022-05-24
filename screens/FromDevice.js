@@ -239,7 +239,7 @@ const FromDevice = ({ navigation }) => {
             <Text
               style={{
                 color: "#ffffff",
-                fontSize: 18,
+                fontSize: 16,
                 fontFamily: "roboto",
               }}
             >

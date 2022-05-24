@@ -61,6 +61,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
       yAxisThickness={0}
       xAxisThickness={0}
       initialSpacing={10}
+      disablePress={true}
     />
   );
 };

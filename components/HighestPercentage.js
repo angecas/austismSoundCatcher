@@ -126,6 +126,7 @@ const HighestPercentage = ({ previsionLabel }) => {
         xAxisThickness={0}
         frontColor="#0e7fe5"
         initialSpacing={10}
+        disablePress={true}
       />
     </View>
   );

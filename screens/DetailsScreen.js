@@ -48,9 +48,6 @@ const DetailsScreen = ({ navigation, route }) => {
     <View
       style={{
         flex: 1,
-        //alignItems: "center", // tirar?
-        //justifyContent: "center", // tirar?
-
         backgroundColor: "#ffffff",
       }}
     >

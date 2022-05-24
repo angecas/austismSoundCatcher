@@ -86,7 +86,7 @@ const Help = ({ navigation, route }) => {
             >
               <View style={{ flexDirection: "row", marginTop: 10 }}>
                 <Image
-                  source={require("../src/pngs/lupa.png")}
+                  source={require("../src/pngs/lup.png")}
                   style={{ width: 20, height: 20, marginRight: 10 }}
                 />
 
@@ -107,7 +107,7 @@ const Help = ({ navigation, route }) => {
                 }}
               >
                 <Image
-                  source={require("../src/pngs/graph.png")}
+                  source={require("../src/pngs/graf.png")}
                   style={{ width: 20, height: 20, marginRight: 10 }}
                 />
                 <Text style={{ fontStyle: "italic" }}>
@@ -470,9 +470,9 @@ const Help = ({ navigation, route }) => {
           <Image
             source={require("../src/pngs/menu.png")}
             style={{
-              width: 25,
-              height: 25,
-              margin: 5,
+              width: 20,
+              height: 20,
+              margin: 10,
             }}
           />
         </TouchableOpacity>
@@ -523,7 +523,7 @@ const Help = ({ navigation, route }) => {
             justifyContent: "center",
           }}
         >
-          <NewMic height={120} width={120} />
+          <NewMic height={110} width={110} />
 
           {micBal ? (
             <View style={{ height: 90, width: 100 }}>
@@ -698,7 +698,7 @@ const Help = ({ navigation, route }) => {
 
                       setShowModal(false);
 
-                      setDragBal(false);
+                      setDragBal(true);
                       setDetaiMen(false);
                       setStartBal(false);
 
@@ -706,14 +706,14 @@ const Help = ({ navigation, route }) => {
                       setStopBal(true);
                     }}
                   >
-                    <Record height={100} width={100} />
+                    <Record height={90} width={90} />
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
                     style={{ alignSelf: "center" }}
                     onPress={() => {
                       setStream(!stream);
-                      setDragBal(true);
+                      setDragBal(false);
                       setDetaiMen(true);
 
                       setShowModal(false);
@@ -723,7 +723,7 @@ const Help = ({ navigation, route }) => {
                       setMicBal(false);
                     }}
                   >
-                    <StopRecord height={100} width={100} />
+                    <StopRecord height={90} width={90} />
                   </TouchableOpacity>
                 )}
                 <View
