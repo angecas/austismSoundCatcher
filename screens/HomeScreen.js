@@ -380,9 +380,9 @@ function HomeScreen({ navigation }) {
           {sample === 0 ? (
             <ActionButton buttonColor="#0e7fe5" />
           ) : (
-            <ActionButton buttonColor="white" btnOutRange="white">
+            <ActionButton buttonColor="#cbd4d9" btnOutRange="#cbd4d9">
               <ActionButton.Item
-                buttonColor="white"
+                buttonColor="#cbd4d9"
                 title="sample info"
                 onPress={() => {
                   bottomSheet.current.show();
@@ -395,7 +395,7 @@ function HomeScreen({ navigation }) {
               </ActionButton.Item>
 
               <ActionButton.Item
-                buttonColor="white"
+                buttonColor="#cbd4d9"
                 title="resume classification"
                 onPress={() => {
                   navigation.navigate("DetailsScreen", {
