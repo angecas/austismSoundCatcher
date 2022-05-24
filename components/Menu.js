@@ -148,11 +148,11 @@ const Menu = ({ isVisible, toggle, screenName, changeLanguage }) => {
             ></Image>
             {i18n.language === "en" ? (
               <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-                PT
+                Pt
               </Text>
             ) : (
               <Text style={{ fontSize: 18, marginLeft: 10, color: "white" }}>
-                ENG
+                Eng
               </Text>
             )}
           </View>

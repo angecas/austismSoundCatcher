@@ -1,6 +1,7 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, useRef } from "react";
 import Toast from "react-native-toast-message";
+import * as RNLocalize from "react-native-localize";
 
 import Menu from "./components/Menu";
 
