@@ -78,8 +78,8 @@ const HighestPercentage = ({ previsionLabel }) => {
         value: unknownVal,
         label: t("unknown"),
         topLabelComponent: () => (
-          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
-            {String(unknownVal)}
+          <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
+            {String(unknownVal)} {"%"}
           </Text>
         ),
       },
@@ -87,8 +87,8 @@ const HighestPercentage = ({ previsionLabel }) => {
         value: positiveVal,
         label: t("positive"),
         topLabelComponent: () => (
-          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
-            {String(positiveVal)}
+          <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
+            {String(positiveVal)} {"%"}
           </Text>
         ),
       },
@@ -96,8 +96,8 @@ const HighestPercentage = ({ previsionLabel }) => {
         value: negativeVal,
         label: t("negative"),
         topLabelComponent: () => (
-          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
-            {String(negativeVal)}
+          <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
+            {String(negativeVal)} {"%"}
           </Text>
         ),
       },

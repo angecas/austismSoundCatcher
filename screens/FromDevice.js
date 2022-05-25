@@ -89,6 +89,16 @@ const FromDevice = ({ navigation }) => {
           <MusicOut width={120} height={120} />
         )}
 
+        {load === true ? (
+          <View style={{ height: 50 }}>
+            <Classifying loading={true} />
+          </View>
+        ) : (
+          <View style={{ height: 50 }}>
+            <></>
+          </View>
+        )}
+
         <View
           style={{
             flexDirection: "row",
@@ -204,6 +214,8 @@ const FromDevice = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+
+      {/*
       {load === true ? (
         <View style={{ height: 50 }}>
           <Classifying loading={true} />
@@ -213,6 +225,7 @@ const FromDevice = ({ navigation }) => {
           <></>
         </View>
       )}
+      */}
 
       <View
         style={{
@@ -244,7 +257,7 @@ const FromDevice = ({ navigation }) => {
               }}
             >
               {t("OverallClassification")} :{" "}
-              {prev["label"]["firstPrevisionLabel"]}
+              {t(prev["label"]["firstPrevisionLabel"])}
             </Text>
           </View>
         ) : (

@@ -18,7 +18,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
         value: freqArray.filter((x) => x === "unknown").length,
         label: t("unknown"),
         topLabelComponent: () => (
-          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+          <Text style={{ color: "black", fontSize: 14, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "unknown").length)}
           </Text>
         ),
@@ -29,7 +29,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
         label: t("positive"),
         frontColor: "#177AD5",
         topLabelComponent: () => (
-          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+          <Text style={{ color: "black", fontSize: 14, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "positive").length)}
           </Text>
         ),
@@ -39,7 +39,7 @@ const LabelsOcurrence = ({ previsionLabel }) => {
         label: t("negative"),
         frontColor: "#177AD5",
         topLabelComponent: () => (
-          <Text style={{ color: "black", fontSize: 18, marginBottom: 6 }}>
+          <Text style={{ color: "black", fontSize: 14, marginBottom: 6 }}>
             {String(freqArray.filter((x) => x === "negative").length)}
           </Text>
         ),

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { BottomModal } from "react-native-modals";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 import { useTranslation } from "react-i18next";
 
@@ -129,7 +128,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
         ) : null}
       </View>
       <Grid>
-        <Col size={5}>
+        <Col size={6}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -170,7 +169,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             <Text>{t(previsionResults.firstPrevisionPercent)}</Text>
           </Row>
         </Col>
-        <Col size={5}>
+        <Col size={6}>
           <Row style={styles.cell}>
             <Text
               style={{
@@ -211,7 +210,7 @@ const PrevisionTable = ({ previsionResults, sample, showSample }) => {
             <Text>{previsionResults.secondPrevisionPercent}</Text>
           </Row>
         </Col>
-        <Col size={5}>
+        <Col size={6}>
           <Row style={styles.cell}>
             <Text
               style={{

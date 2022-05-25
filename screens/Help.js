@@ -635,44 +635,44 @@ const Help = ({ navigation, route }) => {
                 {startBal ? (
                   <View
                     style={{
-                      height: 90,
-                      width: 90,
+                      height: 100,
+                      width: 100,
                     }}
                   >
                     <Balloon
                       borderColor="#0e7fe5"
                       backgroundColor="white"
                       borderWidth={2}
-                      width={70}
+                      width={85}
                       height={70}
                       borderRadius={20}
-                      triangleSize={10}
+                      triangleSize={9}
                       triangleDirection="right"
                       triangleOffset="45%"
                       onPress={() => console.log("press")}
                     >
-                      <Text style={{ textAlign: "justify" }}>
+                      <Text style={{ textAlign: "center" }}>
                         {t("StartBallon")}
                       </Text>
                     </Balloon>
                   </View>
                 ) : (
-                  <View style={{ height: 90, width: 90 }} />
+                  <View style={{ height: 100, width: 100 }} />
                 )}
 
                 {detailMenu ? (
                   <View
                     style={{
-                      height: 90,
-                      width: 90,
+                      height: 80,
+                      width: 100,
                     }}
                   >
                     <Balloon
                       borderColor="#0e7fe5"
                       backgroundColor="white"
                       borderWidth={2}
-                      width={75}
-                      height={80}
+                      width={80}
+                      height={60}
                       borderRadius={20}
                       triangleSize={10}
                       triangleDirection="right"
@@ -685,7 +685,7 @@ const Help = ({ navigation, route }) => {
                     </Balloon>
                   </View>
                 ) : (
-                  <View style={{ height: 90, width: 90 }} />
+                  <View style={{ height: 80, width: 100 }} />
                 )}
               </View>
 
@@ -781,7 +781,10 @@ const Help = ({ navigation, route }) => {
                     </ActionButton.Item>
                   </ActionButton>
                 ) : (
-                  <ActionButton buttonColor="white"></ActionButton>
+                  <ActionButton
+                    buttonColor="white"
+                    btnOutRange="white"
+                  ></ActionButton>
                 )}
                 <View
                   style={{
@@ -793,26 +796,26 @@ const Help = ({ navigation, route }) => {
               </View>
 
               {stopBal ? (
-                <View style={{ height: 90, width: 90 }}>
+                <View style={{ height: 100, width: 100 }}>
                   <Balloon
                     borderColor="#0e7fe5"
                     backgroundColor="white"
                     borderWidth={2}
                     width={90}
-                    height={80}
+                    height={70}
                     borderRadius={20}
                     triangleSize={10}
                     triangleDirection="left"
                     triangleOffset="25%"
                     onPress={() => console.log("press")}
                   >
-                    <Text style={{ textAlign: "justify" }}>
+                    <Text style={{ textAlign: "center" }}>
                       {t("StopBaloon")}
                     </Text>
                   </Balloon>
                 </View>
               ) : (
-                <View style={{ height: 90, width: 90 }} />
+                <View style={{ height: 100, width: 100 }} />
               )}
             </View>
           </View>

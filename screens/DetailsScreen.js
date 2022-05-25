@@ -74,7 +74,7 @@ const DetailsScreen = ({ navigation, route }) => {
         <Text
           style={{
             textAlign: "center",
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: "600",
             marginTop: 10,
           }}
@@ -122,7 +122,7 @@ const DetailsScreen = ({ navigation, route }) => {
           <Text
             style={{
               textAlign: "center",
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: "600",
               marginTop: 10,
             }}
@@ -169,7 +169,7 @@ const DetailsScreen = ({ navigation, route }) => {
           <Text
             style={{
               textAlign: "center",
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: "600",
               marginTop: 10,
             }}
