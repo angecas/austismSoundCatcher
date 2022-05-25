@@ -509,12 +509,15 @@ const Help = ({ navigation, route }) => {
           </Balloon>
         </View>
       ) : (
-        <View
-          style={{ backgroundColor: "green", width: 80, height: 70 }}
-        ></View>
+        <View style={{ width: 80, height: 70 }}></View>
       )}
 
-      <View style={{ justifyContent: "flex-end", flex: 1 }}>
+      <View
+        style={{
+          justifyContent: "flex-end",
+          flex: 1,
+        }}
+      >
         <View
           style={{
             flex: 0.4,
@@ -572,12 +575,12 @@ const Help = ({ navigation, route }) => {
           style={{
             backgroundColor: "#0e7fe5",
             borderColor: "#0e7fe5",
-            flex: 0.6,
+            flex: 0.8,
             borderTopLeftRadius: 80,
             borderTopRightRadius: 80,
             borderWidth: 1,
             elevation: 15,
-            justifyContent: "space-around",
+            justifyContent: "flex-end",
           }}
         >
           <ScrollView
@@ -627,10 +630,14 @@ const Help = ({ navigation, route }) => {
           <View
             style={{
               alignItems: "center",
-              marginBottom: 70,
+              marginBottom: 10,
             }}
           >
-            <View style={{ flexDirection: "row" }}>
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
               <View style={{ flexDirection: "column" }}>
                 {startBal ? (
                   <View
@@ -729,7 +736,6 @@ const Help = ({ navigation, route }) => {
                 <View
                   style={{
                     justifyContent: "flex-end",
-                    backgroundColor: "orange",
                     marginLeft: 230,
                   }}
                 >
