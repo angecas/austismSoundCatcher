@@ -62,7 +62,7 @@ const LineChartPrev = ({ previsionLabel }) => {
           label: t("unknown"),
           topLabelComponent: () => (
             <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
-              {String(unknownAcum / size)} {"%"}
+              {String(Math.round(unknownAcum / size))} {"%"}
             </Text>
           ),
           //dataPointText: String(unknownAcum / size) + " %",
@@ -72,7 +72,7 @@ const LineChartPrev = ({ previsionLabel }) => {
           label: t("positive"),
           topLabelComponent: () => (
             <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
-              {String(positiveAcum / size)} {"%"}
+              {String(Math.round(positiveAcum / size))} {"%"}
             </Text>
           ),
           //dataPointText: String(positiveAcum / size) + " %",
@@ -82,7 +82,7 @@ const LineChartPrev = ({ previsionLabel }) => {
           label: t("negative"),
           topLabelComponent: () => (
             <Text style={{ color: "black", fontSize: 10, marginBottom: 6 }}>
-              {String(negativeAcum / size)} {"%"}
+              {String(Math.round(negativeAcum / size))} {"%"}
             </Text>
           ),
           //dataPointText: String(negativeAcum / size) + " %",

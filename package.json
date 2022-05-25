@@ -27,7 +27,7 @@
     "react-native": "0.64.3",
     "react-native-balloon": "^1.0.0",
     "react-native-chart-kit": "^6.12.0",
-    "react-native-circular-action-menu": "^0.5.0",
+    "react-native-circular-action-menu": "https://github.com/angecas/react-native-circular-action-menu/tarball/master",
     "react-native-countdown-circle-timer": "^3.0.9",
     "react-native-countdown-component": "^2.7.1",
     "react-native-easy-grid": "^0.2.2",

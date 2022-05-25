@@ -738,8 +738,8 @@ const Help = ({ navigation, route }) => {
 
                 {act ? (
                   <ActionButton
-                    buttonColor="#cbd4d9"
-                    btnOutRange="#cbd4d9"
+                    buttonColor="white"
+                    btnOutRange="white"
                     onPress={() => {
                       //setShowModal(true);
                       if (act) {
@@ -754,7 +754,7 @@ const Help = ({ navigation, route }) => {
                     }}
                   >
                     <ActionButton.Item
-                      buttonColor="#cbd4d9"
+                      buttonColor="white"
                       title="sample info"
                       onPress={() => {
                         setShowModal(true);
@@ -768,7 +768,7 @@ const Help = ({ navigation, route }) => {
                     </ActionButton.Item>
 
                     <ActionButton.Item
-                      buttonColor="#cbd4d9"
+                      buttonColor="white"
                       title="resume classification"
                       onPress={() => {
                         console.log("grafico do actionButt");
@@ -781,10 +781,7 @@ const Help = ({ navigation, route }) => {
                     </ActionButton.Item>
                   </ActionButton>
                 ) : (
-                  <ActionButton
-                    buttonColor="#cbd4d9"
-                    btnOutRange="#cbd4d9"
-                  ></ActionButton>
+                  <ActionButton buttonColor="white"></ActionButton>
                 )}
                 <View
                   style={{
