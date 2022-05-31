@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import Toast from "react-native-toast-message";
+
 import MusicIn from "../src/svgs/music.svg";
 import MusicOut from "../src/svgs/musicout.svg";
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import PrevisionTable from "../components/PrevisionTable";
 import { useTranslation } from "react-i18next";
+import { checkConnected } from "../functions";
 
 import Classifying from "../components/Classifying";
 
@@ -24,12 +27,26 @@ const windowWidth = Dimensions.get("window").width;
 
 const FromDevice = ({ navigation }) => {
   const { t, i18n } = useTranslation();
+  const count = useRef(connect);
+  const [connect, setConnect] = useState(false);
 
   const [pathFile, setPathFile] = useState("");
   const [load, setLoad] = useState(false);
   const [prev, setPrev] = useState("");
   const [fileName, setFileName] = useState("");
   const bottomSheet = useRef();
+
+  const showToast = () => {
+    Toast.show({
+      type: "internetToast",
+    });
+  };
+
+  const showToast2 = () => {
+    Toast.show({
+      type: "somethingwrong",
+    });
+  };
 
   const uploadAudio = async (path) => {
     const formData = new FormData();
@@ -62,6 +79,19 @@ const FromDevice = ({ navigation }) => {
       console.log(err);
       console.log("ERROOOOO");
       //showToast();
+      checkConnected()
+        .then((res) => {
+          count.current = res;
+        })
+        .finally(() => {
+          if (count.current) {
+            showToast2();
+            console.log(count.current, "CURRENT");
+          } else {
+            showToast();
+            console.log(count.current, "CURRENT");
+          }
+        });
     }
     setLoad(false);
   };
