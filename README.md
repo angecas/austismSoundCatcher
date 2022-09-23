@@ -1,5 +1,8 @@
 # austismCatcher
 
 ###### In this repository it is possible to visualize the developed work for the soundCatcher app.
+![App Icon](/android/app/src/main/res/drawable/splashscreen_image.png)
 
-SoundCatcher is an app tested in Android devices. However, due to the nature of React Native, the technology used to build soundCatcher, the adaptation for iOS is easily reached.
+
+
+<sub>SoundCatcher is an app developed in React Native tested in Android devices. Depite not having being tested in iOS, the adaptation should be done simple and easy. </sub>
