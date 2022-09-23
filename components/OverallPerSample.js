@@ -3,7 +3,6 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 const OverallPerSample = ({ overallPerSamp }) => {
-  console.log(overallPerSamp, "whattt");
   const { t, i18n } = useTranslation();
 
   let size = Object.keys(overallPerSamp).length;
@@ -12,10 +11,8 @@ const OverallPerSample = ({ overallPerSamp }) => {
   for (let [key, value] of overallPerSamp) {
     let obj = { value: key, label: value };
     graphResponse.push(obj);
-    console.log(graphResponse, "GRAPH RESPONSEEE");
   }
 
-  console.log(graphResponse, "GRAPH RESPONSEEE");
   const overallPerSample = () => {
     let graphResponse = [];
     for (let [key, value] of overallPerSamp) {

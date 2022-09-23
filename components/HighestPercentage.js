@@ -49,9 +49,6 @@ const HighestPercentage = ({ previsionLabel }) => {
           positiveVal < parseFloat(previsionLabel[i].secondPrevisionPercent)
         ) {
           positiveVal = parseFloat(previsionLabel[i].secondPrevisionPercent);
-
-          console.log(positiveVal, "teste 2");
-          console.log(previsionLabel[i].secondPrevisionPercent);
         }
       }
 

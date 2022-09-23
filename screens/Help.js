@@ -764,7 +764,6 @@ const Help = ({ navigation, route }) => {
                       title="sample info"
                       onPress={() => {
                         setShowModal(true);
-                        console.log("lupa do actionButt");
                       }}
                     >
                       <Image

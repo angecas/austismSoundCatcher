@@ -70,14 +70,8 @@ const FromDevice = ({ navigation }) => {
 
       const json = await res.json();
       setPrev(json);
-
-      console.log("JASON", json);
-      console.log("jjjjj", json["label"]);
-      console.log("llllll, ", json["label"]["firstPrevisionLabel"]);
-      console.log(" prevvvvvvv", prev);
     } catch (err) {
       console.log(err);
-      console.log("ERROOOOO");
       //showToast();
       checkConnected()
         .then((res) => {
@@ -86,10 +80,8 @@ const FromDevice = ({ navigation }) => {
         .finally(() => {
           if (count.current) {
             showToast2();
-            console.log(count.current, "CURRENT");
           } else {
             showToast();
-            console.log(count.current, "CURRENT");
           }
         });
     }

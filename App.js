@@ -32,7 +32,6 @@ export default function App() {
 
   const ToggleMenu = () => {
     setMenuState(!menuState);
-    console.log(menuState);
   };
 
   const changeLanguage = () => {
