@@ -1,0 +1,91 @@
+{
+
+
+    
+    "translation":{
+        
+        "Classification":"Classificação",
+        "Help": "Ajuda",
+        "FromDevice": "Do Dispositivo",
+        "search":"procurar",
+        "Classify": "Classificar",
+        "OverallClassification": "Classificação Geral",
+        "Sample": "Amostra",
+        "SampleOverallClass": " Classificação Geral:",
+        "Statistics": "Estatísticas",
+        "HighestPrevisionXLabel": "Maior Previsão do Rótulo",
+        "AverageGlobalPrevisionXLabel": "Previsão Média do Rótulo",
+        "OverallLabelOcurrencesXLabel": "Número de Ocorrências do Rótulo",
+        "KeepClassifying": "Continuar Classificação",
+        "graphToast": "Este gráfico descreve o pico que cada rótulo atingiu de todas as amostras de som recolhidas",
+        "graphToast2": "Este gráfico mostra a percentagem média de previsão que cada etiqueta apresentou em todas as amostras de som recolhidas.",
+        "graphToast3": "Este gráfico mostra a quantidade de vezes que cada etiqueta teve a percentagem de previsão mais alta em todas as amostras recolhidas.",
+        "SampleInfo": " Informação",
+        "firstPrediction": "Na primeira previsão, a amostra foi classificada em ",
+        "secondPrediction": "Na segunda previsão, a amostra foi classificada em ",
+        "thirdPrediction": "Na terceira previsão, a amostra foi classificada em ",
+        "verifyInternetConnection": "Verifica a tua conexão à internet para proceder com a classificação",
+        "Warning": "Atenção",
+        "Explanation":"Explicação",
+        "OptionsMenu": "Menu de Opções ",
+        "MicBalloon": "O microfone começa a capturar som",
+        "DragBalloon": "Arrasta a ponta azul para reiniciar",
+        "StopBaloon": "Pressiona para parar",
+        "StartBallon": "Pressiona para começar",
+        "DetailsMenu": "Detalhes",
+        "MenuInstructions": "Instruções do Menu",
+        "MenuDeviceExp": "Pressionar este botão redireciona para um classificador de áudios locais",
+        "InDeviceFlux": "Para classificar sons do dispositivo, primeiro selecionar um ficheiro, depois pressionar em classificar, e, finalmente, para ver os detalhes da classificação, pressionar na lupa",
+        "appLanguage": "Mudar o idioma da app (português ou inglês)",
+        "stay": "Ficar",
+        "Understood": "Entendí",
+        "ToolInstructions": "Instruções da ferramenta",
+        "SampleInspector": "Inspetor de Amostras",
+        "SampleInspectorDetail": "Esta ferramenta permite inspecionar a informação da classificação de cada amostra",
+        "StatisticsScreen": "Ecrã de estatísticas",
+        "StatisticsScreenDetail": "Redireciona para um ecrã onde é apresentada informação sobre as estatísticas da classificação das amostras de som recolhidas",
+        "Note": "Nota",
+        "NoteDetail": "Este ícone existe em ambas ferramentas. Pressioná-lo dá informação sobre interpretação",
+        "ExplanationText": "Aqui é efetuada uma apresentação sobre as diferentes funcionalidades",
+        "unknown":"desconhecido",
+        "positive": "positivo",
+        "negative": "negativo",
+        "FirstPrediction":"Primeira Previsão",
+        "SecondPrediction": "Segunda Previsão",
+        "ThirdPrediction": "Terceira Previsão",
+        "somethingwentwrong": "Alguma coisa correu mal."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+}
